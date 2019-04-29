@@ -8,51 +8,34 @@
 #include "rpg.h"
 #include "struct.h"
 
-sfIntRect create_rect(int left, int top, int width, int height)
-{
-    sfIntRect rect;
-
-    rect.left = left;
-    rect.top = top;
-    rect.width = width;
-    rect.height = height;
-    return (rect);
-}
-
-menu_t *init_menu(char *resources)
-{
-    menu_t *menu = malloc(sizeof(menu_t));
-    sfVector2f pos;
-
-    pos.x = 0;
-    pos.y = 0;
-    menu->rect = create_rect(0, 0, 1920, 1080);
-    menu->texture = sfTexture_createFromFile(resources, NULL);
-    menu->sprite = sfSprite_create();
-    menu->font = sfFont_createFromFile("ressources/font/Long_Shot.ttf");
-    menu->play = sfText_create();
-    menu->exit = sfText_create();
-    sfSprite_setPosition(menu->sprite, pos);
-    sfSprite_setTexture(menu->sprite, menu->texture, sfTrue);
-    sfSprite_setTextureRect(menu->sprite, menu->rect);
-    sfText_setFont(menu->play, menu->font);
-    sfText_setFont(menu->exit, menu->font);
-    sfText_setString(menu->play, "Play Game");
-    sfText_setString(menu->exit, "Exit Game");
-    sfText_setScale(menu->play, (sfVector2f){3, 3});
-    sfText_setPosition(menu->play, pos);
-    return (menu);
-}
-
-void check_mouse_pos(sfRenderWindow *window, menu_t *menu)
+void menu_btn_act(sfRenderWindow *window, menu_t *menu)
 {
     sfVector2i mouse = sfMouse_getPositionRenderWindow(window);
 
-    if (mouse.x < 1245 && mouse.x > 778) {
-        if (mouse.y > 372 && mouse.y < 529) {
+    if (mouse.x < 1800 && mouse.x > 1500) {
+        if (mouse.y >= 400 && mouse.y < 500) {
             menu->launch_game = 1;
-        } else if (mouse.y > 651 && mouse.y < 807)
+        } else if (mouse.y >= 550 && mouse.y < 650)
             sfRenderWindow_close(window);
+    }
+}
+
+void menu_btn_over(sfRenderWindow *window, menu_t *menu)
+{
+    sfVector2i mouse = sfMouse_getPositionRenderWindow(window);
+
+    if (mouse.x < 1800 && mouse.x > 1500) {
+        if (mouse.y >= 400 && mouse.y < 500)
+            sfText_setColor(menu->play, (sfColor){255, 255, 255, 200});
+        else
+            sfText_setColor(menu->play, (sfColor){0, 0, 0, 200});
+        if (mouse.y >= 550 && mouse.y < 650)
+            sfText_setColor(menu->exit, (sfColor){255, 255, 255, 200});
+        else
+            sfText_setColor(menu->exit, (sfColor){0, 0, 0, 200});
+    } else {
+        sfText_setColor(menu->play, (sfColor){0, 0, 0, 200});
+        sfText_setColor(menu->exit, (sfColor){0, 0, 0, 200});
     }
 }
 
@@ -64,13 +47,14 @@ int display_menu(menu_t *menu, sfRenderWindow *window)
         if (event.type == sfEvtClosed)
             sfRenderWindow_close(window);
         else if (event.type == sfEvtMouseButtonPressed) {
-            check_mouse_pos(window, menu);
+            menu_btn_act(window, menu);
         }
     }
+    menu_btn_over(window, menu);
     sfRenderWindow_clear(window, sfBlack);
     sfRenderWindow_drawSprite(window, menu->sprite, NULL);
     sfRenderWindow_drawText(window, menu->play, NULL);
-    //sfRenderWindow_drawText(window, menu->exit, NULL);
+    sfRenderWindow_drawText(window, menu->exit, NULL);
 }
 
 int game_menu(menu_t *menu, sfRenderWindow *window)

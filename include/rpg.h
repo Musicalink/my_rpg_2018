@@ -19,6 +19,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "struct.h"
 #include "my.h"
+
+//menu.c
+int game_menu(menu_t *, sfRenderWindow *);
+
+//set_menu.c
+menu_t *init_menu(char *);
 
 #endif /*MY_RPG_H*/

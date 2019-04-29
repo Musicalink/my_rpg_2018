@@ -7,6 +7,7 @@
 
 SRC     =       src/main.c		\
 		src/menu.c		\
+		src/set_menu.c		\
 
 OBJ     =       $(SRC:.c=.o)
 
