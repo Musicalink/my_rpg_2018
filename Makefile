@@ -6,6 +6,7 @@
 ##
 
 SRC     =       src/main.c		\
+		src/menu.c		\
 
 OBJ     =       $(SRC:.c=.o)
 
@@ -13,7 +14,7 @@ NAME    =       my_rpg
 
 CFLAGS  =       -Iinclude
 
-SFFLAGS =       -lm -lcsfml-graphics -lcsfml-system -lcsfml-window -lcsfml-audio -Llib/my -lmy
+SFFLAGS =       -lm -lcsfml-graphics -lcsfml-system -lcsfml-window -lcsfml-audio
 
 all:    $(NAME)
 

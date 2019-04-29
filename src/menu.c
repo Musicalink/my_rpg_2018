@@ -5,9 +5,8 @@
 ** my_rpg
 */
 
-#include <stdlib.h>
-#include <unistd.h>
 #include "rpg.h"
+#include "struct.h"
 
 sfIntRect create_rect(int left, int top, int width, int height)
 {
@@ -69,7 +68,8 @@ int game_menu(menu_t *menu, sfRenderWindow *window)
     while (sfRenderWindow_isOpen(window) && menu->launch_game == 0) {
         display_menu(menu, window);
         sfRenderWindow_display(window);
-    }
+    }/*
     if (menu->launch_game == 1)
-        game_start(window);
+    game_start(window);*/
+    return (0);
 }
