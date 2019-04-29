@@ -26,6 +26,17 @@ typedef struct stats {
     int def;
 } stats_t;
 
+typedef struct moving {
+    sfSprite *s_right;
+    sfTexture *t_right;
+    sfSprite *s_left;
+    sfTexture *t_left;
+    sfSprite *s_up;
+    sfTexture *t_up;
+    sfSprite *s_down;
+    sfTexture *t_down;
+} moving_t;
+
 typedef struct stuff {
     int atk;
     int def;
@@ -35,6 +46,7 @@ typedef struct stuff {
 typedef struct player {
     stats_t *stats;
     stuff_t **stuff;
+    moving_t *move;
 } player_t;
 
 #endif /*MY_STRUCT_H*/
