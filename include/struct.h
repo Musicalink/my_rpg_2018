@@ -12,7 +12,9 @@ typedef struct menu {
     sfSprite *sprite;
     sfTexture *texture;
     sfIntRect rect;
-    sfText *text;
+    sfText *play;
+    sfText *exit;
+    sfFont *font;
     int launch_game;
 } menu_t;
 

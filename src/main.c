@@ -10,7 +10,7 @@
 
 int main(int ac, char **av)
 {
-    menu_t *menu = init_menu("sprites/menu.jpg");
+    menu_t *menu = init_menu("ressources/sprites/menu.jpg");
     sfVideoMode mode = {1920, 1080, 60};
     sfRenderWindow *window;
 

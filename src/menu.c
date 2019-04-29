@@ -29,9 +29,18 @@ menu_t *init_menu(char *resources)
     menu->rect = create_rect(0, 0, 1920, 1080);
     menu->texture = sfTexture_createFromFile(resources, NULL);
     menu->sprite = sfSprite_create();
+    menu->font = sfFont_createFromFile("ressources/font/Long_Shot.ttf");
+    menu->play = sfText_create();
+    menu->exit = sfText_create();
     sfSprite_setPosition(menu->sprite, pos);
     sfSprite_setTexture(menu->sprite, menu->texture, sfTrue);
     sfSprite_setTextureRect(menu->sprite, menu->rect);
+    sfText_setFont(menu->play, menu->font);
+    sfText_setFont(menu->exit, menu->font);
+    sfText_setString(menu->play, "Play Game");
+    sfText_setString(menu->exit, "Exit Game");
+    sfText_setScale(menu->play, (sfVector2f){3, 3});
+    sfText_setPosition(menu->play, pos);
     return (menu);
 }
 
@@ -60,6 +69,8 @@ int display_menu(menu_t *menu, sfRenderWindow *window)
     }
     sfRenderWindow_clear(window, sfBlack);
     sfRenderWindow_drawSprite(window, menu->sprite, NULL);
+    sfRenderWindow_drawText(window, menu->play, NULL);
+    //sfRenderWindow_drawText(window, menu->exit, NULL);
 }
 
 int game_menu(menu_t *menu, sfRenderWindow *window)

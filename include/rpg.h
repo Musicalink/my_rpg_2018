@@ -19,7 +19,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "menu.h"
 #include "my.h"
 
 #endif /*MY_RPG_H*/
