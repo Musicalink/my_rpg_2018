@@ -5,19 +5,9 @@
 ** player
 */
 
-#include <SFML/Audio.h>
-#include <SFML/Graphics.h>
-#include <SFML/System/Export.h>
-#include <SFML/System/InputStream.h>
-#include <SFML/Audio/Export.h>
-#include <SFML/Audio/Types.h>
-#include <SFML/Audio/SoundStatus.h>
-#include <math.h>
-#include <stdio.h>
-#include <unistd.h>
 #include <stdlib.h>
 #include <stddef.h>
-//#include "rpg.h"
+#include "rpg.h"
 #include "struct.h"
 
 stats_t *set_player_stats(void)
@@ -87,11 +77,4 @@ player_t *set_player(void)
     player->move = set_player_move();
     player->inventory = set_player_inventory();
     return (player);
-}
-
-int main()
-{
-    player_t *player = set_player();
-
-    return (0);
 }

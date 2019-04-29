@@ -25,6 +25,9 @@
 //menu.c
 int game_menu(menu_t *, sfRenderWindow *);
 
+//set_player
+player_t *set_player(void);
+
 //set_menu.c
 menu_t *init_menu(char *);
 
