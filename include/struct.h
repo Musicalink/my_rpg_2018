@@ -46,7 +46,15 @@ typedef struct stuff {
 typedef struct player {
     stats_t *stats;
     stuff_t **stuff;
+    stuff_t **inventory;
     moving_t *move;
 } player_t;
+
+typedef struct battle {
+    sfSprite *s_back;
+    sfTexture *t_back;
+    sfSprite *s_hud;
+    sfTexture *t_hud;
+} battle_t;
 
 #endif /*MY_STRUCT_H*/

@@ -8,6 +8,8 @@
 SRC     =       src/main.c		\
 		src/menu.c		\
 		src/set_menu.c		\
+		src/battle.c		\
+		src/set_battle.c	\
 
 OBJ     =       $(SRC:.c=.o)
 
