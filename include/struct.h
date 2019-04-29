@@ -18,4 +18,23 @@ typedef struct menu {
     int launch_game;
 } menu_t;
 
+typedef struct stats {
+    int level;
+    int xp;
+    int hp;
+    int atk;
+    int def;
+} stats_t;
+
+typedef struct stuff {
+    int atk;
+    int def;
+    int hp;
+} stuff_t;
+
+typedef struct player {
+    stats_t *stats;
+    stuff **stuff;
+} player_t;
+
 #endif /*MY_STRUCT_H*/
