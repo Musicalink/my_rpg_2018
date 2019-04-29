@@ -34,7 +34,7 @@ typedef struct stuff {
 
 typedef struct player {
     stats_t *stats;
-    stuff **stuff;
+    stuff_t **stuff;
 } player_t;
 
 #endif /*MY_STRUCT_H*/
