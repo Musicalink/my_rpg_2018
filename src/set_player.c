@@ -30,10 +30,9 @@ stuff_t **set_stuff(void)
 
     if (stuff == NULL)
         return (NULL);
-    stuff[0] = NULL;
-    stuff[1] = NULL;
-    stuff[2] = NULL;
-    stuff[3] = NULL;
+    for (int i = 0; i <= 3; i++) {
+        stuff[i] = NULL;
+    }
     return (stuff);
 }
 
@@ -55,6 +54,18 @@ moving_t *set_player_move(void)
     return (move);
 }
 
+stuff_t **set_player_inventory(void)
+{
+    stuff_t **inventory = malloc(sizeof(stuff_t *) * 15);
+
+    if (inventory == NULL)
+        return (NULL);
+    for (int i = 0; i <= 14; i++) {
+        stuff[i] = NULL;
+    }
+    return (stuff);
+}
+
 player_t *set_player(void)
 {
     player_t *player = malloc(sizeof(player_t) * 1);
@@ -64,5 +75,6 @@ player_t *set_player(void)
     player->stats = set_player_stats();
     player->stuff = set_player_stuff();
     player->move = set_player_move();
+    player->inventory = set_player_inventory();
     return (player);
 }
