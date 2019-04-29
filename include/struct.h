@@ -13,6 +13,7 @@ typedef struct menu {
     sfTexture *texture;
     sfIntRect rect;
     sfText *text;
+    int launch_game;
 } menu_t;
 
 #endif /*MY_STRUCT_H*/
