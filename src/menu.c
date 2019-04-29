@@ -7,7 +7,7 @@
 
 #include <stdlib.h>
 #include <unistd.h>
-#include "defender.h"
+#include "rpg.h"
 
 sfIntRect create_rect(int left, int top, int width, int height)
 {
