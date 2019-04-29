@@ -35,6 +35,7 @@ typedef struct moving {
     sfTexture *t_up;
     sfSprite *s_down;
     sfTexture *t_down;
+    sfIntRect rect;
 } moving_t;
 
 typedef struct stuff {

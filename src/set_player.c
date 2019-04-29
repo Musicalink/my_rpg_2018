@@ -5,9 +5,19 @@
 ** player
 */
 
+#include <SFML/Audio.h>
+#include <SFML/Graphics.h>
+#include <SFML/System/Export.h>
+#include <SFML/System/InputStream.h>
+#include <SFML/Audio/Export.h>
+#include <SFML/Audio/Types.h>
+#include <SFML/Audio/SoundStatus.h>
+#include <math.h>
+#include <stdio.h>
+#include <unistd.h>
 #include <stdlib.h>
 #include <stddef.h>
-#include "rpg.h"
+//#include "rpg.h"
 #include "struct.h"
 
 stats_t *set_player_stats(void)
@@ -24,7 +34,7 @@ stats_t *set_player_stats(void)
     return (stats);
 }
 
-stuff_t **set_stuff(void)
+stuff_t **set_player_stuff(void)
 {
     stuff_t **stuff = malloc(sizeof(stuff_t *) * 4);
 
@@ -40,9 +50,9 @@ moving_t *set_player_move(void)
 {
     moving_t *move = malloc(sizeof(moving_t) * 1);
 
-    if (moving == NULL)
+    if (move == NULL)
         return (NULL);
-    move->t_right = sfTexture_createFromFile("ressorces/walk_right.png", NULL);
+    move->t_right = sfTexture_createFromFile("ressources/walk_right.png", NULL);
     move->s_right = sfSprite_create();
     move->t_left = sfTexture_createFromFile("ressources/walk_left.png", NULL);
     move->s_left = sfSprite_create();
@@ -61,9 +71,9 @@ stuff_t **set_player_inventory(void)
     if (inventory == NULL)
         return (NULL);
     for (int i = 0; i <= 14; i++) {
-        stuff[i] = NULL;
+        inventory[i] = NULL;
     }
-    return (stuff);
+    return (inventory);
 }
 
 player_t *set_player(void)
@@ -77,4 +87,11 @@ player_t *set_player(void)
     player->move = set_player_move();
     player->inventory = set_player_inventory();
     return (player);
+}
+
+int main()
+{
+    player_t *player = set_player();
+
+    return (0);
 }
