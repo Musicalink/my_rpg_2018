@@ -8,5 +8,11 @@
 #ifndef MY_STRUCT_H_
 #define MY_STRUCT_H_
 
+typedef struct menu {
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfIntRect rect;
+    sfText *text;
+} menu_t;
 
 #endif /*MY_STRUCT_H*/
