@@ -29,6 +29,10 @@ int game_menu(menu_t *, sfRenderWindow *);
 player_t *set_player(void);
 
 //set_menu.c
+sfIntRect create_rect(int, int, int, int);
 menu_t *init_menu(char *);
+
+//xp.c
+sfVector2f bar_xp(player_t *);
 
 #endif /*MY_RPG_H*/

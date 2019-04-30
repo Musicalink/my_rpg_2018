@@ -19,11 +19,14 @@ int display_battle(battle_t *battle, sfRenderWindow *window)
     sfRenderWindow_clear(window, sfBlack);
     sfRenderWindow_drawSprite(window, battle->s_back, NULL);
     sfRenderWindow_drawSprite(window, battle->s_hud, NULL);
+    sfRenderWindow_drawSprite(window, battle->player->s_player, NULL);
+    sfRenderWindow_drawRectangleShape(window, battle->hud->hp, NULL);
+    sfRenderWindow_drawRectangleShape(window, battle->hud->xp, NULL);
 }
 
-int game_battle(sfRenderWindow *window)
+int game_battle(sfRenderWindow *window, player_t *player)
 {
-    battle_t *battle = init_battle("ressources/sprites/battle.png");
+    battle_t *battle = init_battle(player);
     
     while (sfRenderWindow_isOpen(window)) {
         display_battle(battle, window);
