@@ -61,7 +61,7 @@ typedef struct bhud {
 
 typedef struct ebattle {
     sfSprite *s_ene;
-    sftexture *t_ene;
+    sfTexture *t_ene;
     sfIntRect rect;
     stats_t *stats;
 } ebattle_t;
