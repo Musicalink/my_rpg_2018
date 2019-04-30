@@ -44,7 +44,7 @@ battle_t *init_battle(player_t *player)
     tmp->s_back = sfSprite_create();
     tmp->s_hud = sfSprite_create();
     tmp->hud = init_hud(player);
-    tmp->player = init_player_battle("ressources/sprites/atk.png", NULL);
+    tmp->player = init_player_battle("ressources/sprites/atk.png");
     set_battle(tmp);
     return (tmp);
 }

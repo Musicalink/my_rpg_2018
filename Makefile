@@ -12,7 +12,7 @@ SRC     =       src/main.c		\
 		src/set_battle.c	\
 		src/set_player_battle.c	\
 		src/set_player.c	\
-		src/xp.c		\
+		src/hud_ingame.c	\
 
 OBJ     =       $(SRC:.c=.o)
 

@@ -8,7 +8,7 @@
 #include "rpg.h"
 #include "struct.h"
 
-int display_battle(battle_t *battle, sfRenderWindow *window)
+void display_battle(battle_t *battle, sfRenderWindow *window)
 {
     sfEvent event;
 
