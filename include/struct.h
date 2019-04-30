@@ -55,6 +55,7 @@ typedef struct player {
 typedef struct bhud {
     sfRectangleShape *hp;
     sfRectangleShape *xp;
+    sfRectangleShape *ene_hp;
     sfText *lvl;
     sfFont *font;
 } bhud_t;

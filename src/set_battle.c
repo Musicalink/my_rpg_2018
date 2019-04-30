@@ -16,6 +16,7 @@ bhud_t *init_hud(player_t *player)
         return (NULL);
     hud->hp = sfRectangleShape_create();
     hud->xp = sfRectangleShape_create();
+    hud->ene_hp = sfRectangleShape_create();
     hud->lvl = sfText_create();
     hud->font = sfFont_createFromFile("ressources/font/arial.ttf");
     set_hud(hud, player);

@@ -25,6 +25,7 @@ pbattle_t *init_player_battle(char *resources)
     tmp->rect = create_rect(0, 0, 512, 537);
     tmp->t_player = sfTexture_createFromFile(resources, NULL);
     tmp->s_player = sfSprite_create();
+    tmp->clock = sfClock_create();
     tmp->p_atk = &atk;
     set_player_battle(tmp);
     return (tmp);

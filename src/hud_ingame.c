@@ -20,12 +20,20 @@ sfVector2f bar_xp(player_t *player)
     return (bar);
 }
 
-void update_hpbar(player_t *player, bhud_t *hud)
+void upd_hp_player(player_t *player, bhud_t *hud)
 {
     float percent = (float)(player->stats->hp) / (float)(player->stats->hp_max);
     sfVector2f bar = (sfVector2f){317 * percent, 26};
 
     sfRectangleShape_setSize(hud->hp, bar);
+}
+
+void upd_hp_enemy(ebattle_t *enemy, bhud_t *hud)
+{
+    float percent = (float)(enemy->stats->hp) / (float)(enemy->stats->hp_max);
+    sfVector2f bar = (sfVector2f){317 * percent, 26};
+
+    sfRectangleShape_setSize(hud->ene_hp, bar);
 }
 
 char *display_lvl(player_t *player)
@@ -51,9 +59,12 @@ void set_hud(bhud_t *hud, player_t *player)
     sfText_setFont(hud->lvl, hud->font);
     sfText_setPosition(hud->lvl, (sfVector2f){910, 925});
     sfRectangleShape_setPosition(hud->hp, (sfVector2f){565, 932});
+    sfRectangleShape_setPosition(hud->ene_hp, (sfVector2f){1038, 932});
     sfRectangleShape_setPosition(hud->xp, (sfVector2f){565, 970});
     sfRectangleShape_setSize(hud->hp, (sfVector2f){317, 26});
+    sfRectangleShape_setSize(hud->ene_hp, (sfVector2f){317, 26});
     sfRectangleShape_setSize(hud->xp, bar_xp(player));
     sfRectangleShape_setFillColor(hud->hp, sfRed);
+    sfRectangleShape_setFillColor(hud->ene_hp, sfBlue);
     sfRectangleShape_setFillColor(hud->xp, sfGreen);
 }
