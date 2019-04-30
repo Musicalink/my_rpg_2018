@@ -19,6 +19,13 @@ ebattle_t *gen_bad_guy(char *path, int height, int width, int nb)
     return (enemy);
 }
 
+void gen_stat_bad_guys(ebattle_t *enemy, int hp_max, int atk, int def)
+{
+    enemy->stats->hp_max = hp_max;
+    enemy->stats->atk = atk;
+    enemy->stats->def = def;
+}
+
 ebattle_t **gen_enemies()
 {
     int cnt;
