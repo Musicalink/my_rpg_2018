@@ -28,6 +28,9 @@ int game_menu(menu_t *, sfRenderWindow *);
 //set_player
 player_t *set_player(void);
 
+//free_player
+void free_player(player_t *);
+
 //set_menu.c
 sfIntRect create_rect(int, int, int, int);
 menu_t *init_menu(char *);
