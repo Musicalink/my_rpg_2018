@@ -28,9 +28,12 @@ void gen_stat_bad_guys(ebattle_t *enemy, int hp_max, int atk, int def)
 
 ebattle_t **gen_enemies()
 {
-    int cnt;
     ebattle_t **enemies = malloc(sizeof(ebattle_t *) * 5);
 
+    enemies[0] = gen_bad_guy("ressources/sprites/caillou.png", 396, 480, 11);
+    enemies[1] = gen_bad_guy("ressources/sprites/glace.png", 360, 480, 13);
+    enemies[2] = gen_bad_guy("ressources/sprites/fighter.png", 211, 480, 18);
+    enemies[3] = gen_bad_guy("ressources/sprites/orc.png", 480, 480, 18);
     enemies[4] = NULL;
-    enemies[0] = gen_bad_guy();
+    return (enemies);
 }
