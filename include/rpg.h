@@ -36,6 +36,7 @@ sfIntRect create_rect(int, int, int, int);
 menu_t *init_menu(char *);
 
 //battle.c
+void atk(pbattle_t *, sfRenderWindow *);
 int game_battle(sfRenderWindow *, player_t *);
 
 //set_battle.c

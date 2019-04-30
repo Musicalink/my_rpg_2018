@@ -60,7 +60,7 @@ typedef struct pbattle {
     sfSprite *s_player;
     sfTexture *t_player;
     sfIntRect rect;
-    void (*p_atk)(struct pbattle);
+    void (*p_atk)(struct pbattle *, sfRenderWindow *);
 } pbattle_t;
 
 typedef struct battle {

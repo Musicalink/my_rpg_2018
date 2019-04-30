@@ -20,8 +20,18 @@ void display_battle(battle_t *battle, sfRenderWindow *window)
     sfRenderWindow_drawSprite(window, battle->s_back, NULL);
     sfRenderWindow_drawSprite(window, battle->s_hud, NULL);
     sfRenderWindow_drawSprite(window, battle->player->s_player, NULL);
+    battle->player->p_atk(battle->player, window);
     sfRenderWindow_drawRectangleShape(window, battle->hud->hp, NULL);
     sfRenderWindow_drawRectangleShape(window, battle->hud->xp, NULL);
+}
+
+void atk(pbattle_t *player, sfRenderWindow *window)
+{
+    if (player->rect.left == 4608)
+	player->rect.left = 0;
+    else
+	player->rect.left += 512;
+    sfSprite_setTextureRect(player->s_player, player->rect);
 }
 
 int game_battle(sfRenderWindow *window, player_t *player)
