@@ -16,7 +16,7 @@ int main(int ac, char **av)
     sfRenderWindow *window;
 
     window = sfRenderWindow_create(mode, "rpg", sfClose | sfResize | sfFullscreen, NULL);
-    //game_menu(menu, window);
+    game_menu(menu, window);
     game_battle(window, player);
     return (0);
 }

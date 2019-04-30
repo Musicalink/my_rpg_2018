@@ -38,8 +38,9 @@ void atk(pbattle_t *player, sfRenderWindow *window)
 int game_battle(sfRenderWindow *window, player_t *player)
 {
     battle_t *battle = init_battle(player);
+    int turn = 0;
     
-    while (sfRenderWindow_isOpen(window)) {
+    while (sfRenderWindow_isOpen(window) && battle_end(player, enemy) != 0) {     
         display_battle(battle, window);
         sfRenderWindow_display(window);
     }

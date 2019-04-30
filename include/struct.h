@@ -61,9 +61,11 @@ typedef struct bhud {
 
 typedef struct ebattle {
     sfSprite *s_ene;
-    sftexture *t_ene;
+    sfTexture *t_ene;
     sfIntRect rect;
+    int frame;
     stats_t *stats;
+    sfClock *clock;
 } ebattle_t;
 
 typedef struct pbattle {
@@ -71,6 +73,7 @@ typedef struct pbattle {
     sfTexture *t_player;
     sfIntRect rect;
     void (*p_atk)(struct pbattle *, sfRenderWindow *);
+    sfClock *clock;
 } pbattle_t;
 
 typedef struct battle {
