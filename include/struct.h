@@ -59,6 +59,13 @@ typedef struct bhud {
     sfFont *font;
 } bhud_t;
 
+typedef struct ebattle {
+    sfSprite *s_ene;
+    sftexture *t_ene;
+    sfIntRect rect;
+    stats_t *stats;
+} ebattle_t;
+
 typedef struct pbattle {
     sfSprite *s_player;
     sfTexture *t_player;
