@@ -42,13 +42,17 @@ moving_t *set_player_move(void)
 
     if (move == NULL)
         return (NULL);
-    move->t_right = sfTexture_createFromFile("ressources/walk_right.png", NULL);
+    move->t_right = sfTexture_createFromFile("ressources/sprites/walk_right.png"
+    , NULL);
     move->s_right = sfSprite_create();
-    move->t_left = sfTexture_createFromFile("ressources/walk_left.png", NULL);
+    move->t_left = sfTexture_createFromFile("ressources/sprites/walk_left.png"
+    , NULL);
     move->s_left = sfSprite_create();
-    move->t_up = sfTexture_createFromFile("ressources/walk_up.png", NULL);
+    move->t_up = sfTexture_createFromFile("ressources/sprites/walk_up.png"
+    , NULL);
     move->s_up = sfSprite_create();
-    move->t_down = sfTexture_createFromFile("ressources/walk_down.png", NULL);
+    move->t_down = sfTexture_createFromFile("ressources/sprites/walk_down.png"
+    , NULL);
     move->s_down = sfSprite_create();
     move->rect = create_rect(0, 0, 240, 299);
     return (move);
