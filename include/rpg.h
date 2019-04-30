@@ -37,7 +37,7 @@ menu_t *init_menu(char *);
 
 //battle.c
 void atk(pbattle_t *, sfRenderWindow *);
-int game_battle(sfRenderWindow *, player_t *);
+int game_battle(sfRenderWindow *, player_t *, ebattle_t *);
 
 //set_battle.c
 battle_t *init_battle(player_t *);
@@ -50,5 +50,8 @@ void set_hud(bhud_t *, player_t *);
 
 //xp.c
 sfVector2f bar_xp(player_t *);
+
+//enemies.c
+ebattle_t **gen_enemies(void);
 
 #endif /*MY_RPG_H*/
