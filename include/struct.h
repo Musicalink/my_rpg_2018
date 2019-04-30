@@ -51,11 +51,25 @@ typedef struct player {
     moving_t *move;
 } player_t;
 
+typedef struct bhud {
+    sfRectangleShape *hp;
+    sfRectangleShape *xp;
+} bhud_t;
+
+typedef struct pbattle {
+    sfSprite *s_player;
+    sfTexture *t_player;
+    sfIntRect rect;
+    void (*p_atk)(struct pbattle);
+} pbattle_t;
+
 typedef struct battle {
     sfSprite *s_back;
     sfTexture *t_back;
     sfSprite *s_hud;
     sfTexture *t_hud;
+    bhud_t *hud;
+    pbattle_t *player;
 } battle_t;
 
 #endif /*MY_STRUCT_H*/

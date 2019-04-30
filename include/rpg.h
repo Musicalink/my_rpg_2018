@@ -32,6 +32,19 @@ player_t *set_player(void);
 void free_player(player_t *);
 
 //set_menu.c
+sfIntRect create_rect(int, int, int, int);
 menu_t *init_menu(char *);
+
+//battle.c
+int game_battle(sfRenderWindow *, player_t *);
+
+//set_battle.c
+battle_t *init_battle(player_t *);
+
+//set_player_battle.c
+pbattle_t *init_player_battle(char *);
+
+//xp.c
+sfVector2f bar_xp(player_t *);
 
 #endif /*MY_RPG_H*/

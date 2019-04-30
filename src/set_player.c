@@ -20,7 +20,7 @@ stats_t *set_player_stats(void)
     stats->xp = 0;
     stats->hp = 100;
     stats->atk = 20;
-    stats->def = 0;
+    stats->def = 10;
     return (stats);
 }
 
