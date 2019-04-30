@@ -23,6 +23,7 @@ void display_battle(battle_t *battle, sfRenderWindow *window)
     battle->player->p_atk(battle->player, window);
     sfRenderWindow_drawRectangleShape(window, battle->hud->hp, NULL);
     sfRenderWindow_drawRectangleShape(window, battle->hud->xp, NULL);
+    sfRenderWindow_drawText(window, battle->hud->lvl, NULL);
 }
 
 void atk(pbattle_t *player, sfRenderWindow *window)

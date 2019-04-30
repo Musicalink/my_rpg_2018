@@ -55,4 +55,8 @@ char *my_strcat(char *dest, const char *src);
 
 char *my_strndup(char const *src, int start, int end);
 
+char *my_itoa(int nb);
+
+char *mall_strcat(char *s1, char *s2);
+
 #endif

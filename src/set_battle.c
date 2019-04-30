@@ -16,12 +16,9 @@ bhud_t *init_hud(player_t *player)
         return (NULL);
     hud->hp = sfRectangleShape_create();
     hud->xp = sfRectangleShape_create();
-    sfRectangleShape_setPosition(hud->hp, (sfVector2f){565, 932});
-    sfRectangleShape_setPosition(hud->xp, (sfVector2f){565, 970});
-    sfRectangleShape_setSize(hud->hp, (sfVector2f){317, 26});
-    sfRectangleShape_setSize(hud->xp, bar_xp(player));
-    sfRectangleShape_setFillColor(hud->hp, sfRed);
-    sfRectangleShape_setFillColor(hud->xp, sfGreen);
+    hud->lvl = sfText_create();
+    hud->font = sfFont_createFromFile("ressources/font/arial.ttf");
+    set_hud(hud, player);
     return (hud);
 }
 

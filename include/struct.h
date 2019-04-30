@@ -22,6 +22,7 @@ typedef struct stats {
     int level;
     int xp;
     int hp;
+    int hp_max;
     int atk;
     int def;
 } stats_t;
@@ -54,6 +55,8 @@ typedef struct player {
 typedef struct bhud {
     sfRectangleShape *hp;
     sfRectangleShape *xp;
+    sfText *lvl;
+    sfFont *font;
 } bhud_t;
 
 typedef struct pbattle {

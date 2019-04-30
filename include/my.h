@@ -1,20 +1,62 @@
 /*
 ** EPITECH PROJECT, 2018
-** my.h
+** CPool_2018
 ** File description:
-** include for libmy.a
+** Maxence Carpentier
 */
-
 
 #ifndef MY_H_
 #define MY_H_
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
 
-int    my_strlen(char const *);
-int    my_getnbr(char const *);
-char  *my_revstr(char *);
-int    my_strcmp(char *, char *);
-char  *my_put_nbr(int nb);
-void   my_nb_to_array(unsigned int nb, char **array);
-void   my_putstr(char *);
+void my_putchar(char c);
 
-#endif /*MY_H_*/
+int my_put_nbr(int nb);
+
+int my_putstr(char const *str);
+
+int my_strlen(char const *str);
+
+int my_getnbr(char const *str, int i);
+
+char *my_strcpy(char *dest, char const *src);
+
+int my_strcmp(char const *s1, char const *s2);
+
+char **my_str_to_word_array(char *str, char separator);
+
+void my_show_word_array(char *const *tab);
+
+char *my_strdup(char const *src);
+
+char *my_revstr(char *str);
+
+int my_intlen(int nb);
+
+int my_tablen(char **tab);
+
+void free_tab(char **tab);
+
+char *remove_i_char(char *str, int i);
+
+char **remove_i_line(char **tab, int i);
+
+int my_atoi(char *array);
+
+int my_natoi(char *array, int n);
+
+int my_put_nbr(int nb);
+
+int my_strncmp(char const *s1, char const *s2, int max);
+
+char *my_strcat(char *dest, const char *src);
+
+char *my_strndup(char const *src, int start, int end);
+
+char *my_itoa(int nb);
+
+char *mall_strcat(char *s1, char *s2);
+
+#endif

@@ -5,6 +5,8 @@
 ** A Epitech Project
 */
 
+#include "my.h"
+
 int my_atoi(char *array)
 {
     int nb = 0;

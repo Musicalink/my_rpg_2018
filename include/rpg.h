@@ -45,6 +45,9 @@ battle_t *init_battle(player_t *);
 //set_player_battle.c
 pbattle_t *init_player_battle(char *);
 
+//hud_ingame.c
+void set_hud(bhud_t *, player_t *);
+
 //xp.c
 sfVector2f bar_xp(player_t *);
 

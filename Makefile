@@ -20,17 +20,20 @@ NAME    =       my_rpg
 
 CFLAGS  =       -Iinclude
 
-SFFLAGS =       -lm -lcsfml-graphics -lcsfml-system -lcsfml-window -lcsfml-audio
+SFFLAGS =       -lm -lcsfml-graphics -lcsfml-system -lcsfml-window -lcsfml-audio -Llib/my -lmy
 
 all:    $(NAME)
 
 $(NAME):	$(OBJ)
+	make -C lib/my
 	gcc -o $(NAME) $(OBJ) $(SFFLAGS) -g $(CFLAGS)
 
 clean:
 	rm -f $(OBJ)
+	make clean -C lib/my
 
 fclean: clean
 	rm -f $(NAME)
+	make fclean -C lib/my
 
 re:  fclean all

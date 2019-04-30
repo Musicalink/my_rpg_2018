@@ -24,6 +24,7 @@ SRC=		my_putstr.c\
 		my_put_nbr.c\
 		my_strcat.c\
 		my_strndup.c\
+		mall_strcat.c\
 
 
 OBJ =	$(SRC:.c=.o)
