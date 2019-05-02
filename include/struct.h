@@ -64,7 +64,9 @@ typedef struct ebattle {
     sfSprite *s_ene;
     sfTexture *t_ene;
     sfIntRect rect;
+    sfVector2f size;
     int frame;
+    int action;
     stats_t *stats;
     sfClock *clock;
 } ebattle_t;
@@ -74,7 +76,6 @@ typedef struct pbattle {
     sfTexture *t_player;
     sfIntRect rect;
     int action;
-    void (*p_atk)(struct pbattle *, sfRenderWindow *);
     sfClock *clock;
 } pbattle_t;
 

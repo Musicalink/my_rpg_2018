@@ -15,27 +15,12 @@ void display_battle(battle_t *battle, ebattle_t *enemy ,sfRenderWindow *window)
     sfRenderWindow_drawSprite(window, battle->s_hud, NULL);
     sfRenderWindow_drawSprite(window, battle->player->s_player, NULL);
     sfRenderWindow_drawSprite(window, enemy->s_ene, NULL);
-    battle->player->p_atk(battle->player, window);
+    atk(battle, window);
+    enemy_atk(enemy, window);
     sfRenderWindow_drawRectangleShape(window, battle->hud->hp, NULL);
     sfRenderWindow_drawRectangleShape(window, battle->hud->xp, NULL);
     sfRenderWindow_drawRectangleShape(window, battle->hud->ene_hp, NULL);
     sfRenderWindow_drawText(window, battle->hud->lvl, NULL);
-}
-
-void atk(pbattle_t *player, sfRenderWindow *window)
-{
-    sfTime time = sfClock_getElapsedTime(player->clock);
-    double seconds = time.microseconds / 1000000.0;
-
-    if (seconds > 0.06 && player->action == 1) {
-        if (player->rect.left == 4608) {
-            player->rect.left = 0;
-            player->action = 0;
-        } else
-            player->rect.left += 512;
-        sfSprite_setTextureRect(player->s_player, player->rect);
-        sfClock_restart(player->clock);
-    }
 }
 
 int game_battle(sfRenderWindow *window, player_t *player, ebattle_t *enemy)
@@ -47,7 +32,7 @@ int game_battle(sfRenderWindow *window, player_t *player, ebattle_t *enemy)
     while (sfRenderWindow_isOpen(window) /*&& battle_end(player, enemy) != 0*/) {     
         display_battle(battle, enemy, window);
         sfRenderWindow_display(window);
-        battle_action(window, battle);
+        battle_action(window, battle, enemy, player);
     }
     return (0);
 }

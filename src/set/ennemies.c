@@ -16,6 +16,9 @@ ebattle_t *gen_bad_guy(char *path, int height, int width, int nb)
     enemy->t_ene = sfTexture_createFromFile(path, NULL);
     enemy->rect = create_rect(0, 0, width, height);
     enemy->frame = nb;
+    enemy->action = 0;
+    enemy->size = (sfVector2f){width, height};
+    enemy->clock = sfClock_create();
     return (enemy);
 }
 

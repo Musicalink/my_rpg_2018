@@ -15,6 +15,7 @@ SRC     =       src/main.c		\
 		src/hud_ingame.c	\
 		src/set/ennemies.c		\
 		src/battle_action.c		\
+		src/battle_movement.c		\
 
 OBJ     =       $(SRC:.c=.o)
 
@@ -22,7 +23,7 @@ NAME    =       my_rpg
 
 CFLAGS  =       -Iinclude
 
-SFFLAGS =       -lm -lcsfml-graphics -lcsfml-system -lcsfml-window -lcsfml-audio -Llib/my -lmy
+SFFLAGS =       -lm -lcsfml-graphics -lcsfml-system -lcsfml-window -lcsfml-audio -Llib/my -lmy 
 
 all:    $(NAME)
 
