@@ -41,10 +41,10 @@ stats_t *set_enemy_stats(int hp, int atk, int def, int xp)
     return (stats);
 }
 
-void set_enemy(ebattle_t *enemy)
+void set_enemy(ebattle_t *enemy, sfVector2f pos)
 {
     sfSprite_setTexture(enemy->s_ene, enemy->t_ene, sfTrue);
-    sfSprite_setPosition(enemy->s_ene, (sfVector2f){1000, 350});
+    sfSprite_setPosition(enemy->s_ene, pos);
     sfSprite_setTextureRect(enemy->s_ene, enemy->rect);
     sfSprite_setScale(enemy->s_ene, (sfVector2f){2, 2});
 }
@@ -61,8 +61,10 @@ ebattle_t **gen_enemies(void)
     enemies[1]->stats = set_enemy_stats(100, 20, 10, 20);
     enemies[2]->stats = set_enemy_stats(100, 20, 10, 20);
     enemies[3]->stats = set_enemy_stats(100, 20, 10, 20);
-    for (int i = 0; i != 4; i++)
-        set_enemy(enemies[i]);
+    set_enemy(enemies[0], (sfVector2f){1050, 350});
+    set_enemy(enemies[1], (sfVector2f){1150, 400});
+    set_enemy(enemies[2], (sfVector2f){1050, 200});
+    set_enemy(enemies[3], (sfVector2f){1150, 550});
     enemies[4] = NULL;
     return (enemies);
 }

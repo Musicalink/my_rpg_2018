@@ -73,6 +73,7 @@ typedef struct pbattle {
     sfSprite *s_player;
     sfTexture *t_player;
     sfIntRect rect;
+    int action;
     void (*p_atk)(struct pbattle *, sfRenderWindow *);
     sfClock *clock;
 } pbattle_t;
@@ -84,6 +85,7 @@ typedef struct battle {
     sfTexture *t_hud;
     bhud_t *hud;
     pbattle_t *player;
+    int turn;
 } battle_t;
 
 #endif /*MY_STRUCT_H*/

@@ -39,6 +39,9 @@ menu_t *init_menu(char *);
 void atk(pbattle_t *, sfRenderWindow *);
 int game_battle(sfRenderWindow *, player_t *, ebattle_t *);
 
+//battle_action.c
+int battle_action(sfRenderWindow *, battle_t *);
+
 //set_battle.c
 battle_t *init_battle(player_t *);
 

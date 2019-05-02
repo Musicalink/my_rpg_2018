@@ -27,6 +27,7 @@ pbattle_t *init_player_battle(char *resources)
     tmp->s_player = sfSprite_create();
     tmp->clock = sfClock_create();
     tmp->p_atk = &atk;
+    tmp->action = 0;
     set_player_battle(tmp);
     return (tmp);
 }
