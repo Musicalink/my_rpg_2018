@@ -41,18 +41,9 @@ int rm_hp_player(battle_t *battle, ebattle_t *enemy, player_t *player)
         enemy->action = 0;
     } else
         enemy->action++;
-    if (atk - def > 0) 
+    if (atk - def > 0)
         player->stats->hp -= atk - def;
-    /*if (enemy->action == 2) {
-        if ((enemy->stats->atk * 2) - player->stats->def > 0)
-            player->stats->hp -= (enemy->stats->atk * 2) - player->stats->def;
-        enemy->action = 0;
-        return (0);
-    }
-    if (enemy->stats->atk - player->stats->def > 0) 
-        player->stats->hp -= enemy->stats->atk - player->stats->def;
-    enemy->action++;
-    return (0);*/
+    return (0);
 }
 
 int enemy_action(battle_t *battle, ebattle_t *enemy, player_t *player)
@@ -77,5 +68,4 @@ int battle_action(sfRenderWindow *window, battle_t *battle, ebattle_t *enemy,
             get_action(window, battle, enemy, player);
         }
     }
-    enemy_action(battle, enemy, player);
 }

@@ -24,7 +24,7 @@ NAME    =       my_rpg
 
 CFLAGS  =       -Iinclude
 
-SFFLAGS =       -lm -lcsfml-graphics -lcsfml-system -lcsfml-window -lcsfml-audio -Llib/my -lmy 
+SFFLAGS =       -lm -lcsfml-graphics -lcsfml-system -lcsfml-window -lcsfml-audio -Llib/my -lmy -W -Wall -Wextra
 
 all:    $(NAME)
 

@@ -8,14 +8,32 @@
 #include "rpg.h"
 #include "struct.h"
 
+anim_t *gen_flm(char *path, int height, int width, int nb)
+{
+    anim_t *anim = malloc(sizeof(anim_t));
+
+    if (anim == NULL)
+        return (NULL);
+    anim->spr = sfSprite_create();
+    anim->txt = sfTexture_createFromFile(path, NULL);
+    anim->rect = create_rect(0, 0, width, height);
+    anim->frame = nb;
+    anim->size = (sfVector2f){width, height};
+    anim->clock = sfClock_create();
+    return (anim);
+}
+
 ebattle_t *gen_bad_guy(char *path, int height, int width, int nb)
 {
     ebattle_t *enemy = malloc(sizeof(ebattle_t));
 
+    if (enemy == NULL)
+        return (NULL);
     enemy->s_ene = sfSprite_create();
     enemy->t_ene = sfTexture_createFromFile(path, NULL);
     enemy->rect = create_rect(0, 0, width, height);
     enemy->frame = nb;
+    enemy->flm = gen_flm("ressources/sprites/flms.png", 300, 256, 33);
     enemy->action = 0;
     enemy->wait = 0;
     enemy->size = (sfVector2f){width, height};
@@ -41,9 +59,13 @@ stats_t *set_enemy_stats(int hp, int atk, int def, int xp)
 void set_enemy(ebattle_t *enemy, sfVector2f pos)
 {
     sfSprite_setTexture(enemy->s_ene, enemy->t_ene, sfTrue);
+    sfSprite_setTexture(enemy->flm->spr, enemy->flm->txt, sfTrue);
     sfSprite_setPosition(enemy->s_ene, pos);
+    sfSprite_setPosition(enemy->flm->spr, (sfVector2f){1400, 380});
     sfSprite_setTextureRect(enemy->s_ene, enemy->rect);
+    sfSprite_setTextureRect(enemy->flm->spr, enemy->flm->rect);
     sfSprite_setScale(enemy->s_ene, (sfVector2f){2, 2});
+    sfSprite_setScale(enemy->flm->spr, (sfVector2f){2, 2});
 }
 
 ebattle_t **gen_enemies(void)

@@ -65,6 +65,8 @@ typedef struct anim {
     sfTexture *txt;
     sfIntRect rect;
     int frame;
+    sfClock *clock;
+    sfVector2f size;
 } anim_t;
 
 typedef struct ebattle {

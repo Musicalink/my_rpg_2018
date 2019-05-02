@@ -39,7 +39,7 @@ menu_t *init_menu(char *);
 int game_battle(sfRenderWindow *, player_t *, ebattle_t *);
 
 //battle_movement.c
-void enemy_atk(ebattle_t *, battle_t *, sfRenderWindow *);
+void enemy_atk(ebattle_t *, battle_t *, player_t *, sfRenderWindow *);
 void atk(battle_t *, sfRenderWindow *);
 
 //battle_action.c
