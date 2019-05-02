@@ -65,8 +65,6 @@ ebattle_t **gen_enemies(void)
     set_enemy(enemies[1], (sfVector2f){1150, 400});
     set_enemy(enemies[2], (sfVector2f){1050, 200});
     set_enemy(enemies[3], (sfVector2f){1150, 550});
-    for (int i = 0; i != 4; i++)
-        set_enemy(enemies[i]);
     enemies[4] = NULL;
     return (enemies);
 }
