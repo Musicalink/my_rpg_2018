@@ -101,4 +101,17 @@ typedef struct battle {
     int turn;
 } battle_t;
 
+typedef struct map {
+    char *name;
+    int y;
+    int x;
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfImage *hitbox;
+    struct map *left;
+    struct map *right;
+    struct map *top;
+    struct map *bottom;
+} map_t;
+
 #endif /*MY_STRUCT_H*/
