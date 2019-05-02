@@ -16,6 +16,7 @@ SRC     =       src/main.c		\
 		src/set/ennemies.c		\
 		src/battle_action.c		\
 		src/battle_movement.c		\
+		src/battle_end.c	\
 
 OBJ     =       $(SRC:.c=.o)
 

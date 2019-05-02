@@ -17,6 +17,7 @@ ebattle_t *gen_bad_guy(char *path, int height, int width, int nb)
     enemy->rect = create_rect(0, 0, width, height);
     enemy->frame = nb;
     enemy->action = 0;
+    enemy->wait = 0;
     enemy->size = (sfVector2f){width, height};
     enemy->clock = sfClock_create();
     return (enemy);
@@ -62,7 +63,7 @@ ebattle_t **gen_enemies(void)
     enemies[3] = gen_bad_guy("ressources/sprites/fighter.png", 211, 480, 18);
     enemies[0]->stats = set_enemy_stats(110, 30, 15, 20);
     enemies[1]->stats = set_enemy_stats(160, 30, 40, 20);
-    enemies[2]->stats = set_enemy_stats(90, 15, 8, 20);
+    enemies[2]->stats = set_enemy_stats(90, 20, 8, 20);
     enemies[3]->stats = set_enemy_stats(240, 50, 40, 20);
     set_enemy(enemies[0], (sfVector2f){1050, 350});
     set_enemy(enemies[1], (sfVector2f){1150, 400});

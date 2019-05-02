@@ -67,6 +67,7 @@ typedef struct ebattle {
     sfVector2f size;
     int frame;
     int action;
+    int wait;
     stats_t *stats;
     sfClock *clock;
 } ebattle_t;

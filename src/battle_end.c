@@ -5,13 +5,16 @@
 ** check end of battle
 */
 
+#include "rpg.h"
+#include "struct.h"
+
 void update_xp(player_t *player, ebattle_t *enemy)
 {
     int up = 20 + 20 + 5 * (player->stats->level - 1);
     
-    player->xp += enemy->stats->xp;
-    if (player->xp >= up) {
-        player->stats->lvl += 1;
+    player->stats->xp += enemy->stats->xp;
+    if (player->stats->xp >= up) {
+        player->stats->level += 1;
         player->stats->xp -= up;
     }
 }

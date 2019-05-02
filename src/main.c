@@ -18,6 +18,7 @@ int main(int ac, char **av)
 
     window = sfRenderWindow_create(mode, "rpg", sfClose | sfResize | sfFullscreen, NULL);
     //game_menu(menu, window);
-    game_battle(window, player, enemies[0]);
+    for (int i = 0; i != 3; i++)
+        game_battle(window, player, enemies[2]);
     return (0);
 }
