@@ -16,7 +16,7 @@ void display_battle(battle_t *battle, ebattle_t *enemy ,sfRenderWindow *window)
     sfRenderWindow_drawSprite(window, battle->player->s_player, NULL);
     sfRenderWindow_drawSprite(window, enemy->s_ene, NULL);
     atk(battle, window);
-    enemy_atk(enemy, window);
+    enemy_atk(enemy, battle, window);
     sfRenderWindow_drawRectangleShape(window, battle->hud->hp, NULL);
     sfRenderWindow_drawRectangleShape(window, battle->hud->xp, NULL);
     sfRenderWindow_drawRectangleShape(window, battle->hud->ene_hp, NULL);

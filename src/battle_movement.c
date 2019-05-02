@@ -31,9 +31,10 @@ void enemy_atk(ebattle_t *enemy, battle_t *bat, sfRenderWindow *window)
     double seconds = time.microseconds / 1000000.0;
 
     if (seconds > 0.06 && enemy->action == 1) {
-        if (enemy->rect.left == enemy->size.x * enemy->frame) {
+        if (enemy->rect.left >= enemy->size.x * (enemy->frame - 1)) {
             enemy->rect.left = 0;
             bat->turn = 0;
+            enemy->action = 0;
         } else
             enemy->rect.left += enemy->size.x;
         sfSprite_setTextureRect(enemy->s_ene, enemy->rect);
