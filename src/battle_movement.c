@@ -13,10 +13,11 @@ void atk(battle_t *bat, sfRenderWindow *window)
     sfTime time = sfClock_getElapsedTime(bat->player->clock);
     double seconds = time.microseconds / 1000000.0;
 
+    if (bat->turn == 1)
+        return;
     if (seconds > 0.06 && bat->player->action == 1) {
         if (bat->player->rect.left == 4608) {
             bat->player->rect.left = 0;
-            bat->player->action = 0;
             bat->turn = 1;
         } else
             bat->player->rect.left += 512;
@@ -34,6 +35,7 @@ void enemy_atk(ebattle_t *enemy, battle_t *bat, sfRenderWindow *window)
         if (enemy->rect.left >= enemy->size.x * (enemy->frame - 1)) {
             enemy->rect.left = 0;
             bat->turn = 0;
+            bat->player->action = 0;
             enemy->wait = 0;
         } else
             enemy->rect.left += enemy->size.x;

@@ -60,11 +60,19 @@ typedef struct bhud {
     sfFont *font;
 } bhud_t;
 
+typedef struct anim {
+    sfSprite *spr;
+    sfTexture *txt;
+    sfIntRect rect;
+    int frame;
+} anim_t;
+
 typedef struct ebattle {
     sfSprite *s_ene;
     sfTexture *t_ene;
     sfIntRect rect;
     sfVector2f size;
+    anim_t *flm;
     int frame;
     int action;
     int wait;
@@ -77,6 +85,7 @@ typedef struct pbattle {
     sfTexture *t_player;
     sfIntRect rect;
     int action;
+    int boost;
     sfClock *clock;
 } pbattle_t;
 

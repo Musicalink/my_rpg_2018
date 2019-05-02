@@ -23,13 +23,6 @@ ebattle_t *gen_bad_guy(char *path, int height, int width, int nb)
     return (enemy);
 }
 
-void gen_stat_bad_guys(ebattle_t *enemy, int hp_max, int atk, int def)
-{
-    enemy->stats->hp_max = hp_max;
-    enemy->stats->atk = atk;
-    enemy->stats->def = def;
-}
-
 stats_t *set_enemy_stats(int hp, int atk, int def, int xp)
 {
     stats_t *stats = malloc(sizeof(stats_t) * 1);
@@ -63,7 +56,7 @@ ebattle_t **gen_enemies(void)
     enemies[3] = gen_bad_guy("ressources/sprites/fighter.png", 211, 480, 18);
     enemies[0]->stats = set_enemy_stats(110, 30, 15, 20);
     enemies[1]->stats = set_enemy_stats(160, 30, 40, 20);
-    enemies[2]->stats = set_enemy_stats(90, 20, 8, 20);
+    enemies[2]->stats = set_enemy_stats(90, 16, 10, 20);
     enemies[3]->stats = set_enemy_stats(240, 50, 40, 20);
     set_enemy(enemies[0], (sfVector2f){1050, 350});
     set_enemy(enemies[1], (sfVector2f){1150, 400});

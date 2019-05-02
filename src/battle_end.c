@@ -23,10 +23,12 @@ int battle_end(player_t *player, ebattle_t *enemy)
 {
     if (player->stats->hp <= 0) {
         enemy->stats->hp = enemy->stats->hp_max;
+        player->stats->hp = player->stats->hp_max;
         return (1);
     } else if (enemy->stats->hp <= 0) {
         enemy->stats->hp = enemy->stats->hp_max;
-        update_xp(player, enemy);
+        player->stats->hp = player->stats->hp_max;
+        update_xp(player, enemy); 
         return (2);
     }
     return (0);

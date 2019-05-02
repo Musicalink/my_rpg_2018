@@ -21,14 +21,29 @@ int get_action(sfRenderWindow *window, battle_t *battle, ebattle_t *enemy,
             if (player->stats->atk - enemy->stats->def > 0)
                 enemy->stats->hp -= player->stats->atk - enemy->stats->def;
             upd_hp_enemy(enemy, battle->hud);
-        } else if (mouse.x >= 645 && mouse.x < 716)
+        } else if (mouse.x >= 645 && mouse.x < 716) {
             battle->player->action = 2;
+            battle->turn = 1;
+        }
+        
     }
 }
 
 int rm_hp_player(battle_t *battle, ebattle_t *enemy, player_t *player)
 {
+    int atk = enemy->stats->atk;
+    int def = player->stats->def;
+
+    if (battle->player->action == 2)
+        def *= 1.7;
     if (enemy->action == 2) {
+        atk = atk * 2;
+        enemy->action = 0;
+    } else
+        enemy->action++;
+    if (atk - def > 0) 
+        player->stats->hp -= atk - def;
+    /*if (enemy->action == 2) {
         if ((enemy->stats->atk * 2) - player->stats->def > 0)
             player->stats->hp -= (enemy->stats->atk * 2) - player->stats->def;
         enemy->action = 0;
@@ -37,7 +52,7 @@ int rm_hp_player(battle_t *battle, ebattle_t *enemy, player_t *player)
     if (enemy->stats->atk - player->stats->def > 0) 
         player->stats->hp -= enemy->stats->atk - player->stats->def;
     enemy->action++;
-    return (0);
+    return (0);*/
 }
 
 int enemy_action(battle_t *battle, ebattle_t *enemy, player_t *player)
