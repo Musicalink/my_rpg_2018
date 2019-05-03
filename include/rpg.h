@@ -19,6 +19,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stddef.h>
 #include <dirent.h>
 #include "struct.h"
 #include "my.h"
@@ -29,11 +30,14 @@ int game_menu(menu_t *, sfRenderWindow *);
 //set_player
 player_t *set_player(void);
 
+game_t *init_move(game_t *game);
+
 //free_player
 void free_player(player_t *);
 
 //set_menu.c
 sfIntRect create_rect(int, int, int, int);
+
 menu_t *init_menu(char *);
 
 //battle.c
@@ -41,6 +45,7 @@ int game_battle(sfRenderWindow *, player_t *, ebattle_t *);
 
 //battle_movement.c
 void enemy_atk(ebattle_t *, battle_t *, player_t *, sfRenderWindow *);
+
 void atk(battle_t *, sfRenderWindow *);
 
 //battle_action.c
@@ -57,7 +62,9 @@ pbattle_t *init_player_battle(char *);
 
 //hud_ingame.c
 void set_hud(bhud_t *, player_t *);
+
 void upd_hp_player(player_t *, bhud_t *);
+
 void upd_hp_enemy(ebattle_t *, bhud_t *);
 
 //xp.c
@@ -65,5 +72,10 @@ sfVector2f bar_xp(player_t *);
 
 //enemies.c
 ebattle_t **gen_enemies(void);
+
+#define WALK_RIGHT "ressources/sprites/walk_right.png"
+#define WALK_LEFT  "ressources/sprites/walk_left.png"
+#define WALK_UP "ressources/sprites/walk_up.png"
+#define WALK_DOWN "ressources/sprites/walk_down.png"
 
 #endif /*MY_RPG_H*/

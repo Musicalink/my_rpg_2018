@@ -117,6 +117,10 @@ typedef struct map {
 typedef struct game {
     int y;
     int x;
+    sfSprite *moves;
+    sfTexture *moves_t[4];
+    sfIntRect moves_r;
+    sfVector2f p_pos;
 } game_t;
 
 #endif /*MY_STRUCT_H*/

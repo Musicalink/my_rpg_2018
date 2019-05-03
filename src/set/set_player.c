@@ -5,10 +5,7 @@
 ** player
 */
 
-#include <stdlib.h>
-#include <stddef.h>
 #include "rpg.h"
-#include "struct.h"
 
 stats_t *set_player_stats(void)
 {
@@ -37,26 +34,20 @@ stuff_t **set_player_stuff(void)
     return (stuff);
 }
 
-moving_t *set_player_move(void)
+game_t *init_move(game_t *game)
 {
-    moving_t *move = malloc(sizeof(moving_t) * 1);
-
-    if (move == NULL)
-        return (NULL);
-    move->t_right = sfTexture_createFromFile("ressources/sprites/walk_right.png"
-    , NULL);
-    move->s_right = sfSprite_create();
-    move->t_left = sfTexture_createFromFile("ressources/sprites/walk_left.png"
-    , NULL);
-    move->s_left = sfSprite_create();
-    move->t_up = sfTexture_createFromFile("ressources/sprites/walk_up.png"
-    , NULL);
-    move->s_up = sfSprite_create();
-    move->t_down = sfTexture_createFromFile("ressources/sprites/walk_down.png"
-    , NULL);
-    move->s_down = sfSprite_create();
-    move->rect = create_rect(0, 0, 240, 299);
-    return (move);
+    game->moves = sfSprite_create();
+    game->moves_t[0] = sfTexture_createFromFile(WALK_RIGHT, NULL);
+    game->moves_t[1] = sfTexture_createFromFile(WALK_LEFT, NULL);
+    game->moves_t[2] = sfTexture_createFromFile(WALK_UP, NULL);
+    game->moves_t[3] = sfTexture_createFromFile(WALK_DOWN, NULL);
+    game->moves_r = create_rect(0, 0, 240, 299);
+    sfSprite_setTexture(game->moves, game->moves_t[0], sfTrue);
+    sfSprite_setTextureRect(game->moves, game->moves_r);
+    game->p_pos.x = 500;
+    game->p_pos.y = 500;
+    sfSprite_setPosition(game->moves, game->p_pos);
+    return (game);
 }
 
 stuff_t **set_player_inventory(void)
@@ -79,7 +70,6 @@ player_t *set_player(void)
         return (NULL);
     player->stats = set_player_stats();
     player->stuff = set_player_stuff();
-    player->move = set_player_move();
     player->inventory = set_player_inventory();
     return (player);
 }

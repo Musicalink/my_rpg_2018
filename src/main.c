@@ -87,6 +87,38 @@ void move_it(game_t *game, sfVector2i pos)
     printf("(%d, %d)\n", game->y, game->x);
 }
 
+void make_move(game_t *game, map_t *map, int boolean, int minus)
+{
+    unsigned int y = (unsigned int)game->p_pos.y + 270;
+    unsigned int x = (unsigned int)game->p_pos.x;
+    sfColor color;
+
+    y = (boolean == 0) ? (minus == 1) ? y - 10 : y + 10 : y;
+    x = (boolean == 1) ? (minus == 1) ? x - 10 : x + 10 : x;
+    printf("Boolean: %d\nMinus:%d\n\n", boolean, minus);
+    color = sfImage_getPixel(map->hitbox, x, y);
+    printf("%d\n", color.r);
+    if (color.r != 0) {
+        game->p_pos.y = (boolean == 0) ?
+            (minus == 1) ? game->p_pos.y - 10 : game->p_pos.y + 10 :
+            game->p_pos.y;
+    }
+}
+
+void search_move(game_t *game, map_t ***maps)
+{
+    map_t *map = maps[game->y][game->x];
+    if (sfKeyboard_isKeyPressed(sfKeyLeft))
+        make_move(game, map, 1, 1);
+    else if (sfKeyboard_isKeyPressed(sfKeyRight))
+        make_move(game, map, 1, 0);
+    else if (sfKeyboard_isKeyPressed(sfKeyUp))
+        make_move(game, map, 0, 1);
+    else if (sfKeyboard_isKeyPressed(sfKeyDown))
+        make_move(game, map, 0, 0);
+    sfSprite_setPosition(game->moves, game->p_pos);
+}
+
 void event_map(map_t ***maps, sfRenderWindow *window, game_t *game)
 {
     sfEvent event;
@@ -102,6 +134,8 @@ void event_map(map_t ***maps, sfRenderWindow *window, game_t *game)
                 (unsigned int)pos.x, (unsigned int)pos.y);
             (color.r == 128) ? move_it(game, pos) : game;
         }
+        if (event.type == sfEvtKeyPressed)
+            search_move(game, maps);
     }
 }
 
@@ -109,12 +143,16 @@ void game_map(map_t ***maps, sfRenderWindow *window)
 {
     game_t *game = malloc(sizeof(game_t));
 
-    game->y = 1;
-    game->x = 0;
+    game = init_move(game);
+    game->p_pos.x = 500;
+    game->p_pos.y = 500;
+    game->y = 4;
+    game->x = 5;
     while (sfRenderWindow_isOpen(window)) {
         sfRenderWindow_clear(window, sfBlack);
         event_map(maps, window, game);
         sfRenderWindow_drawSprite(window, maps[game->y][game->x]->sprite, NULL);
+        sfRenderWindow_drawSprite(window, game->moves, NULL);
         sfRenderWindow_display(window);
     }
 }
