@@ -69,6 +69,14 @@ typedef struct anim {
     sfVector2f size;
 } anim_t;
 
+typedef struct loots {
+    sfSprite *s_back;
+    sfTexture *t_back;
+    sfFont *font;
+    sfText *xp;
+    sfText *loot;
+} loots_t;
+
 typedef struct ebattle {
     sfSprite *s_ene;
     sfTexture *t_ene;
