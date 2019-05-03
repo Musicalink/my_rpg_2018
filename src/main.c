@@ -124,15 +124,18 @@ void search_move(game_t *game, map_t ***maps)
         make_move(game, map, 1, 1);
         sfSprite_setTexture(game->moves, game->moves_t[1], sfTrue);
         sfSprite_setTextureRect(game->moves, game->moves_r);
-    } else if (sfKeyboard_isKeyPressed(sfKeyRight)) {
+    }
+    if (sfKeyboard_isKeyPressed(sfKeyRight)) {
         make_move(game, map, 1, 0);
         sfSprite_setTexture(game->moves, game->moves_t[0], sfTrue);
         sfSprite_setTextureRect(game->moves, game->moves_r);
-    } else if (sfKeyboard_isKeyPressed(sfKeyUp)) {
+    }
+    if (sfKeyboard_isKeyPressed(sfKeyUp)) {
         make_move(game, map, 0, 1);
         sfSprite_setTexture(game->moves, game->moves_t[2], sfTrue);
         sfSprite_setTextureRect(game->moves, game->moves_r);
-    } else if (sfKeyboard_isKeyPressed(sfKeyDown)) {
+    }
+    if (sfKeyboard_isKeyPressed(sfKeyDown)) {
         make_move(game, map, 0, 0);
         sfSprite_setTexture(game->moves, game->moves_t[3], sfTrue);
         sfSprite_setTextureRect(game->moves, game->moves_r);
