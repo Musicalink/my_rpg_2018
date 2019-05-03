@@ -76,6 +76,9 @@ typedef struct loots {
     sfText *status;
     sfText *xp;
     sfText *loot;
+    anim_t *boots;
+    anim_t *armor;
+    anim_t *helmet;
 } loots_t;
 
 typedef struct ebattle {

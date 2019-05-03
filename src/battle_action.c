@@ -8,6 +8,16 @@
 #include "rpg.h"
 #include "struct.h"
 
+void rm_hp_enemy(player_t *player, ebattle_t *enemy)
+{
+    int atk = player->stats->atk;
+    int def = enemy->stats->def;
+
+    if (atk - def > 0)
+        enemy->stats->hp -= atk - def;
+    enemy->stats->hp = (enemy->stats->hp < 0) ? 0 : enemy->stats->hp;
+}
+
 int get_action(sfRenderWindow *window, battle_t *battle, ebattle_t *enemy,
                player_t *player)
 {
@@ -18,18 +28,16 @@ int get_action(sfRenderWindow *window, battle_t *battle, ebattle_t *enemy,
     if (mouse.y > 1000 && mouse.y < 1071) {
         if (mouse.x >= 565 && mouse.x <= 636) {
             battle->player->action = 1;
-            if (player->stats->atk - enemy->stats->def > 0)
-                enemy->stats->hp -= player->stats->atk - enemy->stats->def;
+            rm_hp_enemy(player, enemy);
             upd_hp_enemy(enemy, battle->hud);
         } else if (mouse.x >= 645 && mouse.x < 716) {
             battle->player->action = 2;
             battle->turn = 1;
-        }
-        
+        }        
     }
 }
 
-int rm_hp_player(battle_t *battle, ebattle_t *enemy, player_t *player)
+void rm_hp_player(battle_t *battle, ebattle_t *enemy, player_t *player)
 {
     int atk = enemy->stats->atk;
     int def = player->stats->def;
@@ -41,9 +49,8 @@ int rm_hp_player(battle_t *battle, ebattle_t *enemy, player_t *player)
         enemy->action = 0;
     } else
         enemy->action++;
-    if (atk - def > 0)
-        player->stats->hp -= atk - def;
-    return (0);
+    player->stats->hp -= (atk - def > 0) ? atk - def : 0;
+    player->stats->hp = (player->stats->hp < 0) ? 0 : player->stats->hp;
 }
 
 int enemy_action(battle_t *battle, ebattle_t *enemy, player_t *player)
