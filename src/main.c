@@ -73,18 +73,18 @@ map_t ***init_maps()
     return (maps);
 }
 
-sfVector2f move_it(game_t *game, sfVector2f pos)
+sfVector2f move_it(game_t *game, sfVector2f pos, sfColor color)
 {
-    if (pos.y < 200) {
+    if (color.r > 120 && color.g > 120 && color.b < 120) {
         game->y++;
         pos.y += 800;
-    } else if (pos.y > 880) {
+    } else if (color.r < 120 && color.g > 120 && color.b < 120) {
         game->y--;
         pos.y -= 800;
-    } else if (pos.x < 200) {
+    } else if (color.r > 120 && color.g < 120 && color.b < 120) {
         game->x--;
         pos.x += 1700;
-    } else if (pos.x > 1720) {
+    } else if (color.r < 120 && color.g < 120 && color.b > 120) {
         game->x++;
         pos.x -= 1700;
     }
@@ -105,29 +105,38 @@ void make_move(game_t *game, map_t *map, int boolean, int minus)
     printf("Boolean: %d\nMinus:%d\n\n", boolean, minus);
     color = sfImage_getPixel(map->hitbox, x, y);
     printf("%d\n", color.r);
-    if (color.r > 10) {
+    if (color.r > 100 || color.g > 100 || color.b > 100) {
         if (boolean == 0)
             game->p_pos.y =
                 (minus == 1) ? game->p_pos.y - 10 : game->p_pos.y + 10;
         else if (boolean == 1)
             game->p_pos.x =
                 (minus == 1) ? game->p_pos.x - 10 : game->p_pos.x + 10;
-        if (color.r <= 245)
-            game->p_pos = move_it(game, game->p_pos);
+        if (color.r <= 200 || color.b <= 200 || color.g <= 200)
+            game->p_pos = move_it(game, game->p_pos, color);
     }
 }
 
 void search_move(game_t *game, map_t ***maps)
 {
     map_t *map = maps[game->y][game->x];
-    if (sfKeyboard_isKeyPressed(sfKeyLeft))
+    if (sfKeyboard_isKeyPressed(sfKeyLeft)) {
         make_move(game, map, 1, 1);
-    else if (sfKeyboard_isKeyPressed(sfKeyRight))
+        sfSprite_setTexture(game->moves, game->moves_t[1], sfTrue);
+        sfSprite_setTextureRect(game->moves, game->moves_r);
+    } else if (sfKeyboard_isKeyPressed(sfKeyRight)) {
         make_move(game, map, 1, 0);
-    else if (sfKeyboard_isKeyPressed(sfKeyUp))
+        sfSprite_setTexture(game->moves, game->moves_t[0], sfTrue);
+        sfSprite_setTextureRect(game->moves, game->moves_r);
+    } else if (sfKeyboard_isKeyPressed(sfKeyUp)) {
         make_move(game, map, 0, 1);
-    else if (sfKeyboard_isKeyPressed(sfKeyDown))
+        sfSprite_setTexture(game->moves, game->moves_t[2], sfTrue);
+        sfSprite_setTextureRect(game->moves, game->moves_r);
+    } else if (sfKeyboard_isKeyPressed(sfKeyDown)) {
         make_move(game, map, 0, 0);
+        sfSprite_setTexture(game->moves, game->moves_t[3], sfTrue);
+        sfSprite_setTextureRect(game->moves, game->moves_r);
+    }
     sfSprite_setPosition(game->moves, game->p_pos);
 }
 
@@ -146,8 +155,12 @@ void event_map(map_t ***maps, sfRenderWindow *window, game_t *game)
                       (unsigned int)pos.x, (unsigned int)pos.y);
                   (color.r == 128) ? move_it(game, pos) : game;
               }*/
-        if (event.type == sfEvtKeyPressed)
+        if (event.type == sfEvtKeyPressed) {
+            game->moves_r.left += 150;
+            if (game->moves_r.left > 1349)
+                game->moves_r.left = 0;
             search_move(game, maps);
+        }
     }
 }
 
@@ -177,11 +190,11 @@ int main(int ac, char **av)
     map_t ***maps;
 
     window = sfRenderWindow_create(mode, "rpg",
-    sfClose | sfResize | sfFullscreen, NULL);
+        sfClose | sfResize /*| sfFullscreen*/, NULL);
     game_menu(menu, window);
-    //maps = init_maps();
-    //game_map(maps, window);
-    for (int i = 0; i != 3; i++)
-          game_battle(window, player, enemies[0]);
+    maps = init_maps();
+    game_map(maps, window);
+    //   for (int i = 0; i != 3; i++)
+    //     game_battle(window, player, enemies[0]);
     return (0);
 }
