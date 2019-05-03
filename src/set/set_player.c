@@ -41,11 +41,11 @@ game_t *init_move(game_t *game)
     game->moves_t[1] = sfTexture_createFromFile(WALK_LEFT, NULL);
     game->moves_t[2] = sfTexture_createFromFile(WALK_UP, NULL);
     game->moves_t[3] = sfTexture_createFromFile(WALK_DOWN, NULL);
-    game->moves_r = create_rect(0, 0, 240, 299);
+    game->moves_r = create_rect(0, 0, 120, 150);
     sfSprite_setTexture(game->moves, game->moves_t[0], sfTrue);
     sfSprite_setTextureRect(game->moves, game->moves_r);
-    game->p_pos.x = 500;
-    game->p_pos.y = 500;
+    game->p_pos.x = 1620;
+    game->p_pos.y = 200;
     sfSprite_setPosition(game->moves, game->p_pos);
     return (game);
 }
