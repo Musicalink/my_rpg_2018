@@ -28,23 +28,6 @@ void free_player_inventory(stuff_t **inventory)
     free(inventory);
 }
 
-void destroy_sprite_texture(sfSprite *sprite, sfTexture *texture)
-{
-    if (sprite != NULL)
-        sfSprite_destroy(move->s_right);
-    if (texture != NULL)
-        sfTexture_destroy(texture);
-}
-
-void free_player_move(moving_t *move)
-{
-    destroy_sprite_texture(move->s_right, move->t_right);
-    destroy_sprite_texture(move->s_left, move->t_left);
-    destroy_sprite_texture(move->s_up, move->t_up);
-    destroy_sprite_texture(move->s_down, move->t_down);
-    free(move);
-}
-
 void free_player(player_t *player)
 {
     if (player != NULL) {
@@ -52,8 +35,6 @@ void free_player(player_t *player)
             free(player->stats);
         free_player_stuff(player->stuff);
         free_player_inventory(player->inventory);
-        if (player->move != NULL)
-            free_player_move(player->move);
         free(player);
     }
 }

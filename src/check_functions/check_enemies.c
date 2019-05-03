@@ -13,7 +13,7 @@ int check_enemies_struct(ebattle_t *nmy)
 {
     if (nmy == NULL || nmy->s_ene == NULL || nmy->t_ene == NULL)
         return (1);
-    if (nmy->stats == NULL || nmy->clcok == NULL)
+    if (nmy->stats == NULL || nmy->clock == NULL)
         return (1);
     return (0);
 }
