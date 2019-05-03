@@ -94,8 +94,8 @@ sfVector2f move_it(game_t *game, sfVector2f pos)
 
 void make_move(game_t *game, map_t *map, int boolean, int minus)
 {
-    unsigned int y = (unsigned int)game->p_pos.y;
-    unsigned int x = (unsigned int)game->p_pos.x;
+    unsigned int y = (unsigned int)game->p_pos.y + 83;
+    unsigned int x = (unsigned int)game->p_pos.x + 74;
     sfColor color;
 
     y = (boolean == 0) ? (minus == 1) ? y - 10 : y + 30 : y;
