@@ -36,9 +36,9 @@ loots_t *init_loot(battle_t *battle, ebattle_t *enemy)
 {
     loots_t *loot = malloc(sizeof(loots_t));
 
-    loot->t_back = sfTexture_createFromFile("ressources/sprites/reward.png", NULL);
+    loot->t_back = sfTexture_createFromFile(REWARD, NULL);
     loot->s_back = sfSprite_create();
-    loot->font = sfFont_createFromFile("ressources/font/arial.ttf");
+    loot->font = sfFont_createFromFile(ARIAL);
     loot->loot = sfText_create();
     loot->xp = sfText_create();
     loot->status = sfText_create();

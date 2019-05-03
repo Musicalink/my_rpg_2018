@@ -18,7 +18,7 @@ bhud_t *init_hud(player_t *player)
     hud->xp = sfRectangleShape_create();
     hud->ene_hp = sfRectangleShape_create();
     hud->lvl = sfText_create();
-    hud->font = sfFont_createFromFile("ressources/font/arial.ttf");
+    hud->font = sfFont_createFromFile(ARIAL);
     set_hud(hud, player);
     return (hud);
 }
@@ -37,12 +37,12 @@ battle_t *init_battle(player_t *player)
 
     if (tmp == NULL)
         return (NULL);
-    tmp->t_back = sfTexture_createFromFile("ressources/sprites/battle.png", NULL);
-    tmp->t_hud = sfTexture_createFromFile("ressources/sprites/hud.png", NULL);
+    tmp->t_back = sfTexture_createFromFile(BATTLE, NULL);
+    tmp->t_hud = sfTexture_createFromFile(HUD, NULL);
     tmp->s_back = sfSprite_create();
     tmp->s_hud = sfSprite_create();
     tmp->hud = init_hud(player);
-    tmp->player = init_player_battle("ressources/sprites/atk.png");
+    tmp->player = init_player_battle(ATK);
     tmp->turn = 0;
     tmp->end = 0;
     set_battle(tmp);

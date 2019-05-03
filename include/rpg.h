@@ -85,8 +85,13 @@ sfVector2f bar_xp(player_t *);
 ebattle_t **gen_enemies(void);
 
 #define WALK_RIGHT "ressources/sprites/walk_right.png"
-#define WALK_LEFT  "ressources/sprites/walk_left.png"
+#define WALK_LEFT "ressources/sprites/walk_left.png"
 #define WALK_UP "ressources/sprites/walk_up.png"
 #define WALK_DOWN "ressources/sprites/walk_down.png"
+#define BATTLE "ressources/sprites/battle.png"
+#define HUD "ressources/sprites/hud.png"
+#define ATK "ressources/sprites/atk.png"
+#define ARIAL "ressources/font/arial.ttf"
+#define REWARD "ressources/sprites/reward.png"
 
 #endif /*MY_RPG_H*/
