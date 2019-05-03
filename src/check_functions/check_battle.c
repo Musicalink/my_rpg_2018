@@ -7,7 +7,6 @@
 
 #include <stddef.h>
 #include "rpg.h"
-#include "struct.h"
 
 int check_menu(menu_t *menu)
 {
@@ -45,7 +44,7 @@ int check_battle(battle_t *battle)
     return (0);
 }
 
-int check_all_battle(battle_ *battle)
+int check_all_battle(battle_t *battle)
 {
     if (check_battle(battle) == 1 || check_player_battle(battle->player) == 1)
         return (1);
