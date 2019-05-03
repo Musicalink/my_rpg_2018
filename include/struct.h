@@ -114,4 +114,9 @@ typedef struct map {
     struct map *bottom;
 } map_t;
 
+typedef struct game {
+    int y;
+    int x;
+} game_t;
+
 #endif /*MY_STRUCT_H*/
