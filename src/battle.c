@@ -31,13 +31,14 @@ void display_battle(battle_t *battle, ebattle_t *enemy, player_t *player,
 int game_battle(sfRenderWindow *window, player_t *player, ebattle_t *enemy)
 {
     battle_t *battle = init_battle(player);
-    int turn = 0;
     sfClock *clock = sfClock_create();
     
-    while (sfRenderWindow_isOpen(window) && battle_end(player, enemy) == 0) {     
+    while (sfRenderWindow_isOpen(window) && battle->end == 0) {
         display_battle(battle, enemy, player, window);
         sfRenderWindow_display(window);
         battle_action(window, battle, enemy, player);
+        battle->end = battle_end(player, enemy);
     }
+    game_loots(window, battle, enemy);
     return (0);
 }

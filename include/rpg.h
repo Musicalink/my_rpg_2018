@@ -45,20 +45,31 @@ int game_battle(sfRenderWindow *, player_t *, ebattle_t *);
 
 //battle_movement.c
 void enemy_atk(ebattle_t *, battle_t *, player_t *, sfRenderWindow *);
-
+void flm_move(ebattle_t *, battle_t *);
 void atk(battle_t *, sfRenderWindow *);
 
 //battle_action.c
 int battle_action(sfRenderWindow *, battle_t *, ebattle_t *, player_t *);
+int enemy_action(battle_t *, ebattle_t *, player_t *);
 
 //battle_end.c
 int battle_end(player_t *, ebattle_t *);
+
+//battle_loots.c
+int game_loots(sfRenderWindow *, battle_t *, ebattle_t *);
 
 //set_battle.c
 battle_t *init_battle(player_t *);
 
 //set_player_battle.c
 pbattle_t *init_player_battle(char *);
+
+//set_lootscreen.c
+loots_t *init_loot(battle_t *, ebattle_t *);
+
+//set_textloot.c
+void get_battle_status(battle_t *, loots_t *);
+char *xp_char(battle_t *, ebattle_t *);
 
 //hud_ingame.c
 void set_hud(bhud_t *, player_t *);

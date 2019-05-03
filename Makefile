@@ -7,16 +7,19 @@
 
 SRC     =       src/main.c		\
 		src/menu.c		\
-		src/set/set_menu.c		\
+		src/set/set_menu.c	\
 		src/battle.c		\
 		src/set/set_battle.c	\
 		src/set/set_player_battle.c	\
 		src/set/set_player.c	\
 		src/hud_ingame.c	\
-		src/set/ennemies.c		\
-		src/battle_action.c		\
-		src/battle_movement.c		\
+		src/set/ennemies.c	\
+		src/battle_action.c	\
+		src/battle_movement.c	\
 		src/battle_end.c	\
+		src/set/set_lootscreen.c	\
+		src/battle_loots.c	\
+		src/set/set_textloot.c	\
 
 OBJ     =       $(SRC:.c=.o)
 

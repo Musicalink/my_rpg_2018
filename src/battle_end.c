@@ -19,11 +19,6 @@ void update_xp(player_t *player, ebattle_t *enemy)
     }
 }
 
-void reset_enemy()
-{
-    
-}
-
 int battle_end(player_t *player, ebattle_t *enemy)
 {
     if (player->stats->hp <= 0) {

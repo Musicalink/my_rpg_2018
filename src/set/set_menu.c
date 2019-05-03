@@ -39,10 +39,7 @@ void set_menu(menu_t *menu)
 menu_t *init_menu(char *resources)
 {
     menu_t *menu = malloc(sizeof(menu_t));
-    sfVector2f pos;
 
-    pos.x = 0;
-    pos.y = 0;
     menu->rect = create_rect(0, 0, 1920, 1080);
     menu->texture = sfTexture_createFromFile(resources, NULL);
     menu->sprite = sfSprite_create();

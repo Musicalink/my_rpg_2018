@@ -44,6 +44,7 @@ battle_t *init_battle(player_t *player)
     tmp->hud = init_hud(player);
     tmp->player = init_player_battle("ressources/sprites/atk.png");
     tmp->turn = 0;
+    tmp->end = 0;
     set_battle(tmp);
     return (tmp);
 }
