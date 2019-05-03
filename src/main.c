@@ -73,35 +73,47 @@ map_t ***init_maps()
     return (maps);
 }
 
-void move_it(game_t *game, sfVector2i pos)
+sfVector2f move_it(game_t *game, sfVector2f pos)
 {
     if (pos.y < 200) {
         game->y++;
+        pos.y += 800;
     } else if (pos.y > 880) {
         game->y--;
+        pos.y -= 800;
     } else if (pos.x < 200) {
         game->x--;
+        pos.x += 1700;
     } else if (pos.x > 1720) {
         game->x++;
+        pos.x -= 1700;
     }
+    return (pos);
     printf("(%d, %d)\n", game->y, game->x);
 }
 
 void make_move(game_t *game, map_t *map, int boolean, int minus)
 {
-    unsigned int y = (unsigned int)game->p_pos.y + 270;
-    unsigned int x = (unsigned int)game->p_pos.x;
+    unsigned int y = (unsigned int)game->p_pos.y + 83;
+    unsigned int x = (unsigned int)game->p_pos.x + 74;
     sfColor color;
 
-    y = (boolean == 0) ? (minus == 1) ? y - 10 : y + 10 : y;
-    x = (boolean == 1) ? (minus == 1) ? x - 10 : x + 10 : x;
+    y = (boolean == 0) ? (minus == 1) ? y - 10 : y + 30 : y;
+    x = (boolean == 1) ? (minus == 1) ? x - 10 : x + 30 : x;
+    if (y <= 0 || y >= 1920)
+        return;
     printf("Boolean: %d\nMinus:%d\n\n", boolean, minus);
     color = sfImage_getPixel(map->hitbox, x, y);
     printf("%d\n", color.r);
-    if (color.r != 0) {
-        game->p_pos.y = (boolean == 0) ?
-            (minus == 1) ? game->p_pos.y - 10 : game->p_pos.y + 10 :
-            game->p_pos.y;
+    if (color.r > 10) {
+        if (boolean == 0)
+            game->p_pos.y =
+                (minus == 1) ? game->p_pos.y - 10 : game->p_pos.y + 10;
+        else if (boolean == 1)
+            game->p_pos.x =
+                (minus == 1) ? game->p_pos.x - 10 : game->p_pos.x + 10;
+        if (color.r <= 245)
+            game->p_pos = move_it(game, game->p_pos);
     }
 }
 
@@ -128,12 +140,12 @@ void event_map(map_t ***maps, sfRenderWindow *window, game_t *game)
     while (sfRenderWindow_pollEvent(window, &event)) {
         if (event.type == sfEvtClosed)
             sfRenderWindow_close(window);
-        if (event.type == sfEvtMouseButtonPressed) {
-            pos = sfMouse_getPositionRenderWindow(window);
-            color = sfImage_getPixel(maps[game->y][game->x]->hitbox,
-                (unsigned int)pos.x, (unsigned int)pos.y);
-            (color.r == 128) ? move_it(game, pos) : game;
-        }
+        /*      if (event.type == sfEvtMouseButtonPressed) {
+                  pos = sfMouse_getPositionRenderWindow(window);
+                  color = sfImage_getPixel(maps[game->y][game->x]->hitbox,
+                      (unsigned int)pos.x, (unsigned int)pos.y);
+                  (color.r == 128) ? move_it(game, pos) : game;
+              }*/
         if (event.type == sfEvtKeyPressed)
             search_move(game, maps);
     }
@@ -144,10 +156,8 @@ void game_map(map_t ***maps, sfRenderWindow *window)
     game_t *game = malloc(sizeof(game_t));
 
     game = init_move(game);
-    game->p_pos.x = 500;
-    game->p_pos.y = 500;
-    game->y = 4;
-    game->x = 5;
+    game->y = 1;
+    game->x = 0;
     while (sfRenderWindow_isOpen(window)) {
         sfRenderWindow_clear(window, sfBlack);
         event_map(maps, window, game);
@@ -167,7 +177,7 @@ int main(int ac, char **av)
     map_t ***maps;
 
     window = sfRenderWindow_create(mode, "rpg",
-        sfClose | sfResize | sfFullscreen, NULL);
+    sfClose | sfResize | sfFullscreen, NULL);
     game_menu(menu, window);
     //maps = init_maps();
     //game_map(maps, window);
