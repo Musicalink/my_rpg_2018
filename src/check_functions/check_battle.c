@@ -13,7 +13,7 @@ int check_menu(menu_t *menu)
 {
     if (menu != NULL || menu->texture == NULL || menu->sprite == NULL)
         return (1);
-    if (menu->play == NULL || menu->exit = NULL || mnu->font == NULL)
+    if (menu->play == NULL || menu->exit == NULL || menu->font == NULL)
         return (1);
     return (0);
 }
