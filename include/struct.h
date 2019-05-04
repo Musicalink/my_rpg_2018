@@ -96,6 +96,7 @@ typedef struct ebattle {
 } ebattle_t;
 
 typedef struct pbattle {
+    int type;
     sfSprite *s_player;
     sfTexture *t_player;
     sfIntRect rect;
