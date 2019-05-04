@@ -79,7 +79,7 @@ typedef struct loots {
     sfText *status;
     sfText *xp;
     sfText *loot;
-    anim_t ***boots;
+    anim_t ***drop;
 } loots_t;
 
 typedef struct ebattle {
