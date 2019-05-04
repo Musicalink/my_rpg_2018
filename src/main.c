@@ -75,21 +75,15 @@ map_t ***init_maps()
 
 sfVector2f move_it(game_t *game, sfVector2f pos, sfColor color)
 {
-    if (color.r > 120 && color.g > 120 && color.b < 120) {
-        game->y++;
-        pos.y += 800;
-    } else if (color.r < 120 && color.g > 120 && color.b < 120) {
-        game->y--;
-        pos.y -= 800;
-    } else if (color.r > 120 && color.g < 120 && color.b < 120) {
-        game->x--;
-        pos.x += 1700;
-    } else if (color.r < 120 && color.g < 120 && color.b > 120) {
-        game->x++;
-        pos.x -= 1700;
-    }
+    game->y += (color.r > 200 && color.g > 200 && color.b < 50) ? 1 : 0;
+    pos.y += (color.r > 200 && color.g > 200 && color.b < 50) ? 950 : 0;
+    game->y -= (color.r < 50 && color.g > 200 && color.b < 50) ? 1 : 0;
+    pos.y -= (color.r < 50 && color.g > 200 && color.b < 50) ? 950 : 0;
+    game->x -= (color.r > 200 && color.g < 50 && color.b < 50) ? 1 : 0;
+    pos.x += (color.r > 200 && color.g < 50 && color.b < 50) ? 1850 : 0;
+    game->x += (color.r < 50 && color.g < 50 && color.b > 200) ? 1 : 0;
+    pos.x -= (color.r < 50 && color.g < 50 && color.b > 200) ? 1850 : 0;
     return (pos);
-    printf("(%d, %d)\n", game->y, game->x);
 }
 
 void make_move(game_t *game, map_t *map, int boolean, int minus)
@@ -100,12 +94,10 @@ void make_move(game_t *game, map_t *map, int boolean, int minus)
 
     y = (boolean == 0) ? (minus == 1) ? y - 10 : y + 30 : y;
     x = (boolean == 1) ? (minus == 1) ? x - 10 : x + 30 : x;
-    if (y <= 0 || y >= 1920)
+    if (x <= 0 || x >= 1920 || y < 0 || y > 1130)
         return;
-    printf("Boolean: %d\nMinus:%d\n\n", boolean, minus);
     color = sfImage_getPixel(map->hitbox, x, y);
-    printf("%d\n", color.r);
-    if (color.r > 100 || color.g > 100 || color.b > 100) {
+    if (color.r > 100 || color.g > 100 || color.b > 100 || color.a < 120) {
         if (boolean == 0)
             game->p_pos.y =
                 (minus == 1) ? game->p_pos.y - 10 : game->p_pos.y + 10;
@@ -167,16 +159,29 @@ void event_map(map_t ***maps, sfRenderWindow *window, game_t *game)
     }
 }
 
+void my_clock(map_t ***maps, sfRenderWindow *window, game_t *game)
+{
+    double seconds = 0;
+
+    while (seconds < 0.005) {
+        game->time = sfClock_getElapsedTime(game->clock);
+        event_map(maps, window, game);
+        seconds = game->time.microseconds / 1000000.0;
+    }
+    sfClock_restart(game->clock);
+}
+
 void game_map(map_t ***maps, sfRenderWindow *window)
 {
     game_t *game = malloc(sizeof(game_t));
 
     game = init_move(game);
-    game->y = 1;
-    game->x = 0;
+    game->clock = sfClock_create();
+    game->y = 3;
+    game->x = 5;
     while (sfRenderWindow_isOpen(window)) {
         sfRenderWindow_clear(window, sfBlack);
-        event_map(maps, window, game);
+        my_clock(maps, window, game);
         sfRenderWindow_drawSprite(window, maps[game->y][game->x]->sprite, NULL);
         sfRenderWindow_drawSprite(window, game->moves, NULL);
         sfRenderWindow_display(window);
@@ -193,11 +198,11 @@ int main(int ac, char **av)
     map_t ***maps;
 
     window = sfRenderWindow_create(mode, "rpg",
-        sfClose | sfResize | sfFullscreen, NULL);
-    //game_menu(menu, window);
-    //maps = init_maps();
-    // game_map(maps, window);
-    for (int i = 0; i != 100; i++)
-	game_battle(window, player, enemies[0]);
+        sfClose | sfResize /*| sfFullscreen*/, NULL);
+    game_menu(menu, window);
+    maps = init_maps();
+    game_map(maps, window);
+    //   for (int i = 0; i != 3; i++)
+    //     game_battle(window, player, enemies[0]);
     return (0);
 }
