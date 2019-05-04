@@ -16,7 +16,7 @@ void set_player_battle(pbattle_t *play)
     sfSprite_setTextureRect(play->s_player, play->rect);
 }
 
-pbattle_t *init_player_battle(char *resources)
+pbattle_t *init_player_battle(char *resources, player_t *player)
 {
     pbattle_t *tmp = malloc(sizeof(pbattle_t));
 
@@ -26,6 +26,7 @@ pbattle_t *init_player_battle(char *resources)
     tmp->t_player = sfTexture_createFromFile(resources, NULL);
     tmp->s_player = sfSprite_create();
     tmp->clock = sfClock_create();
+    tmp->stats = player->stats;
     tmp->action = 0;
     tmp->boost = 0;
     set_player_battle(tmp);

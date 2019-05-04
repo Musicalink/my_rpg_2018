@@ -8,7 +8,7 @@
 #include "rpg.h"
 #include "struct.h"
 
-char *xp_char(battle_t *battle, ebattle_t *enemy)
+char *xp_char(battle_t *battle)
 {
     char *xp = "XP : ";
     char *nb;
@@ -16,7 +16,7 @@ char *xp_char(battle_t *battle, ebattle_t *enemy)
     if (battle->end == 1)
         nb = my_strdup("0");
     else
-        nb = my_itoa(enemy->stats->xp);
+        nb = my_itoa(battle->enemy->stats->xp);
     if (nb == NULL)
         return (NULL);
     xp = mall_strcat(xp, nb);

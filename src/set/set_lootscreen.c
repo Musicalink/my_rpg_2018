@@ -8,9 +8,9 @@
 #include "rpg.h"
 #include "struct.h"
 
-void set_loot(loots_t *loot, battle_t *battle, ebattle_t *enemy)
+void set_loot(loots_t *loot, battle_t *battle)
 {
-    char *xp = xp_char(battle, enemy);
+    char *xp = xp_char(battle);
     
     sfSprite_setPosition(loot->s_back, (sfVector2f){480, 270});
     sfSprite_setTexture(loot->s_back, loot->t_back, sfTrue);
@@ -32,7 +32,7 @@ void set_loot(loots_t *loot, battle_t *battle, ebattle_t *enemy)
     sfText_setPosition(loot->status, (sfVector2f){860, 300});
 }
 
-loots_t *init_loot(battle_t *battle, ebattle_t *enemy)
+loots_t *init_loot(battle_t *battle)
 {
     loots_t *loot = malloc(sizeof(loots_t));
 
@@ -42,6 +42,6 @@ loots_t *init_loot(battle_t *battle, ebattle_t *enemy)
     loot->loot = sfText_create();
     loot->xp = sfText_create();
     loot->status = sfText_create();
-    set_loot(loot, battle, enemy);
+    set_loot(loot, battle);
     return (loot);
 }

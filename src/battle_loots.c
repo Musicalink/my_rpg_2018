@@ -17,15 +17,15 @@ void display_loots(sfRenderWindow *window, loots_t *loot)
     sfRenderWindow_drawText(window, loot->status, NULL);
 }
 
-int game_loots(sfRenderWindow *window, battle_t *battle, ebattle_t *enemy)
+int game_loots(sfRenderWindow *window, battle_t *battle)
 {
-    loots_t *loot = init_loot(battle, enemy);
+    loots_t *loot = init_loot(battle);
     sfClock *clock = sfClock_create();
     sfTime time;
     double seconds;
 
-    while (sfRenderWindow_isOpen(window) && seconds < 30) {
-        time = sfClock_getElapsedTime(enemy->flm->clock);
+    while (sfRenderWindow_isOpen(window) && seconds < 10) {
+        time = sfClock_getElapsedTime(clock);
         seconds = time.microseconds / 1000000.0;
         display_loots(window, loot);
         sfRenderWindow_display(window);

@@ -193,10 +193,10 @@ int main(int ac, char **av)
     map_t ***maps;
 
     window = sfRenderWindow_create(mode, "rpg",
-        sfClose | sfResize | sfFullscreen, NULL);
+                                   sfClose | sfResize /*| sfFullscreen*/, NULL);
     //game_menu(menu, window);
-    //maps = init_maps();
-    //game_map(maps, window);
+    maps = init_maps();
+    game_map(maps, window);
     for (int i = 0; i != 3; i++)
         game_battle(window, player, enemies[0]);
     return (0);

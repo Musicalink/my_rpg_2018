@@ -27,6 +27,15 @@ typedef struct stats {
     int def;
 } stats_t;
 
+typedef struct anim {
+    sfSprite *spr;
+    sfTexture *txt;
+    sfIntRect rect;
+    int frame;
+    sfClock *clock;
+    sfVector2f size;
+} anim_t;
+
 typedef struct moving {
     sfSprite *s_right;
     sfTexture *t_right;
@@ -40,6 +49,9 @@ typedef struct moving {
 } moving_t;
 
 typedef struct stuff {
+    anim_t *anim;
+    int type;
+    int lvl;
     int atk;
     int def;
     int hp;
@@ -60,15 +72,6 @@ typedef struct bhud {
     sfFont *font;
 } bhud_t;
 
-typedef struct anim {
-    sfSprite *spr;
-    sfTexture *txt;
-    sfIntRect rect;
-    int frame;
-    sfClock *clock;
-    sfVector2f size;
-} anim_t;
-
 typedef struct loots {
     sfSprite *s_back;
     sfTexture *t_back;
@@ -76,9 +79,7 @@ typedef struct loots {
     sfText *status;
     sfText *xp;
     sfText *loot;
-    anim_t *boots;
-    anim_t *armor;
-    anim_t *helmet;
+    anim_t **boots;
 } loots_t;
 
 typedef struct ebattle {
@@ -99,6 +100,7 @@ typedef struct pbattle {
     sfSprite *s_player;
     sfTexture *t_player;
     sfIntRect rect;
+    stats_t *stats;
     int action;
     int boost;
     sfClock *clock;
@@ -111,6 +113,7 @@ typedef struct battle {
     sfTexture *t_hud;
     bhud_t *hud;
     pbattle_t *player;
+    ebattle_t *enemy;
     int turn;
     int end;
 } battle_t;

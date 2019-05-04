@@ -8,20 +8,19 @@
 #include "rpg.h"
 #include "struct.h"
 
-void display_battle(battle_t *battle, ebattle_t *enemy, player_t *player,
-                    sfRenderWindow *window)
+void display_battle(battle_t *battle, sfRenderWindow *window)
 {
     sfRenderWindow_clear(window, sfBlack);
     sfRenderWindow_drawSprite(window, battle->s_back, NULL);
     sfRenderWindow_drawSprite(window, battle->s_hud, NULL);
     sfRenderWindow_drawSprite(window, battle->player->s_player, NULL);
-    if (enemy->action == 2) {
-        flm_move(enemy, battle);
-        sfRenderWindow_drawSprite(window, enemy->flm->spr, NULL);
+    if (battle->enemy->action == 2) {
+        flm_move(battle->enemy->flm);
+        sfRenderWindow_drawSprite(window, battle->enemy->flm->spr, NULL);
     }
-    sfRenderWindow_drawSprite(window, enemy->s_ene, NULL);
+    sfRenderWindow_drawSprite(window, battle->enemy->s_ene, NULL);
     atk(battle, window);
-    enemy_atk(enemy, battle, player, window);
+    enemy_atk(battle, window);
     sfRenderWindow_drawRectangleShape(window, battle->hud->hp, NULL);
     sfRenderWindow_drawRectangleShape(window, battle->hud->xp, NULL);
     sfRenderWindow_drawRectangleShape(window, battle->hud->ene_hp, NULL);
@@ -30,15 +29,15 @@ void display_battle(battle_t *battle, ebattle_t *enemy, player_t *player,
 
 int game_battle(sfRenderWindow *window, player_t *player, ebattle_t *enemy)
 {
-    battle_t *battle = init_battle(player);
+    battle_t *battle = init_battle(player, enemy);
     sfClock *clock = sfClock_create();
     
     while (sfRenderWindow_isOpen(window) && battle->end == 0) {
-        display_battle(battle, enemy, player, window);
+        display_battle(battle, window);
         sfRenderWindow_display(window);
-        battle_action(window, battle, enemy, player);
+        battle_action(window, battle);
         battle->end = battle_end(player, enemy);
     }
-    game_loots(window, battle, enemy);
+    game_loots(window, battle);
     return (0);
 }

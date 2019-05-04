@@ -8,7 +8,7 @@
 #include "rpg.h"
 #include "struct.h"
 
-anim_t *gen_flm(char *path, int height, int width, int nb)
+anim_t *gen_anim(char *path, int height, int width, int nb)
 {
     anim_t *anim = malloc(sizeof(anim_t));
 
@@ -33,7 +33,7 @@ ebattle_t *gen_bad_guy(char *path, int height, int width, int nb)
     enemy->t_ene = sfTexture_createFromFile(path, NULL);
     enemy->rect = create_rect(0, 0, width, height);
     enemy->frame = nb;
-    enemy->flm = gen_flm("ressources/sprites/flms.png", 300, 256, 33);
+    enemy->flm = gen_anim("ressources/sprites/flms.png", 300, 256, 33);
     enemy->action = 0;
     enemy->wait = 0;
     enemy->size = (sfVector2f){width, height};

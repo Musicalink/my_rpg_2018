@@ -26,15 +26,15 @@ void atk(battle_t *bat, sfRenderWindow *window)
     }
 }
 
-void enemy_atk(ebattle_t *enemy, battle_t *bat, player_t *player,
-               sfRenderWindow *window)
+void enemy_atk(battle_t *bat, sfRenderWindow *window)
 {
-    sfTime time = sfClock_getElapsedTime(enemy->clock);
+    sfTime time = sfClock_getElapsedTime(bat->enemy->clock);
     double seconds = time.microseconds / 1000000.0;
+    ebattle_t *enemy = bat->enemy;
 
     if (seconds > 0.06 && bat->turn == 1) {
         if (enemy->rect.left >= enemy->size.x * (enemy->frame - 1)) {
-            enemy_action(bat, enemy, player);            
+            enemy_action(bat);            
             enemy->rect.left = 0;
             bat->turn = 0;
             bat->player->action = 0;
@@ -46,17 +46,17 @@ void enemy_atk(ebattle_t *enemy, battle_t *bat, player_t *player,
     }
 }
 
-void flm_move(ebattle_t *enemy, battle_t *bat)
+void flm_move(anim_t *flm)
 {
-    sfTime time = sfClock_getElapsedTime(enemy->flm->clock);
+    sfTime time = sfClock_getElapsedTime(flm->clock);
     double seconds = time.microseconds / 1000000.0;
 
     if (seconds > 0.06) {
-        if (enemy->flm->rect.left >= enemy->flm->size.x * (enemy->flm->frame - 1)) {
-            enemy->flm->rect.left = 0;
+        if (flm->rect.left >= flm->size.x * (flm->frame - 1)) {
+            flm->rect.left = 0;
         } else
-            enemy->flm->rect.left += enemy->flm->size.x;
-        sfSprite_setTextureRect(enemy->flm->spr, enemy->flm->rect);
-        sfClock_restart(enemy->flm->clock);
+            flm->rect.left += flm->size.x;
+        sfSprite_setTextureRect(flm->spr, flm->rect);
+        sfClock_restart(flm->clock);
     }
 }

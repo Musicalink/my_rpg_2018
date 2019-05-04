@@ -31,7 +31,7 @@ void set_battle(battle_t *battle)
     sfSprite_setPosition(battle->s_hud, (sfVector2f){555, 922});
 }
 
-battle_t *init_battle(player_t *player)
+battle_t *init_battle(player_t *player, ebattle_t *enemy)
 {
     battle_t *tmp = malloc(sizeof(battle_t));
 
@@ -42,7 +42,8 @@ battle_t *init_battle(player_t *player)
     tmp->s_back = sfSprite_create();
     tmp->s_hud = sfSprite_create();
     tmp->hud = init_hud(player);
-    tmp->player = init_player_battle(ATK);
+    tmp->player = init_player_battle(ATK, player);
+    tmp->enemy = enemy;
     tmp->turn = 0;
     tmp->end = 0;
     set_battle(tmp);

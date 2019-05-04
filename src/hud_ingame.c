@@ -20,7 +20,7 @@ sfVector2f bar_xp(player_t *player)
     return (bar);
 }
 
-void upd_hp_player(player_t *player, bhud_t *hud)
+void upd_hp_player(pbattle_t *player, bhud_t *hud)
 {
     float percent = (float)(player->stats->hp) / (float)(player->stats->hp_max);
     sfVector2f bar = (sfVector2f){317 * percent, 26};
