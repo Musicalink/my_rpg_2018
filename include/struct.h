@@ -137,6 +137,8 @@ typedef struct game {
     sfTexture *moves_t[4];
     sfIntRect moves_r;
     sfVector2f p_pos;
+    sfClock *clock;
+    sfTime time;
 } game_t;
 
 #endif /*MY_STRUCT_H*/
