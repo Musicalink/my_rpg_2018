@@ -30,10 +30,13 @@ int game_menu(menu_t *, sfRenderWindow *);
 //set_player
 player_t *set_player(void);
 
-game_t *init_move(game_t *game);
+game_t *init_move(game_t *);
 
 //free_player
 void free_player(player_t *);
+
+//set_pause_menu.c
+menu_t *init_pause_menu(char *);
 
 //set_menu.c
 sfIntRect create_rect(int, int, int, int);
