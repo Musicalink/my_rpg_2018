@@ -17,7 +17,7 @@ void display_loots(sfRenderWindow *window, loots_t *loot)
     sfRenderWindow_drawText(window, loot->status, NULL);
 }
 
-int game_loots(sfRenderWindow *window, battle_t *battle)
+int game_loots(sfRenderWindow *window, battle_t *battle, ebattle_t *enemy)
 {
     loots_t *loot = init_loot(battle);
     sfClock *clock = sfClock_create();

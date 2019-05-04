@@ -38,6 +38,6 @@ int game_battle(sfRenderWindow *window, player_t *player, ebattle_t *enemy)
         battle_action(window, battle);
         battle->end = battle_end(player, enemy);
     }
-    game_loots(window, battle);
+    game_loots(window, battle, enemy);
     return (0);
 }
