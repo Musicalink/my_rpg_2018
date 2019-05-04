@@ -197,7 +197,7 @@ int main(int ac, char **av)
     //game_menu(menu, window);
     //maps = init_maps();
     //game_map(maps, window);
-    for (int i = 0; i != 3; i++)
+    for (int i = 0; i != 100; i++)
         game_battle(window, player, enemies[0]);
     return (0);
 }

@@ -15,10 +15,11 @@ stats_t *set_player_stats(void)
         return (NULL);
     stats->level = 1;
     stats->xp = 0;
-    stats->hp = 100;
-    stats->hp_max = 100;
-    stats->atk = 20;
-    stats->def = 10;
+    stats->hp_max = 100 + ((10 + 1 * (stats->level - 1)) * (stats->level - 1));
+    stats->hp = stats->hp_max;
+    stats->atk = 20 + 2 * (stats->level - 1);
+    stats->def = 10 + 1 * (stats->level - 1);
+    printf("hp : %d, atk : %d, def : %d\n", stats->hp, stats->atk, stats->def);
     return (stats);
 }
 

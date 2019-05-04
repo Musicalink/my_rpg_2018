@@ -23,8 +23,8 @@ void rm_hp_player(ebattle_t *enemy, pbattle_t *player)
     int atk = enemy->stats->atk;
     int def = player->stats->def;
 
-    if (enemy->action == 2)
-        def *= 1.7;
+    if (player->action == 2)
+        def *= 2.5;
     if (enemy->action == 2) {
         atk = atk * 2;
         enemy->action = 0;

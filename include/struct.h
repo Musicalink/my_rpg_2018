@@ -91,7 +91,6 @@ typedef struct ebattle {
     int frame;
     int action;
     int wait;
-    int type;
     stats_t *stats;
     sfClock *clock;
 } ebattle_t;
@@ -102,7 +101,6 @@ typedef struct pbattle {
     sfIntRect rect;
     stats_t *stats;
     int action;
-    int boost;
     sfClock *clock;
 } pbattle_t;
 

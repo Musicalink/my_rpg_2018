@@ -28,7 +28,6 @@ pbattle_t *init_player_battle(char *resources, player_t *player)
     tmp->clock = sfClock_create();
     tmp->stats = player->stats;
     tmp->action = 0;
-    tmp->boost = 0;
     set_player_battle(tmp);
     return (tmp);
 }
