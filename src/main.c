@@ -5,8 +5,8 @@
 ** my_rpg
 */
 
-#include <rpg.h>
-#include <struct.h>
+#include "rpg.h"
+#include "struct.h"
 
 int main(int ac, char **av)
 {
@@ -18,7 +18,8 @@ int main(int ac, char **av)
     map_t ***maps;
 
     window = sfRenderWindow_create(mode, "rpg",
-        sfClose | sfResize | sfFullscreen, NULL);
+        sfClose | sfResize/* | sfFullscreen*/, NULL);
+    srand(time(NULL));
     game_menu(menu, window);
     maps = init_maps();
     game_map(maps, window, enemies, player);

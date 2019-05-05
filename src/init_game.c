@@ -16,16 +16,18 @@ game_t *init_game(void)
     game->inventory = malloc(sizeof(inventory_t));
     if (game->inventory == NULL)
         return (NULL);
+    for (int i = 0; i < 11; i++)
+        game->inventory->stuff[i] = NULL;
     game->inventory->spr = sfSprite_create();
     game->inventory->tex = sfTexture_createFromFile(INVENTORY, NULL);
     game->inventory->boolean = 0;
-
     sfSprite_setTexture(game->inventory->spr, game->inventory->tex, sfTrue);
     sfSprite_setPosition(game->inventory->spr, (sfVector2f){245, 902});
     game = init_move(game);
     game->clock = sfClock_create();
     game->y = 4;
     game->x = 4;
+    game->pause = init_pause_menu(PAUSE);
     return (game);
 }
 
@@ -47,13 +49,19 @@ void display_game(sfRenderWindow *window, map_t ***maps, game_t *game)
     sfRenderWindow_clear(window, sfBlack);
     sfRenderWindow_drawSprite(window, maps[game->y][game->x]->sprite, NULL);
     sfRenderWindow_drawSprite(window, game->moves, NULL);
-    if (game->inventory->boolean == 1)
-        sfRenderWindow_drawSprite(window, game->inventory->spr, NULL);
     pnj_display(window, maps, game);
+    if (game->inventory->boolean == 1) {
+        sfRenderWindow_drawSprite(window, game->inventory->spr, NULL);
+        for (int i = 0; game->inventory->stuff[i] != NULL; i++)
+            sfRenderWindow_drawSprite(window,
+                game->inventory->stuff[i]->anim->spr, NULL);
+    }
     sfRenderWindow_display(window);
 }
 
-void game_map(map_t ***maps, sfRenderWindow *window ,ebattle_t **enemies, player_t *player)
+void game_map(map_t ***maps, sfRenderWindow *window, ebattle_t **enemies,
+    player_t *player
+)
 {
     game_t *game = init_game();
 

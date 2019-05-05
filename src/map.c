@@ -78,6 +78,8 @@ void search_move(game_t *game, map_t ***maps, sfRenderWindow *window)
     }
     if (sfKeyboard_isKeyPressed(sfKeyF))
         launch_fight(game, maps, window);
+    if (sfKeyboard_isKeyPressed(sfKeyEscape))
+        pause_menu(game->pause, window);
     sfSprite_setPosition(game->moves, game->p_pos);
 }
 

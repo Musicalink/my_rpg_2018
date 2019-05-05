@@ -47,7 +47,7 @@ sfIntRect create_rect(int, int, int, int);
 menu_t *init_menu(char *);
 
 //battle.c
-int game_battle(sfRenderWindow *, player_t *, ebattle_t *);
+int game_battle(sfRenderWindow *, player_t *, ebattle_t *, inventory_t *);
 
 //battle_movement.c
 void enemy_atk(battle_t *, sfRenderWindow *);
@@ -62,7 +62,7 @@ int enemy_action(battle_t *);
 int battle_end(player_t *, ebattle_t *);
 
 //battle_loots.c
-int game_loots(sfRenderWindow *, battle_t *);
+int game_loots(sfRenderWindow *, battle_t *, inventory_t *);
 
 //set_battle.c
 battle_t *init_battle(player_t *, ebattle_t *);
@@ -71,7 +71,7 @@ battle_t *init_battle(player_t *, ebattle_t *);
 pbattle_t *init_player_battle(char *, player_t *);
 
 //set_lootscreen.c
-loots_t *init_loot(battle_t *);
+loots_t *init_loot(battle_t *, inventory_t *);
 
 //set_textloot.c
 void get_battle_status(battle_t *, loots_t *);
@@ -120,7 +120,7 @@ map_t ***init_maps();
 
 //drop.c
 
-anim_t *choose_drop(battle_t *, anim_t ***);
+anim_t *choose_drop(battle_t *, anim_t ***, inventory_t *);
 
 #define WALK_RIGHT "ressources/sprites/walk_right.png"
 #define WALK_LEFT "ressources/sprites/walk_left.png"
@@ -136,5 +136,6 @@ anim_t *choose_drop(battle_t *, anim_t ***);
 #define HELMET "ressources/sprites/helmet_set.png"
 #define INVENTORY "ressources/sprites/inventory.png"
 #define MAGICIAN "ressources/sprites/pnj.png"
+#define PAUSE "ressources/sprites/pause_menu.jpg"
 
 #endif /*MY_RPG_H*/

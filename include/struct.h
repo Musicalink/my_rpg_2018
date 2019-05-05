@@ -130,7 +130,7 @@ typedef struct inventory {
     int boolean;
     sfSprite *spr;
     sfTexture *tex;
-    stuff_t *stuff[9];
+    stuff_t *stuff[10];
 } inventory_t;
 
 typedef struct pnj {
@@ -140,7 +140,7 @@ typedef struct pnj {
 } pnj_t;
 
 typedef struct game {
-    ebattle_t ** enem;
+    ebattle_t **enem;
     player_t *player;
     int y;
     int x;
@@ -154,6 +154,7 @@ typedef struct game {
     anim_t *pnj;
     int pnj_increment;
     sfText *pnj_text;
+    menu_t *pause;
 } game_t;
 
 static const char *QUEST_STR[] = {
@@ -161,5 +162,10 @@ static const char *QUEST_STR[] = {
     "Je t'ai menti !j'y etait pas ! Va tuer 5 monstres de la foret !",
     "Il t'en reste 4 à tuer !", "Il t'en reste 3 à tuer !",
     "Il t'en reste 2 à tuer !", "Il t'en reste 1 à tuer !", "Bien joué !"};
+
+static const sfVector2f INV_POS[] = {{.x = 257, .y = 922}, {.x = 415, .y = 922},
+    {.x = 573, .y = 922}, {.x = 731, .y = 922}, {.x = 889, .y = 922},
+    {.x = 1047, .y = 922}, {.x = 1205, .y = 922}, {.x = 1363, .y = 922},
+    {.x = 1521, .y = 922},};
 
 #endif /*MY_STRUCT_H*/
