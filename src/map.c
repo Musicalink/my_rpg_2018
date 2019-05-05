@@ -17,7 +17,6 @@ sfVector2f move_it(game_t *game, sfVector2f pos, sfColor color)
     pos.x += (color.r > 200 && color.g < 50 && color.b < 50) ? 1850 : 0;
     game->x += (color.r < 50 && color.g < 50 && color.b > 200) ? 1 : 0;
     pos.x -= (color.r < 50 && color.g < 50 && color.b > 200) ? 1850 : 0;
-    printf("(%d, %d)\n", game->y, game->x);
     return (pos);
 }
 
@@ -35,10 +34,10 @@ void make_move(game_t *game, map_t *map, int boolean, int minus)
     if (color.r > 100 || color.g > 100 || color.b > 100 || color.a < 120) {
         if (boolean == 0)
             game->p_pos.y =
-                (minus == 1) ? game->p_pos.y - 10 : game->p_pos.y + 10;
+                (minus == 1) ? game->p_pos.y - 5 : game->p_pos.y + 5;
         else if (boolean == 1)
             game->p_pos.x =
-                (minus == 1) ? game->p_pos.x - 10 : game->p_pos.x + 10;
+                (minus == 1) ? game->p_pos.x - 5 : game->p_pos.x + 5;
         if (color.r <= 200 || color.b <= 200 || color.g <= 200)
             game->p_pos = move_it(game, game->p_pos, color);
     }
@@ -48,10 +47,21 @@ void launch_fight(game_t *game, map_t ***maps, sfRenderWindow *window)
 {
     int test;
     if (game->y >= 3 && game->y <= 5 && game->x >= 1 && game->x <= 3) {
-        test = game_battle(window, game->player, game->enem[3],
+        test = game_battle(window, game->player, game->enem[0],
             game->inventory);
-        printf("Test: %d\n", test);
         if (test == 2 && game->pnj_increment > 0 && game->pnj_increment < 6)
+            game->pnj_increment++;
+    }
+    if (game->y >= 1 && game->y <= 2 && game->x >= 1 && game->x <= 2) {
+        test = game_battle(window, game->player, game->enem[2],
+            game->inventory);
+        if (test == 2 && game->pnj_increment > 5 && game->pnj_increment < 11)
+            game->pnj_increment++;
+    }
+    if (game->y == 3 && game->x >= 4 && game->x <= 5) {
+        test = game_battle(window, game->player, game->enem[1],
+            game->inventory);
+        if (test == 2 && game->pnj_increment > 5 && game->pnj_increment < 11)
             game->pnj_increment++;
     }
 }
@@ -60,8 +70,6 @@ void search_move(game_t *game, map_t ***maps, sfRenderWindow *window)
 {
     map_t *map = maps[game->y][game->x];
 
-    if (sfKeyboard_isKeyPressed(sfKeyI))
-        game->inventory->boolean = (game->inventory->boolean == 0) ? 1 : 0;
     if (sfKeyboard_isKeyPressed(sfKeyLeft)) {
         make_move(game, map, 1, 1);
         sfSprite_setTexture(game->moves, game->moves_t[1], sfTrue);
@@ -82,11 +90,19 @@ void search_move(game_t *game, map_t ***maps, sfRenderWindow *window)
         sfSprite_setTexture(game->moves, game->moves_t[3], sfTrue);
         sfSprite_setTextureRect(game->moves, game->moves_r);
     }
+    game->moves_r.left += 150;
+    game->moves_r.left = (game->moves_r.left > 1349) ? 0 : game->moves_r.left;
+    sfSprite_setPosition(game->moves, game->p_pos);
+}
+
+void handle_key(game_t *game, map_t ***maps, sfRenderWindow *window)
+{
     if (sfKeyboard_isKeyPressed(sfKeyF))
         launch_fight(game, maps, window);
     if (sfKeyboard_isKeyPressed(sfKeyEscape))
         pause_menu(game->pause, window);
-    sfSprite_setPosition(game->moves, game->p_pos);
+    if (sfKeyboard_isKeyPressed(sfKeyI))
+        game->inventory->boolean = (game->inventory->boolean == 0) ? 1 : 0;
 }
 
 void event_map(map_t ***maps, sfRenderWindow *window, game_t *game)
@@ -99,10 +115,7 @@ void event_map(map_t ***maps, sfRenderWindow *window, game_t *game)
         if (event.type == sfEvtClosed)
             sfRenderWindow_close(window);
         else if (event.type == sfEvtKeyPressed) {
-            game->moves_r.left += 150;
-            game->moves_r.left =
-                (game->moves_r.left > 1349) ? 0 : game->moves_r.left;
-            search_move(game, maps, window);
+            handle_key(game, maps, window);
         }
     }
 }

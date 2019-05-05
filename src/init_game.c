@@ -47,8 +47,8 @@ void display_game(sfRenderWindow *window, map_t ***maps, game_t *game)
 {
     sfRenderWindow_clear(window, sfBlack);
     sfRenderWindow_drawSprite(window, maps[game->y][game->x]->sprite, NULL);
-    sfRenderWindow_drawSprite(window, game->moves, NULL);
     pnj_display(window, maps, game);
+    sfRenderWindow_drawSprite(window, game->moves, NULL);
     if (game->inventory->boolean == 1) {
         sfRenderWindow_drawSprite(window, game->inventory->spr, NULL);
         for (int i = 0; game->inventory->stuff[i] != NULL; i++)
@@ -69,7 +69,7 @@ void game_map(map_t ***maps, sfRenderWindow *window, ebattle_t **enemies,
     game->pnj = malloc(sizeof(pnj_t));
     game->pnj->spr = sfSprite_create();
     game->pnj->txt = sfTexture_createFromFile(MAGICIAN, NULL);
-    game->pnj_increment = 1;
+    game->pnj_increment = 0;
     game->pnj_text = sfText_create();
     sfText_setFont(game->pnj_text, sfFont_createFromFile(ARIAL));
     sfText_setPosition(game->pnj_text, (sfVector2f){550, 250});
@@ -77,6 +77,7 @@ void game_map(map_t ***maps, sfRenderWindow *window, ebattle_t **enemies,
     sfSprite_setPosition(game->pnj->spr, (sfVector2f){450, 200});
     sfSprite_setScale(game->pnj->spr, (sfVector2f){0.5, 0.5});
     while (sfRenderWindow_isOpen(window)) {
+        search_move(game, maps, window);
         my_clock(maps, window, game);
         display_game(window, maps, game);
     }
