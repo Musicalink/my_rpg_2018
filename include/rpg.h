@@ -38,6 +38,9 @@ void free_player(player_t *);
 //set_pause_menu.c
 menu_t *init_pause_menu(char *);
 
+//pause_menu.c
+int pause_menu(menu_t *, sfRenderWindow *);
+
 //set_menu.c
 sfIntRect create_rect(int, int, int, int);
 

@@ -7,6 +7,7 @@
 
 SRC     =       src/main.c		\
 		src/menu.c		\
+		src/pause_menu.c	\
 		src/set/set_menu.c	\
 		src/battle.c		\
 		src/set/set_battle.c	\
