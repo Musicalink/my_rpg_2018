@@ -52,7 +52,7 @@ void init_drop_sprite(anim_t ***drop, int pos)
     for (cnt = 0; cnt != 3; cnt++) {
         drop[pos][cnt] = malloc(sizeof(anim_t));
         if (drop[pos][cnt] == NULL)
-            return;
+            exit(84);
     }
     if (pos == 0)
         set_drop_sprite(drop[pos], ARMOR);
@@ -68,12 +68,12 @@ anim_t ***set_drop(void)
     int cnt;
 
     if (drop == NULL)
-        return (NULL);
+        exit(84);
     drop[3] = NULL;
     for (cnt = 0; cnt != 3; cnt++) {
         drop[cnt] = malloc(sizeof(anim_t *) * 4);
         if (drop[cnt] == NULL)
-            return (NULL);
+            exit(84);
         drop[cnt][3] = NULL;
         init_drop_sprite(drop, cnt);
     }
@@ -85,6 +85,8 @@ loots_t *init_loot(battle_t *battle, inventory_t *inv)
     loots_t *loot = malloc(sizeof(loots_t));
     anim_t ***drop = set_drop();
 
+    if (loot == NULL)
+        return (NULL);
     loot->t_back = sfTexture_createFromFile(REWARD, NULL);
     loot->s_back = sfSprite_create();
     loot->font = sfFont_createFromFile(ARIAL);
