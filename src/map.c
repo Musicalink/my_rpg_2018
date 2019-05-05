@@ -28,7 +28,7 @@ void make_move(game_t *game, map_t *map, int boolean, int minus)
 
     y = (boolean == 0) ? (minus == 1) ? y - 10 : y + 30 : y;
     x = (boolean == 1) ? (minus == 1) ? x - 10 : x + 30 : x;
-    if (x <= 0 || x >= 1920 || y < 0 || y > 1130)
+    if (x <= 0 || x >= 1920 || y < 0 || y > 1080)
         return;
     color = sfImage_getPixel(map->hitbox, x, y);
     if (color.r > 100 || color.g > 100 || color.b > 100 || color.a < 120) {
