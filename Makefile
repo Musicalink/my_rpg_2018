@@ -26,6 +26,7 @@ SRC     =       src/main.c		\
 		src/map.c		\
 		src/init_game.c		\
 		src/drop.c		\
+		src/fight_chose.c\
 
 OBJ     =       $(SRC:.c=.o)
 

@@ -130,6 +130,10 @@ map_t ***init_maps();
 
 anim_t *choose_drop(battle_t *, anim_t ***, inventory_t *);
 
+//fight_chose.c
+
+void launch_fight(game_t *game, map_t ***maps, sfRenderWindow *window);
+
 #define WALK_RIGHT "ressources/sprites/walk_right.png"
 #define WALK_LEFT "ressources/sprites/walk_left.png"
 #define WALK_UP "ressources/sprites/walk_up.png"
