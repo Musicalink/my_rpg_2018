@@ -20,8 +20,14 @@ int main(int ac, char **av)
         sfClose | sfResize/* | sfFullscreen*/, NULL);
     sfRenderWindow_setFramerateLimit(window, 60);
     srand((unsigned int)time(NULL));
-    game_menu(menu, window);
-    map = init_maps();
-    game_map(map, window, enemies, player);
+    while (player->reset == 0) {
+        game_menu(menu, window);
+        map = init_maps();
+        game_map(map, window, enemies, player);
+        if (player->reset == 1) {
+            //freeplayer
+            player = set_player();
+        }
+    }
     return (0);
 }

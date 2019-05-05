@@ -67,6 +67,7 @@ typedef struct player {
     stuff_t **stuff;
     stuff_t **inventory;
     moving_t *move;
+    int reset;
 } player_t;
 
 typedef struct bhud {

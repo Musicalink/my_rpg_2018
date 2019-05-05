@@ -71,6 +71,7 @@ player_t *set_player(void)
 
     if (player == NULL)
         return (NULL);
+    player->reset = 0;
     player->stats = set_player_stats();
     player->stuff = set_player_stuff();
     player->inventory = set_player_inventory();

@@ -45,10 +45,20 @@ void make_move(game_t *game, map_t *map, int boolean, int minus)
 
 void handle_key(game_t *game, map_t ***maps, sfRenderWindow *window)
 {
+    int res;
+
     if (sfKeyboard_isKeyPressed(sfKeyF))
         launch_fight(game, maps, window);
-    else if (sfKeyboard_isKeyPressed(sfKeyEscape))
-        pause_menu(game->pause, window);
+    else if (sfKeyboard_isKeyPressed(sfKeyEscape)) {
+        res = pause_menu(game->pause, window);
+        if (res == 3) {
+            game->player->reset = 2;
+            sfRenderWindow_close(window);
+        } else if (res == 0) {
+            game->player->reset = 1;
+            sfRenderWindow_close(window);
+        }
+    }
     else {
         if (sfKeyboard_isKeyPressed(sfKeyI))
             game->inventory->boolean = (game->inventory->boolean == 0) ? 1 : 0;

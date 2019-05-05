@@ -33,6 +33,7 @@ menu_t *init_pause_menu(char *resources)
 {
     menu_t *menu = malloc(sizeof(menu_t));
 
+    menu->launch_game = 0;
     menu->texture = sfTexture_createFromFile(resources, NULL);
     menu->sprite = sfSprite_create();
     menu->font = sfFont_createFromFile("ressources/font/GAD.ttf");
