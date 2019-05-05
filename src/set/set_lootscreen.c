@@ -81,7 +81,7 @@ anim_t ***set_drop(void)
     return (drop);
 }
 
-loots_t *init_loot(battle_t *battle)
+loots_t *init_loot(battle_t *battle, inventory_t *inv)
 {
     loots_t *loot = malloc(sizeof(loots_t));
     anim_t ***drop = set_drop();
@@ -92,7 +92,7 @@ loots_t *init_loot(battle_t *battle)
     loot->loot = sfText_create();
     loot->xp = sfText_create();
     loot->status = sfText_create();
-    loot->drop = choose_drop(battle, drop);
+    loot->drop = choose_drop(battle, drop, inv);
     set_loot(loot, battle);
     return (loot);
 }

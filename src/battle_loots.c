@@ -19,9 +19,9 @@ void display_loots(sfRenderWindow *window, loots_t *loot)
 	sfRenderWindow_drawSprite(window, loot->drop->spr, NULL);
 }
 
-int game_loots(sfRenderWindow *window, battle_t *battle)
+int game_loots(sfRenderWindow *window, battle_t *battle, inventory_t *inv)
 {
-    loots_t *loot = init_loot(battle);
+    loots_t *loot = init_loot(battle, inv);
     sfClock *clock = sfClock_create();
     sfTime time;
     double seconds = 0;

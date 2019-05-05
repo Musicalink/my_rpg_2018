@@ -8,7 +8,12 @@
 #include "rpg.h"
 #include "struct.h"
 
-anim_t *choose_drop(battle_t *battle, anim_t ***drop)
+void add_to_inventory(int rare, anim_t *item, inventory_t *inv)
+{
+    if (rar
+}
+
+anim_t *choose_drop(battle_t *battle, anim_t ***drop, inventory_t *inv)
 {
     srand(time(NULL));
     int type = rand() % 3;
@@ -30,5 +35,6 @@ anim_t *choose_drop(battle_t *battle, anim_t ***drop)
         rarety = (luck >= 50 && luck < 79) ? 1 : rarety;
         rarety = (luck >= 79 && luck <= 99) ? 2 : rarety;
     }
+    add_to_inventory(rarety, drop[type][rarety], inv);
     return (drop[type][rarety]);
 }

@@ -27,7 +27,7 @@ void display_battle(battle_t *battle, sfRenderWindow *window)
     sfRenderWindow_drawText(window, battle->hud->lvl, NULL);
 }
 
-int game_battle(sfRenderWindow *window, player_t *player, ebattle_t *enemy)
+int game_battle(sfRenderWindow *window, player_t *player, ebattle_t *enemy, inventory_t *inv)
 {
     battle_t *battle = init_battle(player, enemy);
     sfClock *clock = sfClock_create();
@@ -38,6 +38,6 @@ int game_battle(sfRenderWindow *window, player_t *player, ebattle_t *enemy)
         battle_action(window, battle);
         battle->end = battle_end(player, enemy);
     }
-    game_loots(window, battle);
+    game_loots(window, battle, inv);
     return (0);
 }
