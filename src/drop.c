@@ -15,6 +15,8 @@ anim_t *choose_drop(battle_t *battle, anim_t ***drop)
     int luck = rand() % 100;
     int rarety = -1;
 
+    if (battle->end == 1)
+	return (NULL);
     if (battle->enemy->type == 0) {
 	rarety = (luck < 90) ? 0 : rarety;
 	rarety = (luck >= 90 && luck < 97) ? 1 : rarety;
