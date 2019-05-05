@@ -12,9 +12,9 @@ void menu_btn_act(sfRenderWindow *window, menu_t *menu)
     sfVector2i mouse = sfMouse_getPositionRenderWindow(window);
 
     if (mouse.x < 1800 && mouse.x > 1500) {
-        if (mouse.y >= 400 && mouse.y < 500) {
+        if (mouse.y >= 400 && mouse.y < 500)
             menu->launch_game = 1;
-        } else if (mouse.y >= 550 && mouse.y < 650)
+        else if (mouse.y >= 550 && mouse.y < 650)
             sfRenderWindow_close(window);
     }
 }

@@ -51,9 +51,9 @@ void flm_move(anim_t *flm)
     double seconds = time.microseconds / 1000000.0;
 
     if (seconds > 0.06) {
-        if (flm->rect.left >= flm->size.x * (flm->frame - 1)) {
+        if (flm->rect.left >= flm->size.x * (flm->frame - 1))
             flm->rect.left = 0;
-        } else
+        else
             flm->rect.left += flm->size.x;
         sfSprite_setTextureRect(flm->spr, flm->rect);
         sfClock_restart(flm->clock);

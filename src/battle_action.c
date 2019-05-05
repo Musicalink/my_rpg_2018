@@ -69,11 +69,9 @@ int battle_action(sfRenderWindow *window, battle_t *battle, inventory_t *inv)
 {
     sfEvent event;
 
-    while (sfRenderWindow_pollEvent(window, &event)) {
+    while (sfRenderWindow_pollEvent(window, &event))
         if (event.type == sfEvtClosed)
             sfRenderWindow_close(window);
-        if (event.type == sfEvtMouseButtonReleased) {
+        else if (event.type == sfEvtMouseButtonReleased)
             get_action(window, battle, inv);
-        }
-    }
 }
