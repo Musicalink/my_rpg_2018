@@ -12,6 +12,9 @@ void lvl_up_stats(player_t *player)
     player->stats->hp_max += 10 + 1 * (player->stats->level - 1);
     player->stats->atk += 2;
     player->stats->def += 1;
+    sfText_setString(player->stats->atk_t, my_itoa(player->stats->atk));
+    sfText_setString(player->stats->def_t, my_itoa(player->stats->def));
+    sfText_setString(player->stats->hp_t, my_itoa(player->stats->hp_max));
 }
 
 void update_xp(player_t *player, ebattle_t *enemy)
