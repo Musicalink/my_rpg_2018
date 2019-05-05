@@ -128,9 +128,6 @@ map_t ***init_maps();
 #define BOOTS "ressources/sprites/boots_set.png"
 #define HELMET "ressources/sprites/helmet_set.png"
 #define INVENTORY "ressources/sprites/inventory.png"
-<<<<<<< HEAD
 #define MAGICIAN "ressources/sprites/pnj.png"
-=======
->>>>>>> 511da8c09836077848d8a3839fe84c444374e4ed
 
 #endif /*MY_RPG_H*/
