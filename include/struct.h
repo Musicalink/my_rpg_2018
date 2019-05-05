@@ -150,6 +150,14 @@ typedef struct game {
     sfTime time;
     inventory_t *inventory;
     anim_t *pnj;
+    int pnj_increment;
+    sfText *pnj_text;
 } game_t;
+
+static const char *QUEST_STR[] = {
+    "Eh toi ! Va voir au village forestier si j'y suis !",
+    "Je t'ai menti !j'y etait pas ! Va tuer 5 monstres de la foret !",
+    "Il t'en reste 4 à tuer !", "Il t'en reste 3 à tuer !",
+    "Il t'en reste 2 à tuer !", "Il t'en reste 1 à tuer !", "Bien joué !"};
 
 #endif /*MY_STRUCT_H*/
