@@ -21,9 +21,10 @@ SRC     =       src/main.c		\
 		src/set/set_lootscreen.c	\
 		src/battle_loots.c	\
 		src/set/set_textloot.c	\
-		src/init_map.c\
-        src/map.c\
-        src/init_game.c\
+		src/init_map.c		\
+		src/map.c		\
+		src/init_game.c		\
+		src/drop.c		\
 
 OBJ     =       $(SRC:.c=.o)
 
