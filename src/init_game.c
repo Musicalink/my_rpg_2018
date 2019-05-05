@@ -64,26 +64,33 @@ void display_game(sfRenderWindow *window, map_t ***maps, game_t *game)
     sfRenderWindow_display(window);
 }
 
-void game_map(map_t ***maps, sfRenderWindow *w, ebattle_t **enem, player_t *p)
+int set_stat_spr(game_t *game)
 {
-    game_t *game = init_game();
-    game_map_helper(game, enem, p);
-    sfText_setFont(game->pnj_text, sfFont_createFromFile(ARIAL));
-    sfText_setPosition(game->pnj_text, (sfVector2f){550, 250});
-    sfSprite_setTexture(game->pnj->spr, game->pnj->txt, sfTrue);
-    sfSprite_setPosition(game->pnj->spr, (sfVector2f){450, 200});
-    sfSprite_setScale(game->pnj->spr, (sfVector2f){0.5, 0.5});
     game->stat_spr = malloc(sizeof(anim_t));
     if (game->stat_spr == NULL)
-        return;
+        return (84);
     game->stat_spr->spr = sfSprite_create();
     game->stat_spr->txt = sfTexture_createFromFile(STAT, NULL);
     sfSprite_setTexture(game->stat_spr->spr, game->stat_spr->txt, sfTrue);
     sfSprite_setPosition(game->stat_spr->spr, (sfVector2f){800, 705});
+    return (0);
+}
+
+void game_map(map_t ***maps, sfRenderWindow *w, ebattle_t **enem, player_t *p)
+{
+    game_t *game = init_game();
+    sfMusic *music = sfMusic_createFromFile("ressources/theme.ogg");
+
+    sfMusic_play(music);
+    sfMusic_setLoop(music, sfTrue);
+    game_map_helper(game, enem, p);
+    set_pnj(game);
+    if (set_stat_spr(game) == 84)
+        return;
     while (sfRenderWindow_isOpen(w)) {
         search_move(game, maps, w);
         my_clock(maps, w, game);
         display_game(w, maps, game);
     }
-    exit(0);
+    sfMusic_destroy(music);
 }
