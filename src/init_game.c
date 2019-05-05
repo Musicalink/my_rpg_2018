@@ -34,8 +34,7 @@ game_t *init_game(void)
 void pnj_display(sfRenderWindow *window, map_t ***maps, game_t *game)
 {
     if (game->pnj_increment == 0 && game->y == 5 && game->x == 2) {
-        printf("Il n'y était pas ...\n");
-        game->pnj_increment = 1;
+        game->pnj_increment++;
     }
     sfText_setString(game->pnj_text, QUEST_STR[game->pnj_increment]);
     if (game->x == 4 && game->y == 4) {
@@ -70,7 +69,7 @@ void game_map(map_t ***maps, sfRenderWindow *window, ebattle_t **enemies,
     game->pnj = malloc(sizeof(pnj_t));
     game->pnj->spr = sfSprite_create();
     game->pnj->txt = sfTexture_createFromFile(MAGICIAN, NULL);
-    game->pnj_increment = 0;
+    game->pnj_increment = 1;
     game->pnj_text = sfText_create();
     sfText_setFont(game->pnj_text, sfFont_createFromFile(ARIAL));
     sfText_setPosition(game->pnj_text, (sfVector2f){550, 250});

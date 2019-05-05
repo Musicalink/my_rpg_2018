@@ -6,7 +6,6 @@
 */
 
 #include "rpg.h"
-#include "struct.h"
 
 void display_battle(battle_t *battle, sfRenderWindow *window)
 {
@@ -27,11 +26,13 @@ void display_battle(battle_t *battle, sfRenderWindow *window)
     sfRenderWindow_drawText(window, battle->hud->lvl, NULL);
 }
 
-int game_battle(sfRenderWindow *window, player_t *player, ebattle_t *enemy, inventory_t *inv)
+int game_battle(sfRenderWindow *window, player_t *player, ebattle_t *enemy,
+    inventory_t *inv
+)
 {
     battle_t *battle = init_battle(player, enemy);
     sfClock *clock = sfClock_create();
-    
+
     while (sfRenderWindow_isOpen(window) && battle->end == 0) {
         display_battle(battle, window);
         sfRenderWindow_display(window);
@@ -39,5 +40,5 @@ int game_battle(sfRenderWindow *window, player_t *player, ebattle_t *enemy, inve
         battle->end = battle_end(player, enemy);
     }
     game_loots(window, battle, inv);
-    return (0);
+    return (battle->end);
 }

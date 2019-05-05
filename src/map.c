@@ -46,8 +46,14 @@ void make_move(game_t *game, map_t *map, int boolean, int minus)
 
 void launch_fight(game_t *game, map_t ***maps, sfRenderWindow *window)
 {
-    if (game->y >= 3 && game->y <= 5 && game->x >= 1 && game->x <= 3)
-        game_battle(window, game->player, game->enem[3], game->inventory);
+    int test;
+    if (game->y >= 3 && game->y <= 5 && game->x >= 1 && game->x <= 3) {
+        test = game_battle(window, game->player, game->enem[3],
+            game->inventory);
+        printf("Test: %d\n", test);
+        if (test == 2 && game->pnj_increment > 0 && game->pnj_increment < 6)
+            game->pnj_increment++;
+    }
 }
 
 void search_move(game_t *game, map_t ***maps, sfRenderWindow *window)

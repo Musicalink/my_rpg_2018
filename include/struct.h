@@ -160,8 +160,8 @@ typedef struct game {
 static const char *QUEST_STR[] = {
     "Eh toi ! Va voir au village forestier si j'y suis !",
     "Je t'ai menti !j'y etait pas ! Va tuer 5 monstres de la foret !",
-    "Il t'en reste 4 à tuer !", "Il t'en reste 3 à tuer !",
-    "Il t'en reste 2 à tuer !", "Il t'en reste 1 à tuer !", "Bien joué !"};
+    "Il t'en reste 4 a tuer !", "Il t'en reste 3 a tuer !",
+    "Il t'en reste 2 a tuer !", "Il t'en reste 1 a tuer !", "Super !"};
 
 static const sfVector2f INV_POS[] = {{.x = 257, .y = 922}, {.x = 415, .y = 922},
     {.x = 573, .y = 922}, {.x = 731, .y = 922}, {.x = 889, .y = 922},
