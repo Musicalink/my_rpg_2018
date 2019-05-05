@@ -11,12 +11,16 @@
 int pause_menu_btn_act(sfRenderWindow *window, menu_t *menu)
 {
     sfVector2i mouse = sfMouse_getPositionRenderWindow(window);
+    int ret;
 
     if (mouse.x < 1300 && mouse.x > 1000) {
         if (mouse.y >= 650 && mouse.y < 750) {
             return (0);
-        } else if (mouse.y >= 800 && mouse.y < 900)
-            return (1);
+        } else if ((mouse.y >= 800 && mouse.y < 900 )||
+                   (mouse.y >= 500 && mouse.y < 600)) {
+	    ret = (mouse.y >= 800 && mouse.y < 900) ? 1 : 3;
+	    return (ret);
+	}
     }
     return (2);
 }
@@ -57,6 +61,7 @@ int display_pause_menu(menu_t *menu, sfRenderWindow *window)
     pause_menu_btn_over(window, menu);
     sfRenderWindow_clear(window, sfBlack);
     sfRenderWindow_drawSprite(window, menu->sprite, NULL);
+    sfRenderWindow_drawText(window, menu->main, NULL);
     sfRenderWindow_drawText(window, menu->play, NULL);
     sfRenderWindow_drawText(window, menu->exit, NULL);
     return (2);
