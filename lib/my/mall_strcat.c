@@ -13,9 +13,9 @@ char *mall_strcat(char *s1, char *s2)
 {
     char *new = malloc(sizeof(char) * (my_strlen(s1) + my_strlen(s2) + 1));
     int i = 0;
-
-	if (new == NULL)
-		return (NULL);
+    
+    if (new == NULL)
+        return (NULL);
     for (int j = 0; s1[j] != '\0'; j++) {
         new[i] = s1[j];
         i++;

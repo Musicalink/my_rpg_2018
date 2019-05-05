@@ -29,7 +29,7 @@ void close_enemies(ebattle_t **enemies)
 {
     for (int i = 0; i != 3; i++) {
         free(enemies[i]->stats);
-        close_enemy(enemies[i]);    
+        close_enemy(enemies[i]);
     }
     free(enemies[3]);
     free(enemies);

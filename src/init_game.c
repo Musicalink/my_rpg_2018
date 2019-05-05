@@ -67,7 +67,7 @@ void display_game(sfRenderWindow *window, map_t ***maps, game_t *game)
 void game_map(map_t ***maps, sfRenderWindow *w, ebattle_t **enem, player_t *p)
 {
     game_t *game = init_game();
-    
+
     game_map_helper(game, enem, p);
     set_pnj(game);
     if ((game->stat_spr = malloc(sizeof(anim_t))) == NULL)
