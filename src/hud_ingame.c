@@ -6,7 +6,6 @@
 */
 
 #include "rpg.h"
-#include "struct.h"
 
 sfVector2f bar_xp(player_t *player)
 {
@@ -41,7 +40,7 @@ char *display_lvl(player_t *player)
     char *str = my_strdup("Lvl : ");
     char *lvl = my_itoa(player->stats->level);
     char *res;
-    
+
     if (str == NULL || lvl == NULL)
         return (NULL);
     res = mall_strcat(str, lvl);
@@ -53,7 +52,7 @@ char *display_lvl(player_t *player)
 void set_hud(bhud_t *hud, player_t *player)
 {
     char *lvl = display_lvl(player);
-    
+
     if (lvl != NULL)
         sfText_setString(hud->lvl, lvl);
     sfText_setFont(hud->lvl, hud->font);

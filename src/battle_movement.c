@@ -6,7 +6,6 @@
 */
 
 #include "rpg.h"
-#include "struct.h"
 
 void atk(battle_t *bat, sfRenderWindow *window)
 {
@@ -34,7 +33,7 @@ void enemy_atk(battle_t *bat, sfRenderWindow *window)
 
     if (seconds > 0.06 && bat->turn == 1) {
         if (enemy->rect.left >= enemy->size.x * (enemy->frame - 1)) {
-            enemy_action(bat);            
+            enemy_action(bat);
             enemy->rect.left = 0;
             bat->turn = 0;
             bat->player->action = 0;

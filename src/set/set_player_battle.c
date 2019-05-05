@@ -6,7 +6,6 @@
 */
 
 #include "rpg.h"
-#include "struct.h"
 
 void set_player_battle(pbattle_t *play)
 {

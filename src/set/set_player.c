@@ -7,6 +7,16 @@
 
 #include "rpg.h"
 
+sfText *create_text(char *str, int y, int x)
+{
+    sfText *text = sfText_create();
+
+    sfText_setString(text, str);
+    sfText_setPosition(text, (sfVector2f){x, y});
+    sfText_setFont(text, sfFont_createFromFile(ARIAL));
+    return (text);
+}
+
 stats_t *set_player_stats(void)
 {
     stats_t *stats = malloc(sizeof(stats_t) * 1);
@@ -19,6 +29,9 @@ stats_t *set_player_stats(void)
     stats->hp = stats->hp_max;
     stats->atk = 100000 + 2 * (stats->level - 1);
     stats->def = 10 + 1 * (stats->level - 1);
+    stats->atk_t = create_text(my_itoa(stats->atk), 758, 970);
+    stats->def_t = create_text(my_itoa(stats->def), 807, 970);
+    stats->hp_t = create_text(my_itoa(stats->hp_max), 850, 1040);
     return (stats);
 }
 

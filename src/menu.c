@@ -6,7 +6,6 @@
 */
 
 #include "rpg.h"
-#include "struct.h"
 
 void menu_btn_act(sfRenderWindow *window, menu_t *menu)
 {
@@ -63,8 +62,6 @@ int game_menu(menu_t *menu, sfRenderWindow *window)
     while (sfRenderWindow_isOpen(window) && menu->launch_game == 0) {
         display_menu(menu, window);
         sfRenderWindow_display(window);
-    }/*
-    if (menu->launch_game == 1)
-    game_start(window);*/
+    }
     return (0);
 }

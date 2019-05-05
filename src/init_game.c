@@ -51,9 +51,16 @@ void display_game(sfRenderWindow *window, map_t ***maps, game_t *game)
     sfRenderWindow_drawSprite(window, game->moves, NULL);
     if (game->inventory->boolean == 1) {
         sfRenderWindow_drawSprite(window, game->inventory->spr, NULL);
-        for (int i = 0; game->inventory->stuff[i] != NULL; i++)
+        sfRenderWindow_drawSprite(window, game->stat_spr->spr, NULL);
+        for (int i = 0; game->inventory->stuff[i] != NULL; i++) {
+            sfSprite_setPosition(game->inventory->stuff[i]->anim->spr,
+                INV_POS[i]);
             sfRenderWindow_drawSprite(window,
                 game->inventory->stuff[i]->anim->spr, NULL);
+        }
+        sfRenderWindow_drawText(window, game->player->stats->hp_t, NULL);
+        sfRenderWindow_drawText(window, game->player->stats->def_t, NULL);
+        sfRenderWindow_drawText(window, game->player->stats->atk_t, NULL);
     }
     sfRenderWindow_display(window);
 }
@@ -76,6 +83,11 @@ void game_map(map_t ***maps, sfRenderWindow *window, ebattle_t **enemies,
     sfSprite_setTexture(game->pnj->spr, game->pnj->txt, sfTrue);
     sfSprite_setPosition(game->pnj->spr, (sfVector2f){450, 200});
     sfSprite_setScale(game->pnj->spr, (sfVector2f){0.5, 0.5});
+    game->stat_spr = malloc(sizeof(anim_t));
+    game->stat_spr->spr = sfSprite_create();
+    game->stat_spr->txt = sfTexture_createFromFile(STAT, NULL);
+    sfSprite_setTexture(game->stat_spr->spr, game->stat_spr->txt, sfTrue);
+    sfSprite_setPosition(game->stat_spr->spr, (sfVector2f){800, 705});
     while (sfRenderWindow_isOpen(window)) {
         search_move(game, maps, window);
         my_clock(maps, window, game);

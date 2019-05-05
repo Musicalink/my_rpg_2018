@@ -11,17 +11,27 @@
 void add_to_inventory(int rare, anim_t *item, inventory_t *inv, int type)
 {
     int i = 0;
+    int atk = 5 * (rare + 1) + rand() % 10;
+    int def = 3 * (rare + 1) + rand() % 10;
+    int hp = 15 * (rare + 1) + rand() % 30;
 
-    for (i = 0; inv->stuff[i] != NULL; i++);
+    for (i = 0; inv->stuff[i] != NULL; i++)
+        if (inv->stuff[i]->type == type)
+            break;
     if (i >= 9)
         return;
+    if (inv->stuff[i] != NULL) {
+        if ((atk + def + hp) <
+            inv->stuff[i]->atk + inv->stuff[i]->def + inv->stuff[i]->hp)
+            return;
+        //   inv->stuff[i]->anim = item;
+    } else
+        inv->stuff[i] = malloc(sizeof(stuff_t));
     inv->stuff[i]->type = type;
-    inv->stuff[i]->atk = 5 * (rare + 1) + rand() % 10;
-    inv->stuff[i]->def = 3 * (rare + 1) + rand() % 10;
-    inv->stuff[i]->hp = 15 * (rare + 1) + rand() % 30;
-    inv->stuff[i] = malloc(sizeof(stuff_t));
+    inv->stuff[i]->atk = atk;
+    inv->stuff[i]->def = def;
+    inv->stuff[i]->hp = hp;
     inv->stuff[i]->anim = item;
-    sfSprite_setPosition(inv->stuff[i]->anim->spr, INV_POS[i]);
 }
 
 anim_t *choose_drop(battle_t *battle, anim_t ***drop, inventory_t *inv)

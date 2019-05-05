@@ -6,12 +6,11 @@
 */
 
 #include "rpg.h"
-#include "struct.h"
 
 void set_loot(loots_t *loot, battle_t *battle)
 {
     char *xp = xp_char(battle);
-    
+
     sfSprite_setPosition(loot->s_back, (sfVector2f){480, 270});
     sfSprite_setTexture(loot->s_back, loot->t_back, sfTrue);
     sfText_setFont(loot->xp, loot->font);
@@ -37,12 +36,12 @@ void set_drop_sprite(anim_t **drop, char *ress)
     int cnt;
 
     for (cnt = 0; cnt != 3; cnt++) {
-	drop[cnt]->spr = sfSprite_create();
-	drop[cnt]->txt = sfTexture_createFromFile(ress, NULL);
-	drop[cnt]->rect = create_rect((cnt * 138), 0, 138, 138);
-	sfSprite_setTexture(drop[cnt]->spr, drop[cnt]->txt, sfTrue);
-	sfSprite_setTextureRect(drop[cnt]->spr, drop[cnt]->rect);
-	sfSprite_setPosition(drop[cnt]->spr, (sfVector2f){770, 490}); 
+        drop[cnt]->spr = sfSprite_create();
+        drop[cnt]->txt = sfTexture_createFromFile(ress, NULL);
+        drop[cnt]->rect = create_rect((cnt * 138), 0, 138, 138);
+        sfSprite_setTexture(drop[cnt]->spr, drop[cnt]->txt, sfTrue);
+        sfSprite_setTextureRect(drop[cnt]->spr, drop[cnt]->rect);
+        sfSprite_setPosition(drop[cnt]->spr, (sfVector2f){770, 490});
     }
 }
 
@@ -51,16 +50,16 @@ void init_drop_sprite(anim_t ***drop, int pos)
     int cnt;
 
     for (cnt = 0; cnt != 3; cnt++) {
-	drop[pos][cnt] = malloc(sizeof(anim_t));
-	if (drop[pos][cnt] == NULL)
-	    exit(84);
+        drop[pos][cnt] = malloc(sizeof(anim_t));
+        if (drop[pos][cnt] == NULL)
+            exit(84);
     }
     if (pos == 0)
-	set_drop_sprite(drop[pos], ARMOR);
+        set_drop_sprite(drop[pos], ARMOR);
     else if (pos == 1)
-	set_drop_sprite(drop[pos], BOOTS);
+        set_drop_sprite(drop[pos], BOOTS);
     else
-	set_drop_sprite(drop[pos], HELMET);
+        set_drop_sprite(drop[pos], HELMET);
 }
 
 anim_t ***set_drop(void)
@@ -69,14 +68,14 @@ anim_t ***set_drop(void)
     int cnt;
 
     if (drop == NULL)
-	exit(84);
+        exit(84);
     drop[3] = NULL;
     for (cnt = 0; cnt != 3; cnt++) {
-	drop[cnt] = malloc(sizeof(anim_t *) * 4);
-	if (drop[cnt] == NULL)
-	    exit(84);
-	drop[cnt][3] = NULL;
-	init_drop_sprite(drop, cnt);
+        drop[cnt] = malloc(sizeof(anim_t *) * 4);
+        if (drop[cnt] == NULL)
+            exit(84);
+        drop[cnt][3] = NULL;
+        init_drop_sprite(drop, cnt);
     }
     return (drop);
 }

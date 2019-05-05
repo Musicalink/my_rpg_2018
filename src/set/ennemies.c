@@ -6,7 +6,6 @@
 */
 
 #include "rpg.h"
-#include "struct.h"
 
 anim_t *gen_anim(char *path, int height, int width, int nb)
 {
@@ -86,7 +85,7 @@ ebattle_t **gen_enemies(void)
     enemies[3]->stats = set_enemy_stats(240, 50, 40, 200);
     set_enemy(enemies[0], (sfVector2f){1050, 200});
     set_enemy(enemies[1], (sfVector2f){1050, 350});
-    set_enemy(enemies[2], (sfVector2f){1150, 400});    
+    set_enemy(enemies[2], (sfVector2f){1150, 400});
     set_enemy(enemies[3], (sfVector2f){1150, 550});
     enemies[4] = NULL;
     return (enemies);

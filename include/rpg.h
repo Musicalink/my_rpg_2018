@@ -52,11 +52,14 @@ int game_battle(sfRenderWindow *, player_t *, ebattle_t *, inventory_t *);
 
 //battle_movement.c
 void enemy_atk(battle_t *, sfRenderWindow *);
+
 void flm_move(anim_t *);
+
 void atk(battle_t *, sfRenderWindow *);
 
 //battle_action.c
 int battle_action(sfRenderWindow *, battle_t *);
+
 int enemy_action(battle_t *);
 
 //battle_end.c
@@ -76,11 +79,14 @@ loots_t *init_loot(battle_t *, inventory_t *);
 
 //set_textloot.c
 void get_battle_status(battle_t *, loots_t *);
+
 char *xp_char(battle_t *);
 
 //hud_ingame.c
 void set_hud(bhud_t *, player_t *);
+
 void upd_hp_player(pbattle_t *, bhud_t *);
+
 void upd_hp_enemy(ebattle_t *, bhud_t *);
 
 //xp.c
@@ -88,6 +94,7 @@ sfVector2f bar_xp(player_t *);
 
 //enemies.c
 ebattle_t **gen_enemies(void);
+
 anim_t *gen_anim(char *, int, int, int);
 
 //init_game.c
@@ -95,7 +102,9 @@ game_t *init_game(void);
 
 void display_game(sfRenderWindow *window, map_t ***maps, game_t *game);
 
-void game_map(map_t ***maps, sfRenderWindow *window, ebattle_t **enemies, player_t *player);
+void game_map(map_t ***maps, sfRenderWindow *window, ebattle_t **enemies,
+    player_t *player
+);
 
 //map.c
 
@@ -138,5 +147,6 @@ anim_t *choose_drop(battle_t *, anim_t ***, inventory_t *);
 #define INVENTORY "ressources/sprites/inventory.png"
 #define MAGICIAN "ressources/sprites/pnj.png"
 #define PAUSE "ressources/sprites/pause_menu.jpg"
+#define STAT "ressources/sprites/stat_menu.png"
 
 #endif /*MY_RPG_H*/

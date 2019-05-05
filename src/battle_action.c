@@ -6,7 +6,6 @@
 */
 
 #include "rpg.h"
-#include "struct.h"
 
 void rm_hp_enemy(ebattle_t *enemy, pbattle_t *player)
 {
@@ -58,7 +57,7 @@ void get_action(sfRenderWindow *window, battle_t *battle)
         } else if (mouse.x >= 645 && mouse.x < 716) {
             battle->player->action = 2;
             battle->turn = 1;
-        }        
+        }
     }
 }
 

@@ -6,7 +6,6 @@
 */
 
 #include "rpg.h"
-#include "struct.h"
 
 void display_loots(sfRenderWindow *window, loots_t *loot)
 {
@@ -16,7 +15,7 @@ void display_loots(sfRenderWindow *window, loots_t *loot)
     sfRenderWindow_drawText(window, loot->loot, NULL);
     sfRenderWindow_drawText(window, loot->status, NULL);
     if (loot->drop != NULL)
-	sfRenderWindow_drawSprite(window, loot->drop->spr, NULL);
+        sfRenderWindow_drawSprite(window, loot->drop->spr, NULL);
 }
 
 int game_loots(sfRenderWindow *window, battle_t *battle, inventory_t *inv)
@@ -26,7 +25,7 @@ int game_loots(sfRenderWindow *window, battle_t *battle, inventory_t *inv)
     sfTime time;
     double seconds = 0;
 
-    while (sfRenderWindow_isOpen(window) && seconds < 0.01) {
+    while (sfRenderWindow_isOpen(window) && seconds < 1.25) {
         time = sfClock_getElapsedTime(clock);
         seconds = time.microseconds / 1000000.0;
         display_loots(window, loot);

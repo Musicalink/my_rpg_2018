@@ -6,12 +6,11 @@
 */
 
 #include "rpg.h"
-#include "struct.h"
 
 bhud_t *init_hud(player_t *player)
 {
-    bhud_t * hud = malloc(sizeof(bhud_t));
-    
+    bhud_t *hud = malloc(sizeof(bhud_t));
+
     if (hud == NULL)
         return (NULL);
     hud->hp = sfRectangleShape_create();
@@ -24,7 +23,7 @@ bhud_t *init_hud(player_t *player)
 }
 
 void set_battle(battle_t *battle)
-{    
+{
     sfSprite_setTexture(battle->s_back, battle->t_back, sfTrue);
     sfSprite_setTexture(battle->s_hud, battle->t_hud, sfTrue);
     sfSprite_setPosition(battle->s_back, (sfVector2f){0, 0});

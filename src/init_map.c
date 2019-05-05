@@ -53,7 +53,7 @@ map_t ***fill_maps(map_t ***maps, DIR *dir)
     return (maps);
 }
 
-map_t ***init_maps()
+map_t ***init_maps(void)
 {
     map_t ***maps = malloc(sizeof(map_t **) * 9);
     struct dirent *dent;

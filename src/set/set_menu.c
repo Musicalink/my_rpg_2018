@@ -6,7 +6,6 @@
 */
 
 #include "rpg.h"
-#include "struct.h"
 
 sfIntRect create_rect(int left, int top, int width, int height)
 {

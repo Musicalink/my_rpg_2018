@@ -25,6 +25,10 @@ typedef struct stats {
     int hp_max;
     int atk;
     int def;
+    sfText *level_t;
+    sfText *hp_t;
+    sfText *atk_t;
+    sfText *def_t;
 } stats_t;
 
 typedef struct anim {
@@ -151,6 +155,7 @@ typedef struct game {
     sfClock *clock;
     sfTime time;
     inventory_t *inventory;
+    anim_t *stat_spr;
     anim_t *pnj;
     int pnj_increment;
     sfText *pnj_text;
@@ -161,7 +166,18 @@ static const char *QUEST_STR[] = {
     "Eh toi ! Va voir au village forestier si j'y suis !",
     "Je t'ai menti !j'y etait pas ! Va tuer 5 monstres de la foret !",
     "Il t'en reste 4 a tuer !", "Il t'en reste 3 a tuer !",
-    "Il t'en reste 2 a tuer !", "Il t'en reste 1 a tuer !", "Super !"};
+    "Il t'en reste 2 a tuer !", "Il t'en reste 1 a tuer !",
+    "Super ! Va tuer des cailloux dans le desert !",
+    "Mouai ... Encore 4 et ca ira !",
+    "Bof bof ... Encore 3 et je te laisse y aller!",
+    "J'ai volley a 14 heures, depeche toi d'en tuer deux !",
+    "J'ai surement deja rate mon cours, il t'en reste un, limace !",
+    "Pas trop tot ! Vu le temps que t'as pris, va tuer des monstres de glace !",
+    "Tu as pris autant de temps pour un seul monstre ?",
+    "J'appelerai ma grand-mere la prochaine fois",
+    "Et ca se dit aventurier ? Encore deux ...", "T'es la toi ? Encore un ...",
+    "Un gars furax t'attends sur la côte, je t'avais dit de pas tout taper",
+    "Bon ... J'ai peut-etre ete un peu mechant, prends un susucre."};
 
 static const sfVector2f INV_POS[] = {{.x = 257, .y = 922}, {.x = 415, .y = 922},
     {.x = 573, .y = 922}, {.x = 731, .y = 922}, {.x = 889, .y = 922},
