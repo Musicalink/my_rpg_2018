@@ -92,7 +92,7 @@ loots_t *init_loot(battle_t *battle)
     loot->loot = sfText_create();
     loot->xp = sfText_create();
     loot->status = sfText_create();
-    //loot->drop = set_drop();
+    loot->drop = choose_drop(battle, drop);
     set_loot(loot, battle);
     return (loot);
 }

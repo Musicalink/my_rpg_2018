@@ -115,6 +115,10 @@ map_t ***fill_maps(map_t ***maps, DIR *dir);
 
 map_t ***init_maps();
 
+//drop.c
+
+anim_t *choose_drop(battle_t *, anim_t ***);
+
 #define WALK_RIGHT "ressources/sprites/walk_right.png"
 #define WALK_LEFT "ressources/sprites/walk_left.png"
 #define WALK_UP "ressources/sprites/walk_up.png"

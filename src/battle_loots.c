@@ -15,6 +15,7 @@ void display_loots(sfRenderWindow *window, loots_t *loot)
     sfRenderWindow_drawText(window, loot->xp, NULL);
     sfRenderWindow_drawText(window, loot->loot, NULL);
     sfRenderWindow_drawText(window, loot->status, NULL);
+    sfRenderWindow_drawSprite(window, loot->drop->spr, NULL);
 }
 
 int game_loots(sfRenderWindow *window, battle_t *battle)
