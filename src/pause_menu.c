@@ -18,9 +18,9 @@ int pause_menu_btn_act(sfRenderWindow *window, menu_t *menu)
             return (0);
         } else if ((mouse.y >= 800 && mouse.y < 900 )||
                    (mouse.y >= 500 && mouse.y < 600)) {
-	    ret = (mouse.y >= 800 && mouse.y < 900) ? 1 : 3;
-	    return (ret);
-	}
+            ret = (mouse.y >= 800 && mouse.y < 900) ? 1 : 3;
+            return (ret);
+        }
     }
     return (2);
 }
