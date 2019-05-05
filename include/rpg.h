@@ -63,7 +63,7 @@ int battle_action(sfRenderWindow *, battle_t *);
 int enemy_action(battle_t *);
 
 //battle_end.c
-int battle_end(player_t *, ebattle_t *);
+int battle_end(player_t *, ebattle_t *, inventory_t *);
 
 //battle_loots.c
 int game_loots(sfRenderWindow *, battle_t *, inventory_t *);

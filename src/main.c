@@ -20,7 +20,7 @@ int main(int ac, char **av)
         sfClose | sfResize/* | sfFullscreen*/, NULL);
     sfRenderWindow_setFramerateLimit(window, 60);
     srand((unsigned int)time(NULL));
- //   game_menu(menu, window);
+    //   game_menu(menu, window);
     maps = init_maps();
     game_map(maps, window, enemies, player);
     return (0);

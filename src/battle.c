@@ -37,7 +37,7 @@ int game_battle(sfRenderWindow *window, player_t *player, ebattle_t *enemy,
         display_battle(battle, window);
         sfRenderWindow_display(window);
         battle_action(window, battle);
-        battle->end = battle_end(player, enemy);
+        battle->end = battle_end(player, enemy, inv);
     }
     game_loots(window, battle, inv);
     return (battle->end);
