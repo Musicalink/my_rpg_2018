@@ -84,6 +84,7 @@ anim_t ***set_drop(void)
 loots_t *init_loot(battle_t *battle)
 {
     loots_t *loot = malloc(sizeof(loots_t));
+    anim_t ***drop = set_drop();
 
     loot->t_back = sfTexture_createFromFile(REWARD, NULL);
     loot->s_back = sfSprite_create();
@@ -91,7 +92,7 @@ loots_t *init_loot(battle_t *battle)
     loot->loot = sfText_create();
     loot->xp = sfText_create();
     loot->status = sfText_create();
-    loot->drop = set_drop();
+    //loot->drop = set_drop();
     set_loot(loot, battle);
     return (loot);
 }
