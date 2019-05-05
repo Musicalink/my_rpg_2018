@@ -67,10 +67,14 @@ void display_game(sfRenderWindow *window, map_t ***maps, game_t *game)
 void game_map(map_t ***maps, sfRenderWindow *w, ebattle_t **enem, player_t *p)
 {
     game_t *game = init_game();
-
     game_map_helper(game, enem, p);
-    set_pnj(game);
-    if ((game->stat_spr = malloc(sizeof(anim_t))) == NULL)
+    sfText_setFont(game->pnj_text, sfFont_createFromFile(ARIAL));
+    sfText_setPosition(game->pnj_text, (sfVector2f){550, 250});
+    sfSprite_setTexture(game->pnj->spr, game->pnj->txt, sfTrue);
+    sfSprite_setPosition(game->pnj->spr, (sfVector2f){450, 200});
+    sfSprite_setScale(game->pnj->spr, (sfVector2f){0.5, 0.5});
+    game->stat_spr = malloc(sizeof(anim_t));
+    if (game->stat_spr == NULL)
         return;
     game->stat_spr->spr = sfSprite_create();
     game->stat_spr->txt = sfTexture_createFromFile(STAT, NULL);
@@ -81,4 +85,5 @@ void game_map(map_t ***maps, sfRenderWindow *w, ebattle_t **enem, player_t *p)
         my_clock(maps, w, game);
         display_game(w, maps, game);
     }
+    exit(0);
 }

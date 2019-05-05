@@ -27,8 +27,11 @@ map_t **malloc_list_maps(map_t **maps)
 {
     int j = 0;
 
-    for (j = 0; j < 7; j++)
+    for (j = 0; j < 7; j++) {
         maps[j] = malloc(sizeof(map_t));
+        if (maps[j] == NULL)
+            return (NULL);
+    }
     maps[j] = NULL;
     return (maps);
 }
@@ -41,8 +44,11 @@ map_t ***fill_maps(map_t ***maps, DIR *dir)
     int y = 0;
     struct dirent *dent;
 
-    for (i = 0; i < 8; i++)
+    for (i = 0; i < 8; i++) {
         maps[i] = malloc_list_maps(maps[i]);
+        if (maps[i] == NULL)
+            return (NULL);
+    }
     maps[i] = NULL;
     while ((dent = readdir(dir)) != NULL)
         if (dent->d_name[1] == ',') {

@@ -15,17 +15,18 @@ void add_to_inventory(int rare, anim_t *item, inventory_t *inv, int type)
     int def = 3 * (rare + 1) + rand() % 10;
     int hp = 15 * (rare + 1) + rand() % 30;
 
-    for (i = 0; inv->stuff[i] != NULL; i++)
-        if (inv->stuff[i]->type == type)
-            break;
+    for (i = 0; inv->stuff[i] != NULL && inv->stuff[i]->type != type; i++);
     if (i >= 9)
         return;
     if (inv->stuff[i] != NULL) {
         if ((atk + def + hp) <
             inv->stuff[i]->atk + inv->stuff[i]->def + inv->stuff[i]->hp)
             return;
-    } else
+    } else {
         inv->stuff[i] = malloc(sizeof(stuff_t));
+        if(inv->stuff[i] == NULL)
+            return;
+    }
     inv->stuff[i]->type = type;
     inv->stuff[i]->atk = atk;
     inv->stuff[i]->def = def;

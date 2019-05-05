@@ -17,16 +17,17 @@ int main(int ac, char **av)
     map_t ***map;
 
     window = sfRenderWindow_create(mode, "rpg",
-        sfClose | sfResize | sfFullscreen, NULL);
+        sfClose | sfResize/* | sfFullscreen*/, NULL);
     sfRenderWindow_setFramerateLimit(window, 60);
     srand((unsigned int)time(NULL));
     while (player->reset == 0) {
         game_menu(menu, window);
         map = init_maps();
         game_map(map, window, enemies, player);
-        if (player->reset == 1)
+        if (player->reset == 1) {
+            //freeplayer
             player = set_player();
+        }
     }
-    close_enemies(enemies);
     return (0);
 }

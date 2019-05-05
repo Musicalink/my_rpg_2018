@@ -45,8 +45,10 @@ int display_pause_menu(menu_t *menu, sfRenderWindow *window)
     int res;
 
     while (sfRenderWindow_pollEvent(window, &event)) {
-        if (event.type == sfEvtClosed)
+        if (event.type == sfEvtClosed) {
+            sfRenderWindow_close(window);
             return (3);
+        }
         else if (event.type == sfEvtMouseButtonPressed) {
             res = pause_menu_btn_act(window, menu);
             if (res == 1 || res == 0 || res == 3)
