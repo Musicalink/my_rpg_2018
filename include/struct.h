@@ -14,6 +14,7 @@ typedef struct menu {
     sfIntRect rect;
     sfText *play;
     sfText *exit;
+    sfText *main;
     sfFont *font;
     int launch_game;
 } menu_t;
