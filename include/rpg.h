@@ -132,5 +132,6 @@ anim_t *choose_drop(battle_t *, anim_t ***);
 #define BOOTS "ressources/sprites/boots_set.png"
 #define HELMET "ressources/sprites/helmet_set.png"
 #define INVENTORY "ressources/sprites/inventory.png"
+#define MAGICIAN "ressources/sprites/pnj.png"
 
 #endif /*MY_RPG_H*/
