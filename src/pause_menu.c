@@ -8,28 +8,29 @@
 #include "rpg.h"
 #include "struct.h"
 
-void menu_btn_act(sfRenderWindow *window, menu_t *menu)
+int pause_menu_btn_act(sfRenderWindow *window, menu_t *menu)
 {
     sfVector2i mouse = sfMouse_getPositionRenderWindow(window);
 
-    if (mouse.x < 1800 && mouse.x > 1500) {
-        if (mouse.y >= 400 && mouse.y < 500) {
-            menu->launch_game = 1;
-        } else if (mouse.y >= 550 && mouse.y < 650)
-            sfRenderWindow_close(window);
+    if (mouse.x < 1300 && mouse.x > 1000) {
+        if (mouse.y >= 650 && mouse.y < 750) {
+            return (0);
+        } else if (mouse.y >= 800 && mouse.y < 900)
+            return (1);
     }
+    return (2);
 }
 
-void menu_btn_over(sfRenderWindow *window, menu_t *menu)
+void pause_menu_btn_over(sfRenderWindow *window, menu_t *menu)
 {
     sfVector2i mouse = sfMouse_getPositionRenderWindow(window);
 
-    if (mouse.x < 1800 && mouse.x > 1500) {
-        if (mouse.y >= 400 && mouse.y < 500)
+    if (mouse.x < 1500 && mouse.x > 1000) {
+        if (mouse.y >= 650 && mouse.y < 750)
             sfText_setColor(menu->play, (sfColor){255, 255, 255, 200});
         else
             sfText_setColor(menu->play, (sfColor){0, 0, 0, 200});
-        if (mouse.y >= 550 && mouse.y < 650)
+        if (mouse.y >= 800 && mouse.y < 900)
             sfText_setColor(menu->exit, (sfColor){255, 255, 255, 200});
         else
             sfText_setColor(menu->exit, (sfColor){0, 0, 0, 200});
@@ -39,32 +40,37 @@ void menu_btn_over(sfRenderWindow *window, menu_t *menu)
     }
 }
 
-int display_menu(menu_t *menu, sfRenderWindow *window)
+int display_pause_menu(menu_t *menu, sfRenderWindow *window)
 {
     sfEvent event;
+    int res;
 
     while (sfRenderWindow_pollEvent(window, &event)) {
         if (event.type == sfEvtClosed)
-            sfRenderWindow_close(window);
+            return (1);
         else if (event.type == sfEvtMouseButtonPressed) {
-            menu_btn_act(window, menu);
+            res = pause_menu_btn_act(window, menu);
+            if (res == 1 || res == 0)
+                return (res);
         }
     }
-    menu_btn_over(window, menu);
+    pause_menu_btn_over(window, menu);
     sfRenderWindow_clear(window, sfBlack);
     sfRenderWindow_drawSprite(window, menu->sprite, NULL);
     sfRenderWindow_drawText(window, menu->play, NULL);
     sfRenderWindow_drawText(window, menu->exit, NULL);
+    return (2);
 }
 
-int game_menu(menu_t *menu, sfRenderWindow *window)
+int pause_menu(menu_t *menu, sfRenderWindow *window)
 {
-    menu->launch_game = 0;
-    while (sfRenderWindow_isOpen(window) && menu->launch_game == 0) {
-        display_menu(menu, window);
+    int res;
+
+    while (sfRenderWindow_isOpen(window)) {
+        res = display_pause_menu(menu, window);
         sfRenderWindow_display(window);
-    }/*
-    if (menu->launch_game == 1)
-    game_start(window);*/
-    return (0);
+        if (res == 0 || res == 1)
+            return (res);
+    }
+    return (1);
 }
