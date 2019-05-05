@@ -32,6 +32,55 @@ void set_loot(loots_t *loot, battle_t *battle)
     sfText_setPosition(loot->status, (sfVector2f){860, 300});
 }
 
+void set_drop_sprite(anim_t **drop, char *ress)
+{
+    int cnt;
+
+    for (cnt = 0; cnt != 3; cnt++) {
+	drop[cnt]->spr = sfSprite_create();
+	drop[cnt]->txt = sfTexture_createFromFile(ress, NULL);
+	drop[cnt]->rect = create_rect((cnt * 138), 0, 138, 138);
+	sfSprite_setTexture(drop[cnt]->spr, drop[cnt]->txt, sfTrue);
+	sfSprite_setTextureRect(drop[cnt]->spr, drop[cnt]->rect);
+	sfSprite_setPosition(drop[cnt]->spr, (sfVector2f){770, 490}); 
+    }
+}
+
+void init_drop_sprite(anim_t ***drop, int pos)
+{
+    int cnt;
+
+    for (cnt = 0; cnt != 3; cnt++) {
+	drop[pos][cnt] = malloc(sizeof(anim_t));
+	if (drop[pos][cnt] == NULL)
+	    exit(84);
+    }
+    if (pos == 0)
+	set_drop_sprite(drop[pos], ARMOR);
+    else if (pos == 1)
+	set_drop_sprite(drop[pos], BOOTS);
+    else
+	set_drop_sprite(drop[pos], HELMET);
+}
+
+anim_t ***set_drop(void)
+{
+    anim_t ***drop = malloc(sizeof(anim_t **) * 4);
+    int cnt;
+
+    if (drop == NULL)
+	exit(84);
+    drop[3] = NULL;
+    for (cnt = 0; cnt != 3; cnt++) {
+	drop[cnt] = malloc(sizeof(anim_t *) * 4);
+	if (drop[cnt] == NULL)
+	    exit(84);
+	drop[cnt][3] = NULL;
+	init_drop_sprite(drop, cnt);
+    }
+    return (drop);
+}
+
 loots_t *init_loot(battle_t *battle)
 {
     loots_t *loot = malloc(sizeof(loots_t));
@@ -42,6 +91,7 @@ loots_t *init_loot(battle_t *battle)
     loot->loot = sfText_create();
     loot->xp = sfText_create();
     loot->status = sfText_create();
+    loot->drop = set_drop();
     set_loot(loot, battle);
     return (loot);
 }

@@ -22,7 +22,7 @@ int game_loots(sfRenderWindow *window, battle_t *battle)
     loots_t *loot = init_loot(battle);
     sfClock *clock = sfClock_create();
     sfTime time;
-    double seconds;
+    double seconds = 0;
 
     while (sfRenderWindow_isOpen(window) && seconds < 10) {
         time = sfClock_getElapsedTime(clock);
