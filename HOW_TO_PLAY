@@ -1,0 +1,9 @@
+Controls ->
+
+UP ARROW : go up
+RGHT ARROW: go right
+DOWN ARROW : go down
+LEFT ARROW : go left
+F Key : Press F anywhere to launch fight (except in starting map)
+I Key : Press I to display inventory and stats
+ESC Key : Press esc to display pause menu
