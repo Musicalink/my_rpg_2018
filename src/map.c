@@ -17,6 +17,7 @@ sfVector2f move_it(game_t *game, sfVector2f pos, sfColor color)
     pos.x += (color.r > 200 && color.g < 50 && color.b < 50) ? 1850 : 0;
     game->x += (color.r < 50 && color.g < 50 && color.b > 200) ? 1 : 0;
     pos.x -= (color.r < 50 && color.g < 50 && color.b > 200) ? 1850 : 0;
+    printf("(%d, %d)\n", game->y, game->x);
     return (pos);
 }
 
@@ -41,6 +42,12 @@ void make_move(game_t *game, map_t *map, int boolean, int minus)
         if (color.r <= 200 || color.b <= 200 || color.g <= 200)
             game->p_pos = move_it(game, game->p_pos, color);
     }
+}
+
+void launch_fight(game_t *game, map_t ***maps)
+{
+    if (game->y >= 3 && game->y <= 5 && game->x >= 1 && game->x <= 3)
+        printf("COMBAT FORESTIER\n");
 }
 
 void search_move(game_t *game, map_t ***maps)
@@ -69,6 +76,8 @@ void search_move(game_t *game, map_t ***maps)
         sfSprite_setTexture(game->moves, game->moves_t[3], sfTrue);
         sfSprite_setTextureRect(game->moves, game->moves_r);
     }
+    if (sfKeyboard_isKeyPressed(sfKeyF))
+        launch_fight(game, maps);
     sfSprite_setPosition(game->moves, game->p_pos);
 }
 
