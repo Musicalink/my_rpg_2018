@@ -130,6 +130,12 @@ typedef struct map {
     struct map *bottom;
 } map_t;
 
+typedef struct inventory {
+    int boolean;
+    sfSprite *spr;
+    sfTexture *tex;
+} inventory_t;
+
 typedef struct game {
     int y;
     int x;
@@ -139,6 +145,7 @@ typedef struct game {
     sfVector2f p_pos;
     sfClock *clock;
     sfTime time;
+    inventory_t *inventory;
 } game_t;
 
 #endif /*MY_STRUCT_H*/

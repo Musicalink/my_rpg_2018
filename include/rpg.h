@@ -86,6 +86,35 @@ sfVector2f bar_xp(player_t *);
 ebattle_t **gen_enemies(void);
 anim_t *gen_anim(char *, int, int, int);
 
+//init_game.c
+game_t *init_game(void);
+
+void display_game(sfRenderWindow *window, map_t ***maps, game_t *game);
+
+void game_map(map_t ***maps, sfRenderWindow *window);
+
+//map.c
+
+sfVector2f move_it(game_t *game, sfVector2f pos, sfColor color);
+
+void make_move(game_t *game, map_t *map, int boolean, int minus);
+
+void search_move(game_t *game, map_t ***maps);
+
+void event_map(map_t ***maps, sfRenderWindow *window, game_t *game);
+
+void my_clock(map_t ***maps, sfRenderWindow *window, game_t *game);
+
+//init_map.c
+
+map_t *take_map(map_t *map, char *name);
+
+map_t **malloc_list_maps(map_t **maps);
+
+map_t ***fill_maps(map_t ***maps, DIR *dir);
+
+map_t ***init_maps();
+
 #define WALK_RIGHT "ressources/sprites/walk_right.png"
 #define WALK_LEFT "ressources/sprites/walk_left.png"
 #define WALK_UP "ressources/sprites/walk_up.png"
@@ -98,5 +127,6 @@ anim_t *gen_anim(char *, int, int, int);
 #define ARMOR "ressources/sprites/armor_set.png"
 #define BOOTS "ressources/sprites/boots_set.png"
 #define HELMET "ressources/sprites/helmet_set.png"
+#define INVENTORY "ressources/sprites/inventory.png"
 
 #endif /*MY_RPG_H*/
