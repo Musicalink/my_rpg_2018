@@ -47,14 +47,16 @@ int game_battle(sfRenderWindow *window, player_t *player, ebattle_t *enemy,
 {
     battle_t *battle = init_battle(player, enemy);
     sfClock *clock = sfClock_create();
+    int end = 0;
 
-    while (sfRenderWindow_isOpen(window) && battle->end == 0) {
+    while (sfRenderWindow_isOpen(window) && end == 0) {
         display_battle(battle, window, inv);
         sfRenderWindow_display(window);
         battle_action(window, battle, inv);
-        battle->end = battle_end(player, enemy, inv);
+        end = battle_end(player, enemy, inv);
     }
     game_loots(window, battle, inv);
     game_set_texts(player, inv);
-    return (battle->end);
+    close_battle(battle);
+    return (end);
 }

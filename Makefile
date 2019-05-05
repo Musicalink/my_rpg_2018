@@ -5,28 +5,33 @@
 ## rpg
 ##
 
-SRC     =       src/main.c		\
-		src/menu.c		\
-		src/pause_menu.c	\
-		src/set/set_menu.c	\
-		src/battle.c		\
-		src/set/set_battle.c	\
+SRC     =       src/main.c			\
+		src/menu.c			\
+		src/pause_menu.c		\
+		src/set/set_menu.c		\
+		src/battle.c			\
+		src/set/set_battle.c		\
+		src/set/set_pnj.c		\
 		src/set/set_player_battle.c	\
 		src/set/set_pause_menu.c	\
-		src/set/set_player.c	\
-		src/hud_ingame.c	\
-		src/set/ennemies.c	\
-		src/battle_action.c	\
-		src/battle_movement.c	\
-		src/battle_end.c	\
+		src/set/set_player.c		\
+		src/hud_ingame.c		\
+		src/set/ennemies.c		\
+		src/battle_action.c		\
+		src/battle_movement.c		\
+		src/battle_end.c		\
 		src/set/set_lootscreen.c	\
-		src/battle_loots.c	\
-		src/set/set_textloot.c	\
-		src/init_map.c		\
-		src/map.c		\
-		src/init_game.c		\
-		src/drop.c		\
-		src/fight_chose.c\
+		src/battle_loots.c		\
+		src/set/set_textloot.c		\
+		src/close/close_battle.c	\
+		src/close/close_menu.c		\
+		src/close/close_loots.c		\
+		src/close/close_enemies.c	\
+		src/init_map.c			\
+		src/map.c			\
+		src/init_game.c			\
+		src/drop.c			\
+		src/fight_chose.c		\
 
 OBJ     =       $(SRC:.c=.o)
 

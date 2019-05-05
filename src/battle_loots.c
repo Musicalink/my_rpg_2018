@@ -31,5 +31,7 @@ int game_loots(sfRenderWindow *window, battle_t *battle, inventory_t *inv)
         display_loots(window, loot);
         sfRenderWindow_display(window);
     }
+    sfClock_destroy(clock);
+    close_loots(loot);
     return (0);
 }

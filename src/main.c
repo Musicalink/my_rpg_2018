@@ -25,9 +25,9 @@ int main(int ac, char **av)
         map = init_maps();
         game_map(map, window, enemies, player);
         if (player->reset == 1) {
-            //freeplayer
             player = set_player();
         }
     }
+    close_enemies(enemies);
     return (0);
 }

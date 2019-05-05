@@ -74,6 +74,18 @@ battle_t *init_battle(player_t *, ebattle_t *);
 //set_player_battle.c
 pbattle_t *init_player_battle(char *, player_t *);
 
+//close_battle.c
+void close_battle(battle_t *);
+
+//close_game.c
+void close_game(game_t *);
+
+//close_loots.c
+void close_loots(loots_t *);
+
+//close_enemies.c
+void close_enemies(ebattle_t **);
+
 //set_lootscreen.c
 loots_t *init_loot(battle_t *, inventory_t *);
 
@@ -81,6 +93,11 @@ loots_t *init_loot(battle_t *, inventory_t *);
 void get_battle_status(battle_t *, loots_t *);
 
 char *xp_char(battle_t *);
+
+//set_pnj.c
+void game_map_helper(game_t *, ebattle_t **, player_t *);
+
+void set_pnj(game_t *);
 
 //hud_ingame.c
 void set_hud(bhud_t *, player_t *);

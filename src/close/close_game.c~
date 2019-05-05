@@ -1,0 +1,20 @@
+/*
+** EPITECH PROJECT, 2019
+** close_game.c
+** File description:
+** close_game
+*/
+
+void close_inventory(inventory_t *inventory)
+{
+    sfSprite_destroy(inventory->spr);
+    sfTexture_destroyinventory->tex);
+    free(game->inventory);
+}
+
+void close_game(game_t *game)
+{
+    close_inventory(game->inventory);
+    sfClock_destroy(game->clock);
+    free(game);
+}
