@@ -102,9 +102,7 @@ game_t *init_game(void);
 
 void display_game(sfRenderWindow *window, map_t ***maps, game_t *game);
 
-void game_map(map_t ***maps, sfRenderWindow *window, ebattle_t **enemies,
-    player_t *player
-);
+void game_map(map_t ***, sfRenderWindow *, ebattle_t **, player_t *);
 
 //map.c
 
