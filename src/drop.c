@@ -24,7 +24,7 @@ void add_to_inventory(int rare, anim_t *item, inventory_t *inv, int type)
             return;
     } else {
         inv->stuff[i] = malloc(sizeof(stuff_t));
-        if(inv->stuff[i] == NULL)
+        if (inv->stuff[i] == NULL)
             return;
     }
     inv->stuff[i]->type = type;

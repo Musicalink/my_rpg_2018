@@ -22,7 +22,7 @@ void game_map_helper(game_t *game, ebattle_t **enemies, player_t *player)
     game->enem = enemies;
     game->player = player;
     game->pnj = malloc(sizeof(pnj_t));
-    if(game->pnj == NULL)
+    if (game->pnj == NULL)
         return;
     game->pnj->spr = sfSprite_create();
     game->pnj->txt = sfTexture_createFromFile(MAGICIAN, NULL);

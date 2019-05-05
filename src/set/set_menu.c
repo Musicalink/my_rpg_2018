@@ -39,8 +39,8 @@ menu_t *init_menu(char *resources)
 {
     menu_t *menu = malloc(sizeof(menu_t));
 
-    if(menu == NULL)
-        return(NULL);
+    if (menu == NULL)
+        return (NULL);
     menu->rect = create_rect(0, 0, 1920, 1080);
     menu->texture = sfTexture_createFromFile(resources, NULL);
     menu->sprite = sfSprite_create();

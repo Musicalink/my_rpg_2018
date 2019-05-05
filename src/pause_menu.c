@@ -56,7 +56,6 @@ int display_pause_menu(menu_t *menu, sfRenderWindow *window)
         }
     }
     pause_menu_btn_over(window, menu);
-    sfRenderWindow_clear(window, sfBlack);
     sfRenderWindow_drawSprite(window, menu->sprite, NULL);
     sfRenderWindow_drawText(window, menu->main, NULL);
     sfRenderWindow_drawText(window, menu->play, NULL);
@@ -69,6 +68,7 @@ int pause_menu(menu_t *menu, sfRenderWindow *window)
     int res;
 
     while (sfRenderWindow_isOpen(window)) {
+        sfRenderWindow_clear(window, sfBlack);
         res = display_pause_menu(menu, window);
         sfRenderWindow_display(window);
         if (res == 0 || res == 1 || res == 3)

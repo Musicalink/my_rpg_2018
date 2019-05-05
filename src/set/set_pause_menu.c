@@ -33,8 +33,8 @@ menu_t *init_pause_menu(char *resources)
 {
     menu_t *menu = malloc(sizeof(menu_t));
 
-    if(menu == NULL)
-        return(NULL);
+    if (menu == NULL)
+        return (NULL);
     menu->launch_game = 0;
     menu->texture = sfTexture_createFromFile(resources, NULL);
     menu->sprite = sfSprite_create();
