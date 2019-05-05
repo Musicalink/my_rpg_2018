@@ -6,7 +6,6 @@
 */
 
 #include "rpg.h"
-#include "struct.h"
 
 int pause_menu_btn_act(sfRenderWindow *window, menu_t *menu)
 {
@@ -16,8 +15,8 @@ int pause_menu_btn_act(sfRenderWindow *window, menu_t *menu)
     if (mouse.x < 1300 && mouse.x > 1000) {
         if (mouse.y >= 650 && mouse.y < 750) {
             return (0);
-        } else if ((mouse.y >= 800 && mouse.y < 900 )||
-                   (mouse.y >= 500 && mouse.y < 600)) {
+        } else if ((mouse.y >= 800 && mouse.y < 900) ||
+            (mouse.y >= 500 && mouse.y < 600)) {
             ret = (mouse.y >= 800 && mouse.y < 900) ? 1 : 3;
             return (ret);
         }

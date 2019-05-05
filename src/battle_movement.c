@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** battle_movement.c
 ** File description:
-** 
+** my_rpg
 */
 
 #include "rpg.h"

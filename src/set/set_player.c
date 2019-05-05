@@ -7,16 +7,6 @@
 
 #include "rpg.h"
 
-sfText *create_text(char *str, int y, int x)
-{
-    sfText *text = sfText_create();
-
-    sfText_setString(text, str);
-    sfText_setPosition(text, (sfVector2f){x, y});
-    sfText_setFont(text, sfFont_createFromFile(ARIAL));
-    return (text);
-}
-
 stats_t *set_player_stats(void)
 {
     stats_t *stats = malloc(sizeof(stats_t) * 1);
