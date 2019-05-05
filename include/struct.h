@@ -124,18 +124,26 @@ typedef struct map {
     sfSprite *sprite;
     sfTexture *texture;
     sfImage *hitbox;
-    struct map *left;
-    struct map *right;
-    struct map *top;
-    struct map *bottom;
 } map_t;
 
 typedef struct inventory {
     int boolean;
     sfSprite *spr;
     sfTexture *tex;
+<<<<<<< HEAD
+    stuff_t *stuff[9];
 } inventory_t;
 
+typedef struct pnj {
+    anim_t *a;
+    int x;
+    int y;
+} pnj_t;
+
+=======
+} inventory_t;
+
+>>>>>>> 511da8c09836077848d8a3839fe84c444374e4ed
 typedef struct game {
     int y;
     int x;
@@ -146,6 +154,10 @@ typedef struct game {
     sfClock *clock;
     sfTime time;
     inventory_t *inventory;
+<<<<<<< HEAD
+    anim_t *pnj;
+=======
+>>>>>>> 511da8c09836077848d8a3839fe84c444374e4ed
 } game_t;
 
 #endif /*MY_STRUCT_H*/
