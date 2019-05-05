@@ -13,12 +13,11 @@ void add_to_inventory(int rare, anim_t *item, inventory_t *inv)
     int i = 0;
 
     for (i = 0; inv->stuff[i] != NULL; i++);
-    if(i >= 9)
+    if (i >= 9)
         return;
     inv->stuff[i] = malloc(sizeof(stuff_t));
-    inv->stuff[i]->anim = item;//= LELOOT}
+    inv->stuff[i]->anim = item;
     sfSprite_setPosition(inv->stuff[i]->anim->spr, INV_POS[i]);
-    printf("%d\n", i);
 }
 
 anim_t *choose_drop(battle_t *battle, anim_t ***drop, inventory_t *inv)

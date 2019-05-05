@@ -21,6 +21,7 @@
 #include <unistd.h>
 #include <stddef.h>
 #include <dirent.h>
+#include <time.h>
 #include "struct.h"
 #include "my.h"
 

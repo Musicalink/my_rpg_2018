@@ -20,7 +20,7 @@ void update_xp(player_t *player, ebattle_t *enemy)
     int up = 20 + 20 + 5 * (player->stats->level - 1);
     
     player->stats->xp += enemy->stats->xp;
-    if (player->stats->xp >= up) {
+    while (player->stats->xp >= up) {
         lvl_up_stats(player);
         player->stats->level += 1;
         player->stats->xp -= up;

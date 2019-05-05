@@ -6,7 +6,6 @@
 */
 
 #include "rpg.h"
-#include "struct.h"
 
 int main(int ac, char **av)
 {
@@ -19,13 +18,9 @@ int main(int ac, char **av)
 
     window = sfRenderWindow_create(mode, "rpg",
         sfClose | sfResize/* | sfFullscreen*/, NULL);
-    srand(time(NULL));
+    srand((unsigned int)time(NULL));
     game_menu(menu, window);
     maps = init_maps();
     game_map(maps, window, enemies, player);
-    /*
-    for (int i = 0; i != 3; i++)
-	game_battle(window, player, enemies[3]);
-    */
     return (0);
 }
