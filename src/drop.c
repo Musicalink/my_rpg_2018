@@ -8,13 +8,17 @@
 #include "rpg.h"
 #include "struct.h"
 
-void add_to_inventory(int rare, anim_t *item, inventory_t *inv)
+void add_to_inventory(int rare, anim_t *item, inventory_t *inv, int type)
 {
     int i = 0;
 
     for (i = 0; inv->stuff[i] != NULL; i++);
     if (i >= 9)
         return;
+    inv->stuff[i]->type = type;
+    inv->stuff[i]->atk = 5 * (rare + 1) + rand() % 10;
+    inv->stuff[i]->def = 3 * (rare + 1) + rand() % 10;
+    inv->stuff[i]->hp = 15 * (rare + 1) + rand() % 30;
     inv->stuff[i] = malloc(sizeof(stuff_t));
     inv->stuff[i]->anim = item;
     sfSprite_setPosition(inv->stuff[i]->anim->spr, INV_POS[i]);
@@ -41,6 +45,6 @@ anim_t *choose_drop(battle_t *battle, anim_t ***drop, inventory_t *inv)
         rarety = (luck >= 50 && luck < 79) ? 1 : rarety;
         rarety = (luck >= 79 && luck <= 99) ? 2 : rarety;
     }
-    add_to_inventory(rarety, drop[type][rarety], inv);
+    add_to_inventory(rarety, drop[type][rarety], inv, type);
     return (drop[type][rarety]);
 }
