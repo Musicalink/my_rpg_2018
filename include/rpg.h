@@ -91,7 +91,7 @@ game_t *init_game(void);
 
 void display_game(sfRenderWindow *window, map_t ***maps, game_t *game);
 
-void game_map(map_t ***maps, sfRenderWindow *window);
+void game_map(map_t ***maps, sfRenderWindow *window, ebattle_t **enemies, player_t *player);
 
 //map.c
 
@@ -99,7 +99,7 @@ sfVector2f move_it(game_t *game, sfVector2f pos, sfColor color);
 
 void make_move(game_t *game, map_t *map, int boolean, int minus);
 
-void search_move(game_t *game, map_t ***maps);
+void search_move(game_t *game, map_t ***maps, sfRenderWindow *window);
 
 void event_map(map_t ***maps, sfRenderWindow *window, game_t *game);
 

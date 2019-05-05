@@ -53,10 +53,12 @@ void display_game(sfRenderWindow *window, map_t ***maps, game_t *game)
     sfRenderWindow_display(window);
 }
 
-void game_map(map_t ***maps, sfRenderWindow *window)
+void game_map(map_t ***maps, sfRenderWindow *window ,ebattle_t **enemies, player_t *player)
 {
     game_t *game = init_game();
 
+    game->enem = enemies;
+    game->player = player;
     game->pnj = malloc(sizeof(pnj_t));
     game->pnj->spr = sfSprite_create();
     game->pnj->txt = sfTexture_createFromFile(MAGICIAN, NULL);

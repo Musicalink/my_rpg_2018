@@ -26,7 +26,7 @@ int game_loots(sfRenderWindow *window, battle_t *battle)
     sfTime time;
     double seconds = 0;
 
-    while (sfRenderWindow_isOpen(window) && seconds < 10) {
+    while (sfRenderWindow_isOpen(window) && seconds < 5) {
         time = sfClock_getElapsedTime(clock);
         seconds = time.microseconds / 1000000.0;
         display_loots(window, loot);

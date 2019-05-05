@@ -44,13 +44,13 @@ void make_move(game_t *game, map_t *map, int boolean, int minus)
     }
 }
 
-void launch_fight(game_t *game, map_t ***maps)
+void launch_fight(game_t *game, map_t ***maps, sfRenderWindow *window)
 {
     if (game->y >= 3 && game->y <= 5 && game->x >= 1 && game->x <= 3)
-        printf("COMBAT FORESTIER\n");
+        game_battle(window, game->player, game->enem[0]);
 }
 
-void search_move(game_t *game, map_t ***maps)
+void search_move(game_t *game, map_t ***maps, sfRenderWindow *window)
 {
     map_t *map = maps[game->y][game->x];
 
@@ -77,7 +77,7 @@ void search_move(game_t *game, map_t ***maps)
         sfSprite_setTextureRect(game->moves, game->moves_r);
     }
     if (sfKeyboard_isKeyPressed(sfKeyF))
-        launch_fight(game, maps);
+        launch_fight(game, maps, window);
     sfSprite_setPosition(game->moves, game->p_pos);
 }
 
@@ -94,7 +94,7 @@ void event_map(map_t ***maps, sfRenderWindow *window, game_t *game)
             game->moves_r.left += 150;
             game->moves_r.left =
                 (game->moves_r.left > 1349) ? 0 : game->moves_r.left;
-            search_move(game, maps);
+            search_move(game, maps, window);
         }
     }
 }

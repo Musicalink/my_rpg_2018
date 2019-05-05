@@ -140,6 +140,8 @@ typedef struct pnj {
 } pnj_t;
 
 typedef struct game {
+    ebattle_t ** enem;
+    player_t *player;
     int y;
     int x;
     sfSprite *moves;
