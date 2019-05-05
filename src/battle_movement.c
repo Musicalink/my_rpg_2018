@@ -25,7 +25,7 @@ void atk(battle_t *bat, sfRenderWindow *window)
     }
 }
 
-void enemy_atk(battle_t *bat, sfRenderWindow *window)
+void enemy_atk(battle_t *bat, sfRenderWindow *window, inventory_t *inventory)
 {
     sfTime time = sfClock_getElapsedTime(bat->enemy->clock);
     double seconds = time.microseconds / 1000000.0;
@@ -33,7 +33,7 @@ void enemy_atk(battle_t *bat, sfRenderWindow *window)
 
     if (seconds > 0.06 && bat->turn == 1) {
         if (enemy->rect.left >= enemy->size.x * (enemy->frame - 1)) {
-            enemy_action(bat);
+            enemy_action(bat, inventory);
             enemy->rect.left = 0;
             bat->turn = 0;
             bat->player->action = 0;

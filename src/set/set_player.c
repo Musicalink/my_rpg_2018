@@ -27,7 +27,7 @@ stats_t *set_player_stats(void)
     stats->xp = 0;
     stats->hp_max = 100 + ((10 + 1 * (stats->level - 1)) * (stats->level - 1));
     stats->hp = stats->hp_max;
-    stats->atk = 100000 + 2 * (stats->level - 1);
+    stats->atk = 20 + 2 * (stats->level - 1);
     stats->def = 10 + 1 * (stats->level - 1);
     stats->atk_t = create_text(my_itoa(stats->atk), 758, 970);
     stats->def_t = create_text(my_itoa(stats->def), 807, 970);

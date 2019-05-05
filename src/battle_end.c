@@ -17,9 +17,6 @@ void lvl_up_stats(player_t *player, inventory_t *inventory)
 void update_xp(player_t *player, ebattle_t *enemy, inventory_t *inventory)
 {
     int up = 20 + 20 + 5 * (player->stats->level - 1);
-    int atk;
-    int def;
-    int hp;
 
     player->stats->xp += enemy->stats->xp;
     while (player->stats->xp >= up) {
@@ -27,17 +24,6 @@ void update_xp(player_t *player, ebattle_t *enemy, inventory_t *inventory)
         player->stats->level += 1;
         player->stats->xp -= up;
     }
-    atk = player->stats->atk;
-    def = player->stats->def;
-    hp = player->stats->hp;
-    for (int i = 0; inventory->stuff[i] != NULL; i++) {
-        atk += inventory->stuff[i]->atk;
-        def += inventory->stuff[i]->def;
-        hp += inventory->stuff[i]->hp;
-    }
-    sfText_setString(player->stats->atk_t, my_itoa(atk));
-    sfText_setString(player->stats->def_t, my_itoa(def));
-    sfText_setString(player->stats->hp_t, my_itoa(hp));
 }
 
 int battle_end(player_t *player, ebattle_t *enemy, inventory_t *inventory)

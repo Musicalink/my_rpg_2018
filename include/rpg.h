@@ -51,16 +51,16 @@ menu_t *init_menu(char *);
 int game_battle(sfRenderWindow *, player_t *, ebattle_t *, inventory_t *);
 
 //battle_movement.c
-void enemy_atk(battle_t *, sfRenderWindow *);
+void enemy_atk(battle_t *, sfRenderWindow *, inventory_t *);
 
 void flm_move(anim_t *);
 
 void atk(battle_t *, sfRenderWindow *);
 
 //battle_action.c
-int battle_action(sfRenderWindow *, battle_t *);
+int battle_action(sfRenderWindow *, battle_t *, inventory_t *);
 
-int enemy_action(battle_t *);
+int enemy_action(battle_t *, inventory_t *);
 
 //battle_end.c
 int battle_end(player_t *, ebattle_t *, inventory_t *);
