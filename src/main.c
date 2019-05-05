@@ -14,14 +14,14 @@ int main(int ac, char **av)
     ebattle_t **enemies = gen_enemies();
     sfVideoMode mode = {1920, 1080, 60};
     sfRenderWindow *window;
-    map_t ***maps;
+    map_t ***map;
 
     window = sfRenderWindow_create(mode, "rpg",
         sfClose | sfResize/* | sfFullscreen*/, NULL);
     sfRenderWindow_setFramerateLimit(window, 60);
     srand((unsigned int)time(NULL));
     //   game_menu(menu, window);
-    maps = init_maps();
-    game_map(maps, window, enemies, player);
+    map = init_maps();
+    game_map(map, window, enemies, player);
     return (0);
 }
