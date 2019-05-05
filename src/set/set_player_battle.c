@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** 
+** set_player_battle
 ** File description:
-** 
+** rpg
 */
 
 #include "rpg.h"

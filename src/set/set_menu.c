@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** 
+** set_menu
 ** File description:
-** 
+** rpg
 */
 
 #include "rpg.h"
